@@ -81,7 +81,6 @@ export default function NavBar() {
                         }
                         items={
                             [
-
                                 {
                                     label: (
                                         <MenuItem itemName="About Me"
@@ -118,12 +117,10 @@ export default function NavBar() {
                                                 (
                                                     <HistoryOutlined/>)
                                             }/>
-
                                     ),
                                     key: titleIds.myResume,
                                 },
                             ]
-
                         }/>
                 </div>
                 <div style={

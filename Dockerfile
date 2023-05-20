@@ -23,8 +23,6 @@ ENV NODE_ENV production
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 
-# todo uncomment in production 
-# You only need to copy next.config.js if you are NOT using the default configuration
 COPY --from=deps next.config.js ./
 COPY --from=deps public ./public
 COPY --from=deps --chown=nextjs:nodejs .next ./.next

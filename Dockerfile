@@ -2,19 +2,19 @@
 # docker build . -t example-image-name
 
 # Install dependencies only when needed
-FROM node:14-alpine AS deps
+FROM node:19-alpine AS deps
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 COPY . .
 RUN apk add --no-cache libc6-compat
 WORKDIR /
-RUN npm i --f
+RUN npm i
 RUN yarn build
 
 # Production image, copy all the files and run next
 
 
 # todo uncomment in production 
-FROM node:14-alpine AS runner
+FROM node:19-alpine AS runner
 WORKDIR /
 
 ENV NODE_ENV production

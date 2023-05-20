@@ -35,6 +35,7 @@ export default function NavBar() {
                 top: "0",
                 background: "#fff",
                 zIndex: 2,
+                borderBottom: "1px solid rgba(5, 5, 5, 0.06)"
             }
         }>
             <div style={
@@ -79,6 +80,7 @@ export default function NavBar() {
                         selectedKeys={
                             []
                         }
+                        style={ {borderBottom: "none"}}
                         items={
                             [
                                 {

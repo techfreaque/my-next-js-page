@@ -13,136 +13,151 @@ import {useState} from "react";
 export default function AboutMe({}) {
     const [isHover, setIsHover] = useState(false)
 
-    return (
-        <Grid container
-            id={
-                titleIds.aboutMe
-            }
-            className="anchor"
+    return (<Grid container
+        id={
+            titleIds.aboutMe
+        }
+        className="anchor"
 
-            spacing={0}
+        spacing={0}
+        style={
+            {
+                background: "#000",
+                display: "flex"
+            }
+    }>
+        <Grid item
+            xs={12}
+            lg={6}
             style={
-                {background: "#000", display: "flex"}
+                {margin: "auto"}
         }>
-            <Grid item
-                xs={12}
-                md={6}
+            <Image src={meFromBack}
+                alt={"My backside"}
                 style={
-                    {margin: "auto"}
+                    {
+                        width: "100%",
+                        height: "auto",
+                        backgroundPosition: "center"
+                    }
+                }/>
+        </Grid>
+        <Grid item
+            xs={12}
+            lg={6}
+            style={
+                {margin: "auto"}
+        }>
+            <div style={
+                {
+                    margin: "auto",
+                    maxWidth: "800px"
+                }
             }>
-                <Image src={meFromBack}
-                    alt={"My backside"}
+
+                <Typography.Title level={2}
                     style={
                         {
-                            width: "100%",
-                            height: "auto",
-                            backgroundPosition: "center"
+                            textAlign: "center",
+                            color: pageColors.primary,
+                            marginBottom: "0px",
+                            fontSize: "25px"
                         }
-                    }/>
-            </Grid>
-            <Grid item
-                xs={12}
-                md={6}
-                style={
-                    {margin: "auto"}
-            }>
-                <div style={
-                    {
-                        margin: "auto",
-                        maxWidth: "500px"
-                    }
                 }>
+                    About
+                </Typography.Title>
+                <Typography.Title level={2}
+                    style={
+                        {
+                            textAlign: "center",
+                            color: "#fff",
+                            fontSize: "30px",
+                            marginTop: "0px"
 
-                    <Typography.Title level={2}
-                        style={
+                        }
+                }>
+                    <Typewriter // onInit={
+                        //     (typewriter) => {
+                        //         typewriter.typeString('Hello World!').callFunction(() => {
+                        //             console.log('String typed out!');
+                        //         }).pauseFor(2500).deleteAll().callFunction(() => {
+                        //             console.log('All strings were deleted');
+                        //         }).start();
+                        //     }
+                        // }
+                        options={
                             {
-                                textAlign: "center",
-                                color: pageColors.primary,
-                                marginBottom: "0px",
-                                fontSize: "25px"
+                                strings: [
+                                    "Max Brandstaetter",
+                                    "Full Stack Developer",
+                                    "Problem Solver",
+                                    "Data Scientist",
+                                    "Max Brandstaetter",
+                                    "Machine Learning Expert",
+                                    "Algorithmic Trading Specialist",
+                                    "Innovator in Technology",
+                                    "Max Brandstaetter",
+                                    "AI Enthusiast",
+                                    "Tech Evangelist",
+                                    "Open-Source Contributor",
+                                    "Max Brandstaetter",
+                                    "DevOps Advocate",
+                                    "Entrepreneur",
+                                    "Creative Thinker",
+                                    "Max Brandstaetter",
+                                    "Continuous Learner",
+                                    "World Traveler",
+                                ],
+                                autoStart: true,
+                                loop: true
                             }
-                    }>
-                        About
-                    </Typography.Title>
-                    <Typography.Title level={2}
-                        style={
+                        }/>
+                </Typography.Title>
+                <DarkParagraph> {"Welcome to my magical world of tech! I'm Max Brandstaetter, a Full Stack Developer and data sorcerer. With a touch of innovation and a sprinkle of wizardry, I create extraordinary solutions that bring visions to life."}</DarkParagraph>
+                <DarkParagraph> {"As a problem-solving wizard, I empower businesses with advanced technologies and elegant solutions. From revamping open-source libraries to architecting AI-driven marvels, I conjure up remarkable results."} </DarkParagraph>
+                <DarkParagraph>
+                Unleashing the power of data, I delve into complex datasets, extracting valuable insights and making accurate predictions. With my expertise in data sorcery, I transform information into gold, enabling informed decision-making and driving success.
+                </DarkParagraph>
+                <DarkParagraph>
+                    {"Join me on this enchanting journey as we shape the future through technology. Let's create wonders that captivate and inspire."}
+                </DarkParagraph>
+                <Tooltip title="It's easy! Just click and shoot me a message">
+                    <div style={
                             {
-                                textAlign: "center",
-                                color: "#fff",
-                                fontSize: "30px",
-                                marginTop: "0px"
-
+                                display: "flex",
+                                marginBottom: "35px"
                             }
+                        }
+                        onMouseEnter={
+                            () => setIsHover(true)
+                        }
+                        onMouseLeave={
+                            () => setIsHover(false)
                     }>
-                        <Typewriter // onInit={
-                            //     (typewriter) => {
-                            //         typewriter.typeString('Hello World!').callFunction(() => {
-                            //             console.log('String typed out!');
-                            //         }).pauseFor(2500).deleteAll().callFunction(() => {
-                            //             console.log('All strings were deleted');
-                            //         }).start();
-                            //     }
-                            // }
-                            options={
-                                {
-                                    strings: [
-                                        "Max Brandstaetter",
-                                        'Developer',
-                                        "Problem solver",
-                                        "Globetrotter",
-                                        'Data Scientist'
-                                    ],
-                                    autoStart: true,
-                                    loop: true
-                                }
-                            }/>
-                    </Typography.Title>
-                    <DarkParagraph>
-                        Passionate about Full Stack Development and specializing in algorithmic trading, I bring a unique blend of skills in data analysis, machine learning, and DevOps practices.
-                    </DarkParagraph>
-                    <DarkParagraph>
 
-                        With a proven track record of revamping open-source libraries and architecting AI-driven solutions, I strive to empower businesses with advanced technologies for remarkable results.
-                    </DarkParagraph>
-                    <Tooltip title="It's easy! Just click and shoot me a message">
-                        <div style={
-                                {display: "flex", marginBottom: "35px"}
+                        <RainbowButton isHover={isHover}
+                            style={
+                                {margin: "auto"}
                             }
-                            onMouseEnter={
-                                () => setIsHover(true)
-                            }
-                            onMouseLeave={
-                                () => setIsHover(false)
-                        }>
-
-                            <RainbowButton isHover={isHover}
-                                style={
-                                    {margin: "auto"}
-                                }
-                                size={"middle"}
-                                fontSize={"18px"}
-                                href={
-                                    `mailto:${myEmailAddress}?subject=${contactEmailSubject}`
-                            }>
-                                {"Let's collaborate and unlock new possibilities together."} </RainbowButton>
-                        </div>
-                    </Tooltip>
-                </div>
-            </Grid>
+                            size={"middle"}
+                            fontSize={"18px"}
+                            href={
+                                `mailto:${myEmailAddress}?subject=${contactEmailSubject}`
+                        }> {"Let's collaborate and unlock new possibilities together."} </RainbowButton>
+                    </div>
+                </Tooltip>
+            </div>
         </Grid>
-    )
+    </Grid>)
 }
 
 
 function DarkParagraph({children}) {
-    return (
-        <Typography.Paragraph style={
-            {
-                color: "#fff",
-                textAlign: "center",
-                fontSize: "1.1rem"
-            }
-        }>
-            {children} </Typography.Paragraph>
-    )
+    return (<Typography.Paragraph style={
+        {
+            color: "#fff",
+            textAlign: "center",
+            fontSize: "1.1rem"
+        }
+    }> {children} </Typography.Paragraph>)
 }

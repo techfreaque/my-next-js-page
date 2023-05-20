@@ -11,9 +11,9 @@ export default function Home({isMobile}) {
             <Hero/>
             <MyServices />
             <AboutMe isMobile={isMobile} /> 
-            <Projects/>
+            <Projects />
+            {/* <KnowledgeCharts/> */}
             <Resume isMobile={isMobile} />
-
         </>
     )
 }

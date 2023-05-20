@@ -211,7 +211,7 @@ const Resume = ({isMobile}) => {
                     overflow: "hidden"
                 }
             }>
-                <div class="pyro"
+                <div className="pyro"
                     style={
                         {
                             top: "0",
@@ -220,8 +220,8 @@ const Resume = ({isMobile}) => {
                             zIndex: 0
                         }
                 }>
-                    <div class="before"></div>
-                    <div class="after"></div>
+                    <div className="before"></div>
+                    <div className="after"></div>
                 </div>
             </div>
         </div>

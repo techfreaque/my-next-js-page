@@ -134,9 +134,7 @@ export default function NavBar() {
                 }>
                     <Space>
                         <Tooltip title="It's easy! Just click and shoot me a message">
-                            <Button ankerId={
-                                    titleIds.getInTouch
-                                }
+                            <Button 
                                 href={
                                     `mailto:${myEmailAddress}?subject=${contactEmailSubject}`
                                 }

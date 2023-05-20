@@ -70,7 +70,7 @@ export default function Hero({isMobile}) {
                                 with Max Brandstaetter
 
                             </Typography.Title>
-                            <h1 classNames={"fancy-title"}
+                            <h1 className={"fancy-title"}
                                 onMouseEnter={
                                     () => setIsHover(true)
                                 }

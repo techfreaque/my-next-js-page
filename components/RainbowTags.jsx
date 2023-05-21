@@ -17,7 +17,7 @@ export function RainbowTags({tagList}) {
                 <Tag key={index}
                     color={
                         _tagColors[index]
-                }>
+                } style={{whiteSpace: "break-spaces"}}>
                     {tag}</Tag>
             ))
         } </Space>

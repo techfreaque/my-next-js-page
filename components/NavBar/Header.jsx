@@ -31,7 +31,7 @@ export default function NavBar() {
         <div style={
             {
                 position: "fixed",
-                width: "100%",
+                width: "100vw",
                 top: "0",
                 background: "#fff",
                 zIndex: 2,
@@ -70,7 +70,7 @@ export default function NavBar() {
                 </a>
                 <div style={
                     { 
-                        width: "calc(100% - 330px)"
+                        width: "calc(100% - 340px)"
                     }
                 }>
                     <Menu theme="light" mode="horizontal"
@@ -128,7 +128,7 @@ export default function NavBar() {
                 <div style={
                     { // display: "block",
                         marginLeft: "auto",
-                        width: "180px"
+                        width: "185px"
                     }
                 }>
                     <Space>

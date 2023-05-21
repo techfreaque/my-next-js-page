@@ -63,8 +63,7 @@ function ServiceCard({title, subTitle, icon, descriptions}) {
         md={4}
         style={
             {
-                paddingLeft: "10px",
-                paddingRight: "10px"
+                padding: "10px"
             }
     }>
         <Card style={

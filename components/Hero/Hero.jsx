@@ -1,14 +1,12 @@
 import {Grid} from "@mui/material";
 import heroVideo from './red_hero.mp4';
-import {Button, Tooltip, Typography} from "antd";
+import {Typography} from "antd";
 import {useState} from "react";
-import {RocketOutlined} from "@ant-design/icons";
-import {getFancyColorsStyle, pageColors} from "../colorPalette";
-import {contactEmailSubject, myEmailAddress} from "../constantsAboutMe";
+import {getFancyColorsStyle} from "../colorPalette";
 import RainbowButton from "../RainBowButton";
 import { titleIds } from "../NavBar/Header";
 
-export default function Hero({isMobile}) {
+export default function Hero() {
     const [isHover, setIsHover] = useState(false)
 
 
@@ -52,7 +50,7 @@ export default function Hero({isMobile}) {
                     }
                 }>
                     <div style={
-                        {marginLeft: "15px"}
+                        {marginLeft: "15px", marginRight: "15px"}
                     }>
                         <Typography.Title level={1}
 

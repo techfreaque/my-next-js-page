@@ -1,15 +1,10 @@
-import {
-    Card,
-    Space,
-    Tag,
-    Timeline,
-    Typography
-} from 'antd';
+import {Card, Timeline, Typography} from 'antd';
 import {titleIds} from '../NavBar/Header';
-import {Grid} from '@mui/material';
+import {Grid, useMediaQuery} from '@mui/material';
 import {RainbowTags} from '../RainbowTags';
 
-const Resume = ({isMobile}) => {
+export default function Resume() {
+    const isMobile = useMediaQuery('(max-width:1000px)')
     return (
         <div style={
                 {
@@ -227,7 +222,6 @@ const Resume = ({isMobile}) => {
         </div>
     );
 };
-export default Resume;
 
 
 function resumeJob({

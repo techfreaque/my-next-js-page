@@ -13,10 +13,9 @@ export function getFancyColorsStyle(isHover) {
         WebkitBackgroundClip: "text",
         backgroundSize: "200%",
         backgroundPosition: "-200%",
-        transition: "all ease-in-out 2s",
+        transition: "background-position ease-in-out 2s",
         ...(isHover ? {
             backgroundPosition: "200%"
-
         } : {})
     }
 }

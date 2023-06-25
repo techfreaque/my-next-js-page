@@ -16,12 +16,13 @@ export default function RainbowButton({
                     margin: "auto",
                     textAlign: 'center',
                     fontSize,
+                    border: "none",
                     marginTop: "5px",
                     ...getFancyColorsStyle(isHover),
                     ...style
                 }
             }
-            type={"outline"}
+            // type={"outline"}
             size={size}>
             {children} </Button>
     )

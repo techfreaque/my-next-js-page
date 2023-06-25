@@ -46,7 +46,7 @@ export default function Hero() {
                 <div style={
                     {
                         margin: "auto",
-                        maxWidth: "800px"
+                        maxWidth: "850px"
                     }
                 }>
                     <div style={
@@ -65,7 +65,7 @@ export default function Hero() {
                                 }
                         }>
                             Embrace the Magic<br/>
-                            with Max Brandstaetter
+                            with Marcus Brandstaetter
 
                         </Typography.Title>
                         <h1 className={"fancy-title"}

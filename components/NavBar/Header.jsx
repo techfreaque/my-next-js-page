@@ -8,6 +8,7 @@ import {
 import {
     AppstoreOutlined,
     AudioOutlined,
+    FunctionOutlined,
     GithubOutlined,
     HistoryOutlined,
     RocketOutlined
@@ -23,7 +24,8 @@ export const titleIds = {
     myProjects: "my-projects",
     myResume: "my-resume",
     myServices: "my-services",
-    getInTouch: "get-in-touch"
+    getInTouch: "get-in-touch",
+    mySkills: "my-skills",
 }
 
 export default function NavBar() {
@@ -96,7 +98,8 @@ export default function NavBar() {
 
                                     ),
                                     key: titleIds.aboutMe,
-                                }, {
+                                },
+                                {
                                     label: (
                                         <MenuItem itemName="My Projects"
                                             ankerId={
@@ -109,7 +112,22 @@ export default function NavBar() {
 
                                     ),
                                     key: titleIds.myProjects,
-                                }, {
+                                },
+                                {
+                                    label: (
+                                        <MenuItem itemName="My Skills"
+                                            ankerId={
+                                                titleIds.mySkills
+                                            }
+                                            icon={
+                                                (
+                                                    <FunctionOutlined/>)
+                                            }/>
+
+                                    ),
+                                    key: titleIds.mySkills,
+                                },
+                                {
                                     label: (
                                         <MenuItem itemName="My Resume"
                                             ankerId={
@@ -128,7 +146,7 @@ export default function NavBar() {
                 <div style={
                     { // display: "block",
                         marginLeft: "auto",
-                        width: "185px"
+                        width: "210px"
                     }
                 }>
                     <Space>

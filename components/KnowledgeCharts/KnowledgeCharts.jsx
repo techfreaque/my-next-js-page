@@ -1,36 +1,41 @@
-import { Line } from "react-chartjs-2";
+import {Line} from "react-chartjs-2";
+// required
 import Chart from 'chart.js/auto';
+import {Typography} from "antd";
+import { titleIds } from "../NavBar/Header";
+
 const generateXYData = (years, frameworks) => {
     const xData = [];
     const yData = [];
-  
-    const scaleFactor = Math.pow(frameworks.length, 1 / (years - 1));
-    console.log(scaleFactor);
+
+    const scaleFactor = frameworks.length / (years - 1);
     for (let i = 0; i < years; i++) {
-      const frameworksCount = Math.round(Math.pow(scaleFactor, i));
-      xData.push(i + 1);
-      yData.push(frameworksCount);
+        const frameworksCount = Math.round(scaleFactor * i);
+        xData.push(i + 1);
+        yData.push(frameworksCount);
     }
-  
-    return { x: xData, y: yData };
+
+    return {x: xData, y: yData};
 };
 
 const myLanguages = [
-    "PHP",
-    "JavaScript",
     "HTML",
     "CSS",
+    "JavaScript",
+    "PHP",
     "bash",
     "SQL",
-    "JSON",
+    "XML",
     "Python",
+    "JSON",
+    "yaml",
     "PowerShell",
     "TypeScript",
     "Cython",
     "JSX",
-    "C#"
+    "Go",
 ]
-const myFrameworks = [
+const myTechnologies = [
     "Troubleshooting",
     "Virus and malware removal",
     "Software issues",
@@ -112,6 +117,22 @@ const myFrameworks = [
     "GraphQL",
 ]
 
+const iKnowItAll = [
+    "",
+    "I know nothing",
+    "I know a little bit",
+    "It starts to make sense",
+    "It's not that hard at all",
+    "I'm an expert",
+    "I think there is more to it",
+    "I need to learn a lot more",
+    "Do I even know anything?",
+    "I know that I know nothing",
+    "I'm still learning, but I'm getting there",
+    "I have a solid understanding",
+    "Trust me it's complicated"
+]
+
 const myYearsOfWork = [
     "2011",
     "2012",
@@ -127,24 +148,138 @@ const myYearsOfWork = [
     "2022",
     "2023",
 ]
-const xyData = generateXYData(myYearsOfWork.length, myFrameworks);
-console.log(xyData);
+const xyTechnologiesData = generateXYData(myYearsOfWork.length, myTechnologies);
+const xyLanguagesData = generateXYData(myYearsOfWork.length, myLanguages);
+const xyIgnoranceData = generateXYData(myYearsOfWork.length, myLanguages);
+const yHowMuchIthinkIknow = [
+    0,
+    2,
+    4,
+    6,
+    8,
+    12,
+    9,
+    7,
+    6,
+    5,
+    6,
+    7,
+    8
+]
+const yLanguages = [
+    0,
+    1,
+    3,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+]
 const data = {
     labels: myYearsOfWork,
     datasets: [
         {
-            label: 'Number of Frameworks / Technologies',
-            data: xyData.y,
-            borderWidth: 1
-        }
+            label: 'Frameworks / Technologies',
+            data: xyTechnologiesData.y,
+            borderWidth: 1,
+            yAxisID: 'y'
+        }, {
+            label: '"Programming" Languages',
+            data: yLanguages,
+            borderWidth: 1,
+            yAxisID: 'y1'
+        },
+        {
+            label: 'How much I think I know',
+            data: yHowMuchIthinkIknow,
+            borderWidth: 1,
+            yAxisID: 'y1'
+        },
     ]
 }
+const tooltipText = (tooltipItems) => {
+    return tooltipItems.map((tooltipItem) => {
+        if (tooltipItem ?. datasetIndex === 0) {
+            const endIndex = tooltipItem.parsed.y
+            const technologies = myTechnologies.slice(0, endIndex)
+            const maxLineLength = 100;
+            let currentLineLength = 0;
+            let result = "";
+            for (let i = 0; i < technologies.length; i++) {
+                const technology = technologies[i];
+                const technologyLength = technology.length;
+                if (currentLineLength + technologyLength <= maxLineLength) {
+                    result += technology;
+                    currentLineLength += technologyLength;
+                } else {
+                    result += "\n" + technology;
+                    currentLineLength = technologyLength;
+                }
+                if (i !== technologies.length - 1) {
+                    result += ", ";
+                    currentLineLength += 2;
+                }
+            }
+            return result
+        } else if (tooltipItem ?. datasetIndex === 1) {
+            return myLanguages.slice(0, tooltipItem.parsed.y).join("\n");
+        } else if (tooltipItem ?. datasetIndex === 2) {
+            return iKnowItAll[tooltipItem.parsed.x]
+        }
+        return ""
+    }).join("\n")
+};
+const options = {
+    scales: {
+        y: { // type: 'linear',
+            display: true,
+            position: 'left'
+        },
+        y1: { // type: 'linear',
+            display: true,
+            position: 'right',
 
-console.log(data);
-export default function KnowledgeCharts() {
-    return (<div>
-        <Line data={data}/>
-    </div>)
+            // grid line settings
+            grid: {
+                drawOnChartArea: false, // only want the grid lines for one axis to show up
+            }
+        }
+    },
+    interaction: {
+        intersect: false,
+        mode: 'nearest'
+    },
+    plugins: {
+        tooltip: {
+            callbacks: {
+                footer: tooltipText
+            }
+        }
+    }
 }
 
 
+export default function KnowledgeCharts() {
+    return (
+        <div className="anchor" id={titleIds.mySkills} style={
+            {
+                zIndex: 1,
+                background: "#fff",
+                position: "relative",
+                // maxWidth: "750px",
+                margin: "auto",
+                paddingTop: "15px"
+            }
+        }>
+            <Typography.Title level={2} style={{textAlign: "center"}}>My Skills</Typography.Title>
+            <Line data={data}
+                options={options}/>
+        </div>
+    )
+}

@@ -158,7 +158,7 @@ const yHowMuchIthinkIknow = [
     6,
     8,
     12,
-    9,
+    10,
     7,
     6,
     5,
@@ -272,9 +272,11 @@ export default function KnowledgeCharts() {
                 zIndex: 1,
                 background: "#fff",
                 position: "relative",
-                // maxWidth: "750px",
+                maxWidth: "1850px",
                 margin: "auto",
-                paddingTop: "15px"
+                paddingTop: "15px",
+                paddingLeft: "40px",
+                paddingRight: "40px",
             }
         }>
             <Typography.Title level={2} style={{textAlign: "center"}}>My Skills</Typography.Title>

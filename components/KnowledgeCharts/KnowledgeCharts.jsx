@@ -2,7 +2,7 @@ import {Line} from "react-chartjs-2";
 // required
 import Chart from 'chart.js/auto';
 import {Typography} from "antd";
-import { titleIds } from "../NavBar/Header";
+import {titleIds} from "../NavBar/Header";
 
 const generateXYData = (years, frameworks) => {
     const xData = [];
@@ -149,8 +149,6 @@ const myYearsOfWork = [
     "2023",
 ]
 const xyTechnologiesData = generateXYData(myYearsOfWork.length, myTechnologies);
-const xyLanguagesData = generateXYData(myYearsOfWork.length, myLanguages);
-const xyIgnoranceData = generateXYData(myYearsOfWork.length, myLanguages);
 const yHowMuchIthinkIknow = [
     0,
     2,
@@ -194,8 +192,7 @@ const data = {
             data: yLanguages,
             borderWidth: 1,
             yAxisID: 'y1'
-        },
-        {
+        }, {
             label: 'How much I think I know',
             data: yHowMuchIthinkIknow,
             borderWidth: 1,
@@ -267,19 +264,26 @@ const options = {
 
 export default function KnowledgeCharts() {
     return (
-        <div className="anchor" id={titleIds.mySkills} style={
-            {
-                zIndex: 1,
-                background: "#fff",
-                position: "relative",
-                maxWidth: "1850px",
-                margin: "auto",
-                paddingTop: "15px",
-                paddingLeft: "40px",
-                paddingRight: "40px",
+        <div className="anchor"
+            id={
+                titleIds.mySkills
             }
+            style={
+                {
+                    zIndex: 1,
+                    background: "#fff",
+                    position: "relative",
+                    maxWidth: "1850px",
+                    margin: "auto",
+                    paddingTop: "15px",
+                    paddingLeft: "40px",
+                    paddingRight: "40px"
+                }
         }>
-            <Typography.Title level={2} style={{textAlign: "center"}}>My Skills</Typography.Title>
+            <Typography.Title level={2}
+                style={
+                    {textAlign: "center"}
+            }>My Skills</Typography.Title>
             <Line data={data}
                 options={options}/>
         </div>

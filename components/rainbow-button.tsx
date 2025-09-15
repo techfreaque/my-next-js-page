@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactElement } from "react";
+import type { CSSProperties, ReactElement, ReactNode } from "react";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { getFancyColorsStyle } from "./colorPalette";
 
 interface RainbowButtonProps {
-  children: ReactElement;
+  children: ReactNode;
   href?: string;
   isHover?: boolean;
   fontSize?: string;

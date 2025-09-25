@@ -1,16 +1,3 @@
-/**
- * @fileoverview Message Management Hook
- *
- * This hook provides comprehensive message management functionality including:
- * - Deleting user messages and all following messages
- * - Editing messages and retrying with different models
- * - Error message handling and display
- * - Message state management for editing operations
- *
- * @author Max Brandstaetter
- * @version 1.0.0
- */
-
 import type { FormEvent } from "react";
 import { useCallback } from "react";
 import type { ModelId } from "utils/model-config";
@@ -34,13 +21,17 @@ interface UseMessageManagementProps {
   setIsEditing: (messageId: string | undefined) => void;
 }
 
+/**
+ * Interface for message management actions.
+ * Provides functions for deleting, editing, and error handling of messages.
+ */
 export interface MessageManagementActions {
   /** Delete a user message and all messages that follow it */
   deleteMessageAndFollowing: (messageId: string) => void;
   /** Start editing a message */
   startEditingMessage: (messageId: string) => void;
   /** Cancel editing a message */
-  cancelEditingMessage: (messageId: string) => void;
+  cancelEditingMessage: () => void;
   /** Save edited message and retry with new content and model */
   saveEditedMessage: (
     messageId: string,
@@ -108,29 +99,20 @@ export function useMessageManagement({
    */
   const startEditingMessage = useCallback(
     (messageId: string): void => {
-      const updatedMessages = messages.map(
-        (msg) =>
-          msg.id === messageId && msg.role === "user"
-            ? { ...msg, isEditing: true }
-            : { ...msg, isEditing: false }, // Ensure only one message is being edited
-      );
-      setMessages(updatedMessages);
+      const message = messages.find((msg) => msg.id === messageId);
+      if (message && message.role === "user") {
+        setIsEditing(messageId);
+      }
     },
-    [messages, setMessages],
+    [messages, setIsEditing],
   );
 
   /**
    * Cancels editing mode for a message.
    */
-  const cancelEditingMessage = useCallback(
-    (messageId: string): void => {
-      const updatedMessages = messages.map((msg) =>
-        msg.id === messageId ? { ...msg, isEditing: false } : msg,
-      );
-      setMessages(updatedMessages);
-    },
-    [messages, setMessages],
-  );
+  const cancelEditingMessage = useCallback((): void => {
+    setIsEditing(undefined);
+  }, [setIsEditing]);
 
   /**
    * Saves an edited message and retries the conversation with new content and model.
@@ -170,7 +152,7 @@ export function useMessageManagement({
       // STEP 3: CRITICAL: Exit editing mode immediately
       setIsEditing(undefined);
 
-      // STEP 3: Create clean message array - ATOMIC OPERATION
+      // STEP 4: Create clean message array - ATOMIC OPERATION
       // Keep only messages up to and including the edited message
       // This removes ALL following messages (assistant responses, errors, etc.)
       const cleanMessages: StoredMessage[] = [
@@ -178,11 +160,11 @@ export function useMessageManagement({
         updatedMessage,
       ];
 
-      // STEP 4: Update state and storage ATOMICALLY - single source of truth
+      // STEP 5: Update state and storage ATOMICALLY - single source of truth
       setMessages(cleanMessages);
       saveMessagesToStorage(cleanMessages);
 
-      // STEP 5: Submit with the new content, passing clean messages to prevent stale closure
+      // STEP 6: Submit with the new content, passing clean messages to prevent stale closure
       await handleSubmit(
         undefined,
         newContent.trim(),
@@ -203,11 +185,11 @@ export function useMessageManagement({
   const addErrorMessage = useCallback(
     (error: { type: string; message: string; code?: string }): void => {
       // CLEAN: Remove ALL errors and incomplete assistant messages
-      const cleanMessages = messages.filter(
-        (msg) =>
-          msg.role !== "error" &&
-          !(msg.role === "assistant" && !msg.content?.trim()),
-      );
+      const lastMessage = messages[messages.length - 1];
+      const cleanMessages =
+        lastMessage.role !== "error" && lastMessage.role === "assistant"
+          ? messages
+          : messages.slice(0, -1);
 
       const errorMessage: StoredMessage = {
         id: `error-${Date.now()}`,

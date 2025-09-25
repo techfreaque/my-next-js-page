@@ -17,7 +17,7 @@ export function ResetChatButton({
   setMessages,
   getDefaultMessages,
 }: ResetChatButtonProps): JSX.Element {
-  const { resetClickCount, resetMessages, handleResetClick } = useChatReset({
+  const { resetClickCount, handleResetClick } = useChatReset({
     clearMessagesFromStorage,
     setMessages,
     getDefaultMessages,
@@ -28,14 +28,10 @@ export function ResetChatButton({
       size="sm"
       onClick={handleResetClick}
       className="w-[32%] md:w-auto h-8"
-      title={
-        resetClickCount > 0
-          ? resetMessages[resetClickCount]
-          : "Reset chat and clear history"
-      }
+      title={resetClickCount > 0 ? "Sure?" : "Reset"}
     >
       <RotateCcw className="h-3 w-3 mr-1" />
-      {resetClickCount === 0 ? "Reset" : resetMessages[resetClickCount]}
+      {resetClickCount === 0 ? "Reset" : "Sure?"}
     </Button>
   );
 }

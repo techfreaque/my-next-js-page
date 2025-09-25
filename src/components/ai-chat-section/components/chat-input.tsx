@@ -27,6 +27,7 @@ export function ChatInput({
     clearMessagesFromStorage,
     setMessages,
     getDefaultMessages,
+    messages,
   } = useAIChatContext();
 
   return (
@@ -59,11 +60,13 @@ export function ChatInput({
               {/* Right side - Action buttons */}
               <div className="flex gap-2">
                 {/* Reset Button */}
-                <ResetChatButton
-                  clearMessagesFromStorage={clearMessagesFromStorage}
-                  setMessages={setMessages}
-                  getDefaultMessages={getDefaultMessages}
-                />
+                {messages?.length > 1 && (
+                  <ResetChatButton
+                    clearMessagesFromStorage={clearMessagesFromStorage}
+                    setMessages={setMessages}
+                    getDefaultMessages={getDefaultMessages}
+                  />
+                )}
 
                 {/* System Prompt Button */}
                 <SystemPromptModal
@@ -90,12 +93,13 @@ export function ChatInput({
               {/* Second row - Action buttons */}
               <div className="flex items-center justify-between gap-2">
                 {/* Reset Button */}
-                <ResetChatButton
-                  clearMessagesFromStorage={clearMessagesFromStorage}
-                  setMessages={setMessages}
-                  getDefaultMessages={getDefaultMessages}
-                />
-
+                {messages?.length > 1 && (
+                  <ResetChatButton
+                    clearMessagesFromStorage={clearMessagesFromStorage}
+                    setMessages={setMessages}
+                    getDefaultMessages={getDefaultMessages}
+                  />
+                )}
                 {/* System Prompt Button */}
                 <SystemPromptModal
                   selectedTone={selectedTone}

@@ -1,7 +1,7 @@
+import type { PageSection } from "lib/constants";
 import type { MouseEvent } from "react";
 import { useCallback } from "react";
 
-import type { PageSection } from "../constants";
 import { SCROLL_OFFSET } from "../constants";
 
 /**

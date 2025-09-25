@@ -1,43 +1,54 @@
-# Building image
-# docker build . -t example-image-name
+# Build stage
+FROM oven/bun:1.1-alpine AS builder
 
-# Install dependencies only when needed
-FROM node:19-alpine AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+WORKDIR /app
+
+# Copy package files
+COPY package.json bun.lockb ./
+
+# Install dependencies
+RUN bun install --frozen-lockfile
+
+# Copy source code
 COPY . .
-RUN apk add --no-cache libc6-compat
-WORKDIR /
-RUN npm i
-RUN yarn build
 
-# Production image, copy all the files and run next
+# Build the application
+RUN bun run build
 
+# Production stage
+FROM oven/bun:1.1-alpine AS runner
 
-# todo uncomment in production 
-FROM node:19-alpine AS runner
-WORKDIR /
+WORKDIR /app
 
-ENV NODE_ENV production
-# ENV URL_PREFIX "/"
+# Set production environment
+ENV NODE_ENV=production
+ENV PORT=3000
 
+# Create non-root user for security
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 
-COPY --from=deps next.config.js ./
-COPY --from=deps public ./public
-COPY --from=deps --chown=nextjs:nodejs .next ./.next
-COPY --from=deps node_modules ./node_modules
-COPY --from=deps package.json ./package.json
+# Copy necessary files from builder stage
+COPY --from=builder /app/next.config.ts ./
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+COPY --from=builder /app/package.json ./
 
+# Install only production dependencies
+RUN bun install --production --frozen-lockfile
+
+# Switch to non-root user
 USER nextjs
 
+# Expose port
 EXPOSE 3000
 
-ENV PORT 3000
+# Disable Next.js telemetry (optional)
+ENV NEXT_TELEMETRY_DISABLED=1
 
-# Next.js collects completely anonymous telemetry data about general usage.
-# Learn more here: https://nextjs.org/telemetry
-# Uncomment the following line in case you want to disable telemetry.
-# ENV NEXT_TELEMETRY_DISABLED 1
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:3000/api/health || exit 1
 
-CMD ["node_modules/.bin/next", "start"]
+# Start the application
+CMD ["bun", "run", "start"]

@@ -1,10 +1,10 @@
+import { PAGE_SECTIONS, type PageSection } from "lib/constants";
 import Image from "next/image";
 import type { JSX, MouseEvent } from "react";
 import React from "react";
 
 import logo from "../assets/logo.png";
 import logoWhite from "../assets/logo-white.png";
-import { PAGE_SECTIONS, type PageSection } from "../constants";
 
 /**
  * Props for the Logo component
@@ -30,7 +30,7 @@ export function Logo({ onNavClick }: LogoProps): JSX.Element {
         onClick={(e) => onNavClick(e, PAGE_SECTIONS.HOME)}
         className="hover:opacity-80 transition-opacity"
       >
-        <div className="text-4xl h-8 flex items-center fancy-title min-[380px]:mr-4 sm:mr-6 md:mr-8">
+        <div className="text-4xl h-8 flex items-center fancy-title mr-0 min-[480px]:mr-6 md:mr-8">
           <Image
             src={logoWhite}
             alt="max.a42.ch logo white"

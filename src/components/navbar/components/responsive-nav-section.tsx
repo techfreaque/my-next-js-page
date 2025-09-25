@@ -1,0 +1,121 @@
+"use client";
+
+import { Button } from "components/ui/button";
+import type { PageSection } from "lib/constants";
+import { MoreHorizontal, X } from "lucide-react";
+import type { JSX, MouseEvent } from "react";
+import React from "react";
+
+import type { NavItemConfig } from "../constants";
+import { MobileDropdown } from "./mobile-dropdown";
+import { NavItem } from "./nav-item";
+
+/**
+ * Props for the ResponsiveNavSection component
+ */
+export interface ResponsiveNavSectionProps {
+  /** CSS classes for responsive visibility */
+  className: string;
+  /** Navigation items to display */
+  navItems: NavItemConfig[];
+  /** Currently active section */
+  activeSection: string;
+  /** Navigation click handler */
+  onNavClick: (e: MouseEvent<HTMLAnchorElement>, pageId: PageSection) => void;
+  /** Whether mobile menu is open */
+  isMobileMenuOpen: boolean;
+  /** Callback to toggle mobile menu */
+  onToggleMobileMenu: () => void;
+  /** Callback when navbar hover state changes */
+  onNavbarHover: (isHovering: boolean) => void;
+  /** Number of items to show before collapsing to dropdown */
+  visibleItemsCount: number;
+  /** Whether items should use tablet styling */
+  isTablet?: boolean;
+  /** Left margin class for the container */
+  marginClass?: string;
+}
+
+/**
+ * Responsive navigation section component
+ * Handles different responsive breakpoints and shows appropriate navigation items
+ * Includes mobile dropdown functionality for items that don't fit
+ *
+ * @param props - ResponsiveNavSection component props
+ * @returns JSX element representing the responsive navigation section
+ */
+export function ResponsiveNavSection({
+  className,
+  navItems,
+  activeSection,
+  onNavClick,
+  isMobileMenuOpen,
+  onToggleMobileMenu,
+  onNavbarHover,
+  visibleItemsCount,
+  isTablet = false,
+  marginClass = "",
+}: ResponsiveNavSectionProps): JSX.Element {
+  // Get visible items based on count
+  const visibleItems = navItems.slice(0, visibleItemsCount);
+  const hasHiddenItems = visibleItemsCount < navItems.length;
+  // Determine spacing class based on visible items count
+  const spacingClass = visibleItemsCount <= 2 ? "space-x-1" : "space-x-2";
+
+  return (
+    <div className={className}>
+      <div className={`${marginClass} flex items-center ${spacingClass}`}>
+        {/* Visible Navigation Items */}
+        {visibleItems.map((item) => {
+          const isActive = activeSection === item.pageId;
+          const IconComponent = item.icon;
+
+          return (
+            <NavItem
+              key={item.pageId}
+              href={item.pageId}
+              isActive={isActive}
+              onNavClick={onNavClick}
+              icon={IconComponent}
+              label={item.label}
+              isTablet={isTablet}
+              onNavbarHover={onNavbarHover}
+            />
+          );
+        })}
+
+        {/* More/Hamburger Menu Button - Hidden on mobile (xs) since it's in right actions */}
+        {hasHiddenItems && visibleItemsCount > 0 && (
+          <div className="relative">
+            <Button
+              variant="rainbow"
+              size="sm"
+              onClick={onToggleMobileMenu}
+              title="More menu items"
+              className="px-3 cursor-pointer"
+              onMouseEnter={() => onNavbarHover(true)}
+              onMouseLeave={() => onNavbarHover(false)}
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-4 w-4" />
+              ) : (
+                <MoreHorizontal className="h-4 w-4" />
+              )}
+            </Button>
+
+            {/* Mobile Dropdown */}
+            <MobileDropdown
+              isOpen={isMobileMenuOpen}
+              navItems={navItems}
+              activeSection={activeSection}
+              onNavClick={onNavClick}
+              onClose={() => onToggleMobileMenu()}
+              onNavbarHover={onNavbarHover}
+              startIndex={visibleItemsCount}
+            />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

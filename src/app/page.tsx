@@ -4,13 +4,12 @@ import { EducationSkillsSection } from "components/education-skills-section";
 import { ExperienceSection } from "components/experience-section";
 import { Footer } from "components/footer";
 import { HeroSection } from "components/hero-section";
+import { Navigation } from "components/navbar/components/navigation";
 import { ProjectsSection } from "components/projects-section";
 import { ScrollToTop } from "components/scroll-to-top";
 import { PAGE_SECTIONS } from "lib/constants";
 import type { JSX } from "react";
 import React from "react";
-
-import { Navigation } from "../components/navbar/components/navigation";
 
 /**
  * Home page component that renders the complete portfolio website.

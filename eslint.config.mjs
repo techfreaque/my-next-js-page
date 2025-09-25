@@ -47,6 +47,8 @@ const config = [
       "public",
       ".vscode",
       "next-env.d.ts",
+
+      "components/old"
     ],
   },
 
@@ -193,7 +195,12 @@ const config = [
       "simple-import-sort/exports": "error",
 
       "unused-imports/no-unused-imports": autoFixUnusedImports ? "error" : "off",
-      "import/no-unresolved": "error",
+      "import/no-unresolved": [
+        "error",
+        {
+          ignore: ["^geist/font/"]
+        }
+      ],
       "import/first": "error",
       "import/no-duplicates": "error",
       "import/extensions": ["error", "never", { "json": "always" }],

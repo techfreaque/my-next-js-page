@@ -7,7 +7,6 @@ import React, { useState } from "react";
 
 import { NAV_ITEMS, RESPONSIVE_CONFIG } from "../constants";
 import { useMobileMenu } from "../hooks/useMobileMenu";
-import { useNavigation } from "../hooks/useNavigation";
 import { useScrollDetection } from "../hooks/useScrollDetection";
 import { EmailButton } from "./email-button";
 import { Logo } from "./logo";
@@ -30,10 +29,9 @@ export function Navigation(): JSX.Element {
     isMobileMenuOpen,
     toggleMobileMenu,
     closeMobileMenu,
-    menuRef,
     menuButtonRef,
+    menuRef,
   } = useMobileMenu();
-  const { handleNavClick } = useNavigation(closeMobileMenu);
 
   /**
    * Handles navbar hover state changes
@@ -55,7 +53,7 @@ export function Navigation(): JSX.Element {
         <div className="flex items-center h-16 px-2 min-[380px]:px-6 sm:px-8 md:px-12 lg:px-16">
           {/* Logo - Fixed left position */}
           <div className="flex-shrink-0">
-            <Logo onNavClick={handleNavClick} />
+            <Logo />
           </div>
 
           {/* Navigation sections - Centered with flex-1 */}
@@ -65,7 +63,6 @@ export function Navigation(): JSX.Element {
               className={RESPONSIVE_CONFIG.desktop.className}
               navItems={NAV_ITEMS}
               activeSection={activeSection}
-              onNavClick={handleNavClick}
               isMobileMenuOpen={isMobileMenuOpen}
               onToggleMobileMenu={toggleMobileMenu}
               onNavbarHover={handleNavbarHover}
@@ -78,7 +75,6 @@ export function Navigation(): JSX.Element {
               className={RESPONSIVE_CONFIG.largeTablet.className}
               navItems={NAV_ITEMS}
               activeSection={activeSection}
-              onNavClick={handleNavClick}
               isMobileMenuOpen={isMobileMenuOpen}
               onToggleMobileMenu={toggleMobileMenu}
               onNavbarHover={handleNavbarHover}
@@ -92,7 +88,6 @@ export function Navigation(): JSX.Element {
               className={RESPONSIVE_CONFIG.mediumTablet.className}
               navItems={NAV_ITEMS}
               activeSection={activeSection}
-              onNavClick={handleNavClick}
               isMobileMenuOpen={isMobileMenuOpen}
               onToggleMobileMenu={toggleMobileMenu}
               onNavbarHover={handleNavbarHover}
@@ -106,7 +101,6 @@ export function Navigation(): JSX.Element {
               className={RESPONSIVE_CONFIG.smallTablet.className}
               navItems={NAV_ITEMS}
               activeSection={activeSection}
-              onNavClick={handleNavClick}
               isMobileMenuOpen={isMobileMenuOpen}
               onToggleMobileMenu={toggleMobileMenu}
               onNavbarHover={handleNavbarHover}
@@ -120,7 +114,6 @@ export function Navigation(): JSX.Element {
               className={RESPONSIVE_CONFIG.mobile.className}
               navItems={NAV_ITEMS}
               activeSection={activeSection}
-              onNavClick={handleNavClick}
               isMobileMenuOpen={isMobileMenuOpen}
               onToggleMobileMenu={toggleMobileMenu}
               onNavbarHover={handleNavbarHover}
@@ -166,7 +159,6 @@ export function Navigation(): JSX.Element {
                 isOpen={isMobileMenuOpen}
                 navItems={NAV_ITEMS}
                 activeSection={activeSection}
-                onNavClick={handleNavClick}
                 onClose={closeMobileMenu}
                 onNavbarHover={handleNavbarHover}
                 startIndex={0}

@@ -53,21 +53,21 @@ export const RESPONSIVE_CONFIG = {
   },
   /** Large tablet (lg-xl) - Show first 3 items */
   largeTablet: {
-    visibleItems: 3,
+    visibleItems: 5,
     className: "hidden lg:block xl:hidden",
     marginClass: "ml-4 lg:ml-6",
     spacing: "space-x-1",
   },
   /** Medium tablet (md-lg) - Show first 2 items */
   mediumTablet: {
-    visibleItems: 2,
+    visibleItems: 3,
     className: "hidden md:block lg:hidden",
     marginClass: "ml-3 md:ml-4",
     spacing: "space-x-1",
   },
   /** Small tablet (sm-md) - Show first 1 item */
   smallTablet: {
-    visibleItems: 1,
+    visibleItems: 2,
     className: "hidden sm:block md:hidden",
     marginClass: "ml-2 sm:ml-3",
     spacing: "space-x-1",

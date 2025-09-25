@@ -8,7 +8,7 @@ interface TitleProps {
   children: React.ReactNode;
   className?: string;
   customSizeClassName?: string;
-  level?: 1 | 2 | 3 | 4 | 5 | 6;
+  level: 1 | 2 | 3 | 4 | 5 | 6;
   isHover?: boolean;
   variant?: RainbowVariant;
   onMouseEnter?: () => void;
@@ -20,7 +20,7 @@ export function Title({
   children,
   className = "",
   customSizeClassName,
-  level = 2,
+  level,
   isHover = false,
   variant = "primary",
   onMouseEnter,
@@ -36,7 +36,7 @@ export function Title({
   return (
     <Tag
       className={cn(
-        "fancy-title leading-tight transition-all duration-300",
+        "leading-tight transition-all duration-300",
         customSizeClassName || sizeClasses[level],
         className,
       )}

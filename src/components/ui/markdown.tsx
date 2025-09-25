@@ -26,38 +26,44 @@ export function Markdown({
         rehypePlugins={[rehypeHighlight]}
         components={{
           h1: ({ children }) => (
-            <h1
-              className="text-lg font-bold mb-3 mt-4 first:mt-0 leading-tight"
+            <span
+              className="text-xl font-bold mb-3 mt-4 first:mt-0 leading-tight"
               style={createRainbowTextStyle(isHover, "primary")}
             >
               {children}
-            </h1>
+            </span>
           ),
           h2: ({ children }) => (
-            <h2
-              className="text-base font-bold mb-2 mt-3 first:mt-0 leading-tight"
-              style={createRainbowTextStyle(isHover, "success")}
+            <span
+              className="text-lg font-bold mb-2 mt-3 first:mt-0 leading-tight"
+              style={createRainbowTextStyle(isHover, "primary")}
             >
               {children}
-            </h2>
+            </span>
           ),
           h3: ({ children }) => (
-            <h3
-              className="text-sm font-semibold mb-2 mt-3 first:mt-0 leading-tight"
-              style={createRainbowTextStyle(isHover, "info")}
+            <span
+              className="text-base font-semibold mb-2 mt-3 first:mt-0 leading-tight"
+              style={createRainbowTextStyle(isHover, "primary")}
             >
               {children}
-            </h3>
+            </span>
           ),
           h4: ({ children }) => (
-            <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1 mt-2 first:mt-0">
+            <span
+              className="text-sm font-semibold mb-1 mt-2 first:mt-0"
+              style={createRainbowTextStyle(isHover, "primary")}
+            >
               {children}
-            </h4>
+            </span>
           ),
           h5: ({ children }) => (
-            <h5 className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1 mt-2 first:mt-0 uppercase tracking-wide">
+            <span
+              className="text-sm font-medium mb-1 mt-2 first:mt-0 tracking-wide"
+              style={createRainbowTextStyle(isHover, "primary")}
+            >
               {children}
-            </h5>
+            </span>
           ),
 
           p: ({ children }) => (

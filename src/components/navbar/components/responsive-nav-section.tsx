@@ -1,12 +1,12 @@
 "use client";
 
 import { Button } from "components/ui/button";
-import type { PageSection } from "lib/constants";
 import { MoreHorizontal, X } from "lucide-react";
-import type { JSX, MouseEvent } from "react";
+import type { JSX } from "react";
 import React from "react";
 
 import type { NavItemConfig } from "../constants";
+import { useMobileMenu } from "../hooks/useMobileMenu";
 import { MobileDropdown } from "./mobile-dropdown";
 import { NavItem } from "./nav-item";
 
@@ -20,8 +20,6 @@ export interface ResponsiveNavSectionProps {
   navItems: NavItemConfig[];
   /** Currently active section */
   activeSection: string;
-  /** Navigation click handler */
-  onNavClick: (e: MouseEvent<HTMLAnchorElement>, pageId: PageSection) => void;
   /** Whether mobile menu is open */
   isMobileMenuOpen: boolean;
   /** Callback to toggle mobile menu */
@@ -48,7 +46,6 @@ export function ResponsiveNavSection({
   className,
   navItems,
   activeSection,
-  onNavClick,
   isMobileMenuOpen,
   onToggleMobileMenu,
   onNavbarHover,
@@ -56,6 +53,7 @@ export function ResponsiveNavSection({
   isTablet = false,
   marginClass = "",
 }: ResponsiveNavSectionProps): JSX.Element {
+  const { closeMobileMenu, menuRef } = useMobileMenu();
   // Get visible items based on count
   const visibleItems = navItems.slice(0, visibleItemsCount);
   const hasHiddenItems = visibleItemsCount < navItems.length;
@@ -75,7 +73,7 @@ export function ResponsiveNavSection({
               key={item.pageId}
               href={item.pageId}
               isActive={isActive}
-              onNavClick={onNavClick}
+              onNavClick={closeMobileMenu}
               icon={IconComponent}
               label={item.label}
               isTablet={isTablet}
@@ -105,11 +103,11 @@ export function ResponsiveNavSection({
 
             {/* Mobile Dropdown */}
             <MobileDropdown
+              ref={menuRef}
               isOpen={isMobileMenuOpen}
               navItems={navItems}
               activeSection={activeSection}
-              onNavClick={onNavClick}
-              onClose={() => onToggleMobileMenu()}
+              onClose={closeMobileMenu}
               onNavbarHover={onNavbarHover}
               startIndex={visibleItemsCount}
             />

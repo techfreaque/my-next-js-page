@@ -52,10 +52,7 @@ interface AIChatContextValue {
   input: string;
   setInput: (input: string) => void;
   handleInputChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  handleKeyDown: (
-    e: React.KeyboardEvent<HTMLTextAreaElement>,
-    onSubmit: () => void,
-  ) => void;
+  handleKeyDown: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
 
   // Loading
   isLoading: boolean;
@@ -76,15 +73,7 @@ interface AIChatContextValue {
   ensureLatestWelcomeMessage: (messages: StoredMessage[]) => StoredMessage[];
 
   // API & Actions
-  handleSubmit: (
-    e: React.FormEvent,
-    inputText: string,
-    tone: ToneId,
-    model: ModelId,
-    clearInput: (value: string) => void,
-    isEdit?: boolean,
-    messagesOverride?: StoredMessage[],
-  ) => Promise<void>;
+  handleSubmit: (e: React.FormEvent) => Promise<void>;
   handleStop: () => void;
 
   // Message Management
@@ -151,7 +140,7 @@ export function AIChatProvider({
     useChatLoading();
 
   // API hook
-  const { handleSubmit, handleStop } = useChatApi({
+  const { handleSubmit: apiHandleSubmit, handleStop } = useChatApi({
     messages,
     setMessages,
     saveMessagesToStorage,
@@ -160,15 +149,20 @@ export function AIChatProvider({
     setIsLoading,
   });
 
-  const { input, setInput, handleInputChange, handleKeyDown } =
-    useChatInput(handleSubmit);
+  const { input, setInput, handleInputChange, handleKeyDown, handleSubmit } =
+    useChatInput(
+      apiHandleSubmit,
+      settings.selectedTone,
+      settings.selectedModel,
+      isLoading,
+    );
 
   // Message management hook
   const messageManagement = useMessageManagement({
     messages,
     setMessages,
     saveMessagesToStorage,
-    handleSubmit,
+    handleSubmit: apiHandleSubmit,
     setIsEditing,
   });
 
@@ -225,11 +219,17 @@ export function AIChatProvider({
       if (updatedMessages !== loadedMessages) {
         saveMessagesToStorage(updatedMessages);
       }
+    } else {
+      // If no messages in storage, set default welcome message
+      const defaultMessages = getDefaultMessages();
+      setMessages(defaultMessages);
+      saveMessagesToStorage(defaultMessages);
     }
     setMounted(true);
   }, [
     loadMessagesFromStorage,
     ensureLatestWelcomeMessage,
+    getDefaultMessages,
     setMessages,
     saveMessagesToStorage,
   ]);

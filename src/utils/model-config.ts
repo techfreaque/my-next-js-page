@@ -39,7 +39,7 @@ export interface ModelOption {
   /** Brief description of model capabilities */
   description: string;
   /** Number of parameters in billions */
-  parameterCount: number;
+  parameterCount: number | undefined;
   /** Maximum context window size in tokens */
   contextWindow: number;
   /** Emoji icon for UI display */

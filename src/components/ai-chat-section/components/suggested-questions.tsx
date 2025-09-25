@@ -15,14 +15,17 @@ const suggestedQuestions = [
 ];
 
 export function SuggestedQuestions(): JSX.Element {
-  const { setInput, selectedTone, selectedModel, handleSubmit, inputRef } =
-    useAIChatContext();
+  const { setInput, handleSubmit, inputRef } = useAIChatContext();
 
   const onQuestionClick = async (question: string): Promise<void> => {
     setInput(question);
-    await handleSubmit(question, selectedTone, selectedModel, () =>
-      setInput(""),
-    );
+    // Create a synthetic form event to trigger submission
+    const syntheticEvent = {
+      preventDefault: () => {},
+      stopPropagation: () => {},
+    } as React.FormEvent;
+
+    await handleSubmit(syntheticEvent);
     inputRef.current?.focus();
   };
 

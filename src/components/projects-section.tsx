@@ -4,6 +4,7 @@ import { Badge } from "components/ui/badge";
 import { Button } from "components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "components/ui/card";
 import { Title } from "components/ui/title";
+import { createRainbowTextStyle } from "lib/design-system";
 import {
   Bot,
   Briefcase,
@@ -85,14 +86,14 @@ export function ProjectsSection(): JSX.Element {
             </Badge>
             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-balance text-slate-900 dark:text-white">
               Magical{" "}
-              <Title
-                level={2}
-                variant="primary"
-                isHover={isHover}
-                className="inline fancy-title cursor-pointer"
+              <span
+                className="fancy-title cursor-pointer"
+                style={createRainbowTextStyle(isHover, "primary")}
+                onMouseEnter={() => setIsHover(true)}
+                onMouseLeave={() => setIsHover(false)}
               >
                 Creations
-              </Title>
+              </span>
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto text-pretty leading-relaxed">
               As a testament to my expertise and versatility, here's a showcase

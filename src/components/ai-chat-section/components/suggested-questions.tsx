@@ -2,7 +2,7 @@ import { Badge } from "components/ui/badge";
 import type { JSX } from "react";
 import React from "react";
 
-import { useAIChatContext } from "../contexts/AIChatContext";
+import { useAIChatContext } from "../AIChatContext";
 
 // Suggested questions
 const suggestedQuestions = [
@@ -30,7 +30,7 @@ export function SuggestedQuestions(): JSX.Element {
   };
 
   return (
-    <div className="pb-6">
+    <div className="px-2 sm:px-6 md:px-8 pb-6">
       <p className="text-sm text-muted-foreground mb-4 font-medium flex items-center gap-2">
         <span className="text-lg">💬</span>
         Try asking:

@@ -11,7 +11,7 @@ import type { JSX } from "react";
 import React, { useState } from "react";
 import { modelOptions } from "utils/model-config";
 
-import { useAIChatContext } from "../contexts/AIChatContext";
+import { useAIChatContext } from "../AIChatContext";
 
 interface ModelSelectorProps {
   disabled?: boolean;

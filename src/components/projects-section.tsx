@@ -22,7 +22,7 @@ import type { JSX } from "react";
 import React, { useState } from "react";
 
 export function ProjectsSection(): JSX.Element {
-  const [activeFilter, setActiveFilter] = useState("all");
+  const [activeFilter, setActiveFilter] = useState("featured");
   const [isHover, setIsHover] = useState(false);
 
   // Icon mapping for project icons
@@ -39,6 +39,11 @@ export function ProjectsSection(): JSX.Element {
   } as const;
 
   const categories = [
+    {
+      id: "featured",
+      label: "Featured Projects",
+      count: projects.filter((p) => p.featured).length,
+    },
     { id: "all", label: "All Projects", count: projects.length },
     ...projectCategories
       .filter((cat) => cat.id !== "all") // Avoid duplicate "all" category
@@ -50,9 +55,11 @@ export function ProjectsSection(): JSX.Element {
   ];
 
   const filteredProjects =
-    activeFilter === "all"
-      ? projects
-      : projects.filter((project) => project.category === activeFilter);
+    activeFilter === "featured"
+      ? projects.filter((project) => project.featured)
+      : activeFilter === "all"
+        ? projects
+        : projects.filter((project) => project.category === activeFilter);
 
   const featuredProjects = filteredProjects.filter((p) => p.featured);
   const otherProjects = filteredProjects.filter((p) => !p.featured);
@@ -77,10 +84,7 @@ export function ProjectsSection(): JSX.Element {
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
           >
-            <Badge
-              variant="fancy-outline"
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium mb-6 hover:scale-105 transition-all duration-300"
-            >
+            <Badge variant="sectionBadge" className="mb-4">
               <Code className="h-4 w-4" />
               Project Showcase
             </Badge>
@@ -133,43 +137,40 @@ export function ProjectsSection(): JSX.Element {
               >
                 ✨ Featured Enchantments
               </Title>
-              <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
                 {featuredProjects.map((project) => (
                   <Card
                     key={project.id}
                     colorScheme="cyan"
-                    className="group border-border/50 hover:border-primary/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl bg-gradient-to-br from-card to-card/50 backdrop-blur-sm overflow-hidden"
+                    className="group border-border/50 hover:border-primary/50 transition-all duration-500 transform hover:scale-105 hover:shadow-xl bg-gradient-to-br from-card to-card/50 backdrop-blur-sm overflow-hidden"
                   >
-                    <CardHeader className="pb-4">
+                    <CardHeader className="pb-3">
                       <div className="flex items-start justify-between">
-                        <div className="bg-gradient-to-br from-primary/20 to-accent/20 p-3 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                        <div className="bg-gradient-to-br from-primary/20 to-accent/20 p-2 rounded-lg group-hover:scale-110 transition-transform duration-300">
                           {React.createElement(iconMap[project.icon], {
-                            className: "h-8 w-8 text-primary",
+                            className: "h-5 w-5 text-primary",
                           })}
                         </div>
                         <Badge
                           variant="secondary"
-                          className="bg-primary/20 text-primary"
+                          className="bg-primary/20 text-primary text-xs"
                         >
                           Featured
                         </Badge>
                       </div>
-                      <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
+                      <CardTitle className="text-lg group-hover:text-primary transition-colors duration-300 leading-tight">
                         {project.title}
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="space-y-6">
-                      <p className="text-muted-foreground leading-relaxed">
+                    <CardContent className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
                         {project.description}
                       </p>
 
-                      {/* Technologies */}
+                      {/* Technologies - Compact */}
                       <div>
-                        <h4 className="font-medium mb-3 text-sm text-primary">
-                          Technologies Used
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                          {project.technologies.map((tech) => (
+                        <div className="flex flex-wrap gap-1">
+                          {project.technologies.slice(0, 4).map((tech) => (
                             <Badge
                               key={tech}
                               variant="outline"
@@ -178,26 +179,46 @@ export function ProjectsSection(): JSX.Element {
                               {tech}
                             </Badge>
                           ))}
+                          {project.technologies.length > 4 && (
+                            <Badge variant="outline" className="text-xs">
+                              +{project.technologies.length - 4}
+                            </Badge>
+                          )}
                         </div>
                       </div>
 
-                      {/* Achievements */}
+                      {/* Key Highlights - Compact */}
                       <div>
-                        <h4 className="font-medium mb-3 text-sm text-primary">
-                          Key Achievements
-                        </h4>
                         <ul className="space-y-1">
-                          {project.achievements.map((achievement, index) => (
-                            <li
-                              key={index}
-                              className="text-sm text-muted-foreground flex items-start"
-                            >
-                              <span className="text-primary mr-2">•</span>
-                              {achievement}
-                            </li>
-                          ))}
+                          {project.achievements
+                            .slice(0, 2)
+                            .map((achievement, index) => (
+                              <li
+                                key={index}
+                                className="text-xs text-muted-foreground flex items-start"
+                              >
+                                <span className="text-primary mr-2 mt-0.5">
+                                  •
+                                </span>
+                                {achievement}
+                              </li>
+                            ))}
                         </ul>
                       </div>
+
+                      {/* URL if available */}
+                      {"url" in project && project.url && (
+                        <div className="pt-1">
+                          <a
+                            href={project.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center text-primary hover:text-primary/80 transition-colors text-xs font-medium"
+                          >
+                            View Project →
+                          </a>
+                        </div>
+                      )}
                     </CardContent>
                   </Card>
                 ))}
@@ -216,43 +237,40 @@ export function ProjectsSection(): JSX.Element {
               >
                 🚀 Additional Innovations
               </Title>
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {otherProjects.map((project) => (
                   <Card
                     key={project.id}
                     colorScheme="violet"
-                    className="group border-border/50 hover:border-primary/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl bg-gradient-to-br from-card to-card/50 backdrop-blur-sm overflow-hidden"
+                    className="group border-border/50 hover:border-primary/50 transition-all duration-500 transform hover:scale-105 hover:shadow-xl bg-gradient-to-br from-card to-card/50 backdrop-blur-sm overflow-hidden"
                   >
-                    <CardHeader className="pb-4">
+                    <CardHeader className="pb-3">
                       <div className="flex items-start justify-between">
-                        <div className="bg-gradient-to-br from-primary/20 to-accent/20 p-3 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                        <div className="bg-gradient-to-br from-primary/20 to-accent/20 p-2 rounded-lg group-hover:scale-110 transition-transform duration-300">
                           {React.createElement(iconMap[project.icon], {
-                            className: "h-7 w-7 text-primary",
+                            className: "h-5 w-5 text-primary",
                           })}
                         </div>
                         <Badge
                           variant="secondary"
-                          className="bg-gradient-to-r from-primary/20 to-accent/20 text-primary border-0"
+                          className="bg-gradient-to-r from-primary/20 to-accent/20 text-primary border-0 text-xs"
                         >
                           Innovation
                         </Badge>
                       </div>
-                      <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
+                      <CardTitle className="text-base group-hover:text-primary transition-colors duration-300 leading-tight">
                         {project.title}
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="space-y-6">
-                      <p className="text-muted-foreground leading-relaxed">
+                    <CardContent className="space-y-3">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
                         {project.description}
                       </p>
 
-                      {/* Technologies */}
+                      {/* Technologies - Compact */}
                       <div>
-                        <h4 className="font-medium mb-3 text-sm text-primary">
-                          Tech Stack
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                          {project.technologies.map((tech) => (
+                        <div className="flex flex-wrap gap-1">
+                          {project.technologies.slice(0, 3).map((tech) => (
                             <Badge
                               key={tech}
                               variant="outline"
@@ -261,23 +279,25 @@ export function ProjectsSection(): JSX.Element {
                               {tech}
                             </Badge>
                           ))}
+                          {project.technologies.length > 3 && (
+                            <Badge variant="outline" className="text-xs">
+                              +{project.technologies.length - 3}
+                            </Badge>
+                          )}
                         </div>
                       </div>
 
-                      {/* Achievements */}
+                      {/* Key Highlights - Compact */}
                       <div>
-                        <h4 className="font-medium mb-3 text-sm text-primary">
-                          Key Highlights
-                        </h4>
                         <ul className="space-y-1">
                           {project.achievements
-                            .slice(0, 3)
+                            .slice(0, 2)
                             .map((achievement, index) => (
                               <li
                                 key={index}
-                                className="text-sm text-muted-foreground flex items-start"
+                                className="text-xs text-muted-foreground flex items-start"
                               >
-                                <span className="text-primary mr-2 mt-1">
+                                <span className="text-primary mr-2 mt-0.5">
                                   •
                                 </span>
                                 {achievement}
@@ -285,6 +305,20 @@ export function ProjectsSection(): JSX.Element {
                             ))}
                         </ul>
                       </div>
+
+                      {/* URL if available */}
+                      {"url" in project && project.url && (
+                        <div className="pt-1">
+                          <a
+                            href={project.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center text-primary hover:text-primary/80 transition-colors text-xs font-medium"
+                          >
+                            View Project →
+                          </a>
+                        </div>
+                      )}
                     </CardContent>
                   </Card>
                 ))}

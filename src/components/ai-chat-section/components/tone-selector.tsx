@@ -11,7 +11,7 @@ import type { JSX } from "react";
 import React, { useState } from "react";
 import { toneOptions } from "utils/tone-config";
 
-import { useAIChatContext } from "../contexts/AIChatContext";
+import { useAIChatContext } from "../AIChatContext";
 
 interface ToneSelectorProps {
   disabled?: boolean;

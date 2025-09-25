@@ -2,9 +2,8 @@
 
 import { Badge } from "components/ui/badge";
 import { Button } from "components/ui/button";
-import { Card, CardContent } from "components/ui/card";
 import { Title } from "components/ui/title";
-import { Brain, Code, Palette, Rocket, Users, Zap } from "lucide-react";
+import { Brain } from "lucide-react";
 import { personalInfo } from "me/about-me";
 import Image from "next/image";
 import type { JSX } from "react";
@@ -15,66 +14,6 @@ import meFromBack from "./me_and_water.jpg";
 
 export function AboutSection(): JSX.Element {
   const [isHover, setIsHover] = useState(false);
-
-  const skills = [
-    "React",
-    "Next.js",
-    "TypeScript",
-    "Node.js",
-    "Python",
-    "PostgreSQL",
-    "Tailwind CSS",
-    "Figma",
-    "AWS",
-    "Docker",
-    "GraphQL",
-    "MongoDB",
-    "Machine Learning",
-    "AI/ML",
-    "Data Science",
-    "Algorithmic Trading",
-    "DevOps",
-    "Open Source",
-  ];
-
-  const highlights = [
-    {
-      icon: Code,
-      title: "Full Stack Wizardry",
-      description:
-        "Conjuring scalable web applications with modern technologies and magical code architecture.",
-    },
-    {
-      icon: Brain,
-      title: "AI & Data Sorcery",
-      description:
-        "Transforming complex datasets into golden insights with machine learning and predictive analytics.",
-    },
-    {
-      icon: Palette,
-      title: "Design Enchantment",
-      description:
-        "Creating intuitive and beautiful user experiences that captivate and inspire users.",
-    },
-    {
-      icon: Rocket,
-      title: "Innovation Catalyst",
-      description:
-        "Pioneering cutting-edge solutions in algorithmic trading and emerging technologies.",
-    },
-    {
-      icon: Zap,
-      title: "Performance Alchemy",
-      description:
-        "Optimizing applications for lightning-fast performance and exceptional user experiences.",
-    },
-    {
-      icon: Users,
-      title: "Collaboration Magic",
-      description:
-        "Leading cross-functional teams to deliver extraordinary products that shape the future.",
-    },
-  ];
 
   return (
     <section
@@ -92,12 +31,8 @@ export function AboutSection(): JSX.Element {
         <div className="max-w-7xl mx-auto">
           {/* Section Header with Typewriter */}
           <div className="text-center mb-16">
-            <Badge
-              variant="fancy-outline"
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium mb-6 hover:scale-105 transition-all duration-300"
-            >
-              <Brain className="h-4 w-4" />
-              About Me
+            <Badge variant="sectionBadge" className="mb-4">
+              <Brain className="h-4 w-4" />A bit about me
             </Badge>
             <Title
               level={2}
@@ -139,7 +74,7 @@ export function AboutSection(): JSX.Element {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left Column - Image and Magical Bio */}
+            {/* Left Column - Image and Bio */}
             <div className="space-y-8">
               <div
                 className="relative group"
@@ -154,28 +89,6 @@ export function AboutSection(): JSX.Element {
                 />
               </div>
 
-              <div className="space-y-6">
-                <p className="text-muted-foreground leading-relaxed text-lg">
-                  Recently led integration teams at Sovendus, building
-                  developer-hub.sovendus.com and 20+ platform plugins. Now
-                  focusing on AI-powered applications and seeking new challenges
-                  in innovative environments where I can continue pushing the
-                  boundaries of what's possible.
-                </p>
-                <p className="text-muted-foreground leading-relaxed text-lg">
-                  Unleashing the power of data, I delve into complex datasets,
-                  extracting valuable insights and making accurate predictions.
-                  With my expertise in data sorcery, I transform information
-                  into gold, enabling informed decision-making and driving
-                  success.
-                </p>
-                <p className="text-muted-foreground leading-relaxed text-lg">
-                  Join me on this enchanting journey as we shape the future
-                  through technology. Let's create wonders that captivate and
-                  inspire! ✨
-                </p>
-              </div>
-
               {/* CTA Button */}
               <div
                 className="flex justify-center"
@@ -185,12 +98,34 @@ export function AboutSection(): JSX.Element {
                 <Button variant="rainbow" size="lg" isHover={isHover} asChild>
                   <a
                     href={`mailto:${personalInfo.email}?subject=${encodeURIComponent(personalInfo.contactEmailSubject)}`}
-                    className="text-center px-8 py-4 rounded-xl font-semibold text-lg"
+                    className="text-center px-8 py-4 font-semibold text-lg"
                   >
                     Let's Collaborate! 🚀
                   </a>
                 </Button>
               </div>
+            </div>
+
+            {/* Right Column - Text Content */}
+            <div className="space-y-6">
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                Recently led integration teams at Sovendus, building
+                developer-hub.sovendus.com and 20+ platform plugins. Now
+                focusing on AI-powered applications and seeking new challenges
+                in innovative environments where I can continue pushing the
+                boundaries of what's possible.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                Unleashing the power of data, I delve into complex datasets,
+                extracting valuable insights and making accurate predictions.
+                With my expertise in data sorcery, I transform information into
+                gold, enabling informed decision-making and driving success.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                Join me on this enchanting journey as we shape the future
+                through technology. Let's create wonders that captivate and
+                inspire! ✨
+              </p>
             </div>
           </div>
         </div>

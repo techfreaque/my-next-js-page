@@ -1,7 +1,3 @@
-/**
- * Simple rainbow text effect utility
- */
-
 import type { CSSProperties } from "react";
 
 export type RainbowVariant =
@@ -13,6 +9,15 @@ export type RainbowVariant =
   | "sub1"
   | "sub2";
 
+/**
+ * Creates a rainbow text style object for use in React components.
+ * This function generates inline styles for creating a gradient effect
+ * on text, with optional hover animation.
+ *
+ * @param isHover - Whether the element is in a hover state
+ * @param variant - Optional color variant for the gradient
+ * @returns CSSProperties object with gradient styling
+ */
 export function createRainbowTextStyle(
   isHover: boolean,
   variant: RainbowVariant = "primary",

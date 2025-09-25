@@ -4,7 +4,7 @@ import type React from "react";
 import type { JSX } from "react";
 import { toneOptions } from "utils/tone-config";
 
-import { useAIChatContext } from "../contexts/AIChatContext";
+import { useAIChatContext } from "../AIChatContext";
 import { ChatSubmitButton } from "./chat-submit-button";
 import { ModelSelector } from "./model-selector";
 import { ResetChatButton } from "./reset-chat-button";
@@ -31,7 +31,7 @@ export function ChatInput({
   } = useAIChatContext();
 
   return (
-    <div className="pt-0 pb-4 sm:pb-6 rounded-b-xl">
+    <div className="px-2 sm:px-6 md:px-8 pt-0 pb-4 sm:pb-6 rounded-b-xl">
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Input Container with clean navbar-style border */}
         <div className="border border-border/20 rounded-xl bg-background focus-within:border-border/40 transition-all duration-200">

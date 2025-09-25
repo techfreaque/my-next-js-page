@@ -20,7 +20,10 @@ export function useChatReset({
 
   const handleResetClick = (): void => {
     if (resetClickCount < 1) {
-      setResetClickCount(resetClickCount + 1);
+      setResetClickCount(1);
+      setTimeout(() => {
+        setResetClickCount(0);
+      }, 5000);
     } else {
       clearMessagesFromStorage();
       setMessages(getDefaultMessages());

@@ -88,7 +88,10 @@ export function Markdown({
           ),
 
           strong: ({ children }) => (
-            <strong className="font-bold bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">
+            <strong
+              className="font-bold"
+              style={createRainbowTextStyle(isHover, "primary")}
+            >
               {children}
             </strong>
           ),

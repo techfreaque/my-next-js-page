@@ -16,7 +16,7 @@ import React, { useEffect, useState } from "react";
 import type { ModelId } from "utils/model-config";
 import type { ToneId } from "utils/tone-config";
 
-import { useAIChatContext } from "../contexts/AIChatContext";
+import { useAIChatContext } from "../AIChatContext";
 import type { StoredMessage } from "../hooks/useChatStorage";
 import { ModelSelector } from "./model-selector";
 import { ToneSelector } from "./tone-selector";

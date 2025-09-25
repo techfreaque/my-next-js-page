@@ -1,13 +1,12 @@
 "use client";
 
 import { Button } from "components/ui/button";
+import { createRainbowTextStyle } from "lib/design-system";
 import { Coffee, Heart, Mail, Sparkles } from "lucide-react";
 import { personalInfo } from "me/about-me";
 import type { JSX } from "react";
 import React, { useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-
-import { getFancyColorsStyle } from "./colorPalette";
 
 export function Footer(): JSX.Element {
   const [isHover, setIsHover] = useState(false);
@@ -44,7 +43,7 @@ export function Footer(): JSX.Element {
                 className="text-5xl md:text-6xl font-bold mb-4 fancy-title"
                 onMouseEnter={() => setIsHover(true)}
                 onMouseLeave={() => setIsHover(false)}
-                style={getFancyColorsStyle(isHover)}
+                style={createRainbowTextStyle(isHover, "primary")}
               >
                 Let's Build Something
               </h2>

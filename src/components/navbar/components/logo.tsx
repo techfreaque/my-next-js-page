@@ -12,7 +12,7 @@ import logoWhite from "./logo-white.png";
  * @returns JSX element representing the logo
  */
 export function Logo(): JSX.Element {
-  // Intentionally rendering both logo variants to make it fully static without any JS
+  // Intentionally rendering both logo variants to make it fully static without any hydration
   // prevents flickering when system theme is dark
   return (
     <div className="flex-shrink-0">

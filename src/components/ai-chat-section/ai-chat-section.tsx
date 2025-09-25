@@ -1,15 +1,16 @@
 "use client";
 
+import { Badge } from "components/ui/badge";
 import { Card } from "components/ui/card";
 import { createRainbowTextStyle } from "lib/design-system";
 import { Sparkles } from "lucide-react";
 import type React from "react";
 import type { JSX } from "react";
 
+import { AIChatProvider, useAIChatContext } from "./AIChatContext";
 import { ChatInput } from "./components/chat-input";
 import { ChatMessages } from "./components/chat-messages";
 import { SuggestedQuestions } from "./components/suggested-questions";
-import { AIChatProvider, useAIChatContext } from "./contexts/AIChatContext";
 
 function AIChatSectionInternal(): JSX.Element {
   const { messages, messagesContainerRef, inputRef, setIsHover, isHover } =
@@ -20,10 +21,10 @@ function AIChatSectionInternal(): JSX.Element {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-blue-500/10 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-full text-sm font-medium mb-4">
+          <Badge variant="sectionBadge" className="mb-4">
             <Sparkles className="h-4 w-4" />
             Because I can!
-          </div>
+          </Badge>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white text-balance mb-4">
             Chat with My{" "}
             <span
@@ -42,7 +43,7 @@ function AIChatSectionInternal(): JSX.Element {
           <Card
             setIsHover={setIsHover}
             colorScheme="blue"
-            className="gap-0 px-2 sm:px-6 md:px-8 py-0 relative shadow-2xl border border-border/20 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md"
+            className="gap-0 py-0 relative shadow-2xl border border-border/20 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md"
           >
             {/* Messages Area */}
             <ChatMessages ref={messagesContainerRef} />

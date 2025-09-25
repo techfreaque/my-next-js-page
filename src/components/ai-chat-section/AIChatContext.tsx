@@ -24,12 +24,12 @@ import { defaultModel, getAllModelIds } from "utils/model-config";
 import type { ToneId } from "utils/tone-config";
 import { defaultTone, getAllToneIds } from "utils/tone-config";
 
-import { useChatApi } from "../hooks/use-chat-api";
-import { useChatInput } from "../hooks/use-chat-input";
-import { useMessageManagement } from "../hooks/use-message-management";
-import { useChatLoading } from "../hooks/useChatLoading";
-import type { StoredMessage } from "../hooks/useChatStorage";
-import { useChatStorage } from "../hooks/useChatStorage";
+import { useChatApi } from "./hooks/use-chat-api";
+import { useChatInput } from "./hooks/use-chat-input";
+import { useMessageManagement } from "./hooks/use-message-management";
+import { useChatLoading } from "./hooks/useChatLoading";
+import type { StoredMessage } from "./hooks/useChatStorage";
+import { useChatStorage } from "./hooks/useChatStorage";
 
 const CHAT_SETTINGS_KEY = "max-ai-chat-settings";
 

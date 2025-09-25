@@ -33,10 +33,10 @@ export function ExperienceSection(): JSX.Element {
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur-sm border border-emerald-200/20 dark:border-emerald-800/20 transition-all duration-300 hover:bg-emerald-500/20 hover:scale-105">
+          <Badge variant="sectionBadge" className="mb-4">
             <Briefcase className="h-4 w-4" />
             Professional Journey
-          </div>
+          </Badge>
           <Title
             level={2}
             variant="primary"

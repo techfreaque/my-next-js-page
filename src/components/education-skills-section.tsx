@@ -42,10 +42,7 @@ export function EducationSkillsSection(): JSX.Element {
           onMouseEnter={() => setIsTitleHover(true)}
           onMouseLeave={() => setIsTitleHover(false)}
         >
-          <Badge
-            variant="fancy-outline"
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium mb-6 backdrop-blur-sm transition-all duration-300 hover:scale-105"
-          >
+          <Badge variant="sectionBadge" className="mb-4">
             <GraduationCap className="h-4 w-4" />
             Learning Journey
           </Badge>

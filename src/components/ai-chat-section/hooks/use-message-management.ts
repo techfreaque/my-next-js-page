@@ -144,8 +144,6 @@ export function useMessageManagement({
       const updatedMessage: StoredMessage = {
         ...messages[messageIndex],
         content: newContent.trim(),
-        tone: newTone,
-        model: newModel,
         timestamp: Date.now(),
       };
 
@@ -160,7 +158,7 @@ export function useMessageManagement({
         updatedMessage,
       ];
 
-      // STEP 5: Update state and storage ATOMICALLY - single source of truth
+      // STEP 5: Update state and storage
       setMessages(cleanMessages);
       saveMessagesToStorage(cleanMessages);
 

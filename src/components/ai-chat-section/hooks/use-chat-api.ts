@@ -1,3 +1,4 @@
+import type { ChatRequest, Message } from "lib/api-validation";
 import type React from "react";
 import { useState } from "react";
 import type { ModelId } from "utils/model-config";
@@ -136,13 +137,16 @@ export function useChatApi({
                 msg.content &&
                 msg.content.trim().length > 0,
             )
-            .map((msg) => ({
-              role: msg.role,
-              content: msg.content.trim(),
-            })),
+            .map(
+              (msg) =>
+                ({
+                  role: msg.role as Message["role"],
+                  content: msg.content.trim(),
+                }) satisfies Message,
+            ),
           tone: selectedTone,
           model: selectedModel,
-        }),
+        } satisfies ChatRequest),
         signal: controller.signal,
       });
 
@@ -165,7 +169,7 @@ export function useChatApi({
           errorMessage = errorText || errorMessage;
         }
 
-        // ATOMIC: Add error message directly to current messages state
+        // Add error message directly to current messages state
         setMessages((currentMessages) => {
           // Remove any existing errors and incomplete assistant messages
           const cleanMessages = currentMessages.filter(
@@ -227,8 +231,6 @@ export function useChatApi({
         role: "assistant",
         content: "",
         timestamp: Date.now(),
-        model: selectedModel,
-        tone: selectedTone,
       };
 
       const messagesWithAssistant = [...newMessages, assistantMessage];

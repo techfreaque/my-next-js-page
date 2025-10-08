@@ -1,19 +1,28 @@
+import { personalInfo } from "me/about-me";
 import { useCallback } from "react";
 
-// localStorage utilities
 const CHAT_STORAGE_KEY = "max-ai-chat-messages";
+
+const WELCOME_CONTENT = `## Hi there! 👋
+
+I'm **Max's AI assistant** with comprehensive knowledge about his background, skills, and experience.
+
+Feel free to ask me anything about:
+- His **${personalInfo.experienceYears} years** of development experience across multiple domains
+- **Technical expertise** in full-stack development, AI, and cross-platform solutions
+- **Leadership roles** and team management experience
+- **Professional journey** from car technician to senior tech roles
+- **Current projects** and innovative solutions he's building
+
+Let's chat! 🚀`;
+
+const WELCOME_MESSAGE_ID = "welcome";
 
 export interface StoredMessage {
   id: string;
   role: "assistant" | "user" | "system" | "data" | "error";
   content: string;
-  /** Timestamp when the message was created */
-  timestamp?: number;
-  /** Model used for this message (for assistant messages) */
-  model?: string;
-  /** Tone used for this message (for assistant messages) */
-  tone?: string;
-  /** Whether this message is being edited */
+  timestamp: number;
   error?: {
     type: string;
     message: string;
@@ -25,16 +34,15 @@ export function useChatStorage(): {
   saveMessagesToStorage: (messages: StoredMessage[]) => void;
   loadMessagesFromStorage: () => StoredMessage[];
   clearMessagesFromStorage: () => void;
-  getDefaultMessages: () => StoredMessage[];
+  getDefaultMessage: () => StoredMessage;
   ensureLatestWelcomeMessage: (messages: StoredMessage[]) => StoredMessage[];
 } {
   const saveMessagesToStorage = useCallback(
     (messages: StoredMessage[]): void => {
       try {
         localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(messages));
-      } catch (error) {
+      } catch {
         // Storage errors are expected in some environments
-        void error;
       }
     },
     [],
@@ -63,57 +71,42 @@ export function useChatStorage(): {
     }
   }, []);
 
-  const getDefaultMessages = useCallback((): StoredMessage[] => {
-    // Create a dynamic welcome message that stays current with Max's information
-    const welcomeContent = `## Hi there! 👋
-
-I'm **Max's AI assistant** with comprehensive knowledge about his background, skills, and experience.
-
-Feel free to ask me anything about:
-- His **13+ years** of development experience across multiple domains
-- **Technical expertise** in full-stack development, AI, and cross-platform solutions
-- **Leadership roles** and team management experience
-- **Professional journey** from car technician to senior tech roles
-- **Current projects** and innovative solutions he's building
-
-Let's chat! 🚀
-
-*Note: I'm always up-to-date with Max's latest information and achievements.*`;
-
-    return [
-      {
-        id: "welcome",
-        role: "assistant" as const,
-        content: welcomeContent,
-        timestamp: Date.now(),
-      },
-    ];
+  const getDefaultMessage = useCallback((): StoredMessage => {
+    return {
+      id: WELCOME_MESSAGE_ID,
+      role: "assistant",
+      content: WELCOME_CONTENT,
+      timestamp: Date.now(),
+    };
   }, []);
 
   const ensureLatestWelcomeMessage = useCallback(
     (messages: StoredMessage[]): StoredMessage[] => {
       if (messages.length === 0) {
-        return getDefaultMessages();
+        return [getDefaultMessage()];
       }
 
       // Check if the first message is the welcome message
       const firstMessage = messages[0];
-      if (firstMessage.id === "welcome" && firstMessage.role === "assistant") {
+      if (
+        firstMessage.id === WELCOME_MESSAGE_ID &&
+        firstMessage.role === "assistant"
+      ) {
         // Replace with the latest welcome message
-        const latestWelcome = getDefaultMessages()[0];
+        const latestWelcome = getDefaultMessage();
         return [latestWelcome, ...messages.slice(1)];
       }
 
       return messages;
     },
-    [getDefaultMessages],
+    [getDefaultMessage],
   );
 
   return {
     saveMessagesToStorage,
     loadMessagesFromStorage,
     clearMessagesFromStorage,
-    getDefaultMessages,
+    getDefaultMessage: getDefaultMessage,
     ensureLatestWelcomeMessage,
   };
 }

@@ -1,8 +1,6 @@
 import { PAGE_SECTIONS } from "lib/constants";
 import { useEffect, useState } from "react";
 
-import { ACTIVE_SECTION_OFFSET, SCROLL_THRESHOLD } from "../constants";
-
 /**
  * Custom hook for detecting scroll position and active section
  * Manages navbar background changes and active navigation item highlighting
@@ -15,6 +13,8 @@ export function useScrollDetection(): {
 } {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const SCROLL_THRESHOLD = 50;
+  const ACTIVE_SECTION_OFFSET = 100;
 
   useEffect(() => {
     /**

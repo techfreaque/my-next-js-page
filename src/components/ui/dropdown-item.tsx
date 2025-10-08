@@ -22,25 +22,8 @@ export interface DropdownItemProps {
   disabled?: boolean;
   /** Additional className for customization */
   className?: string;
-  /** Children to render instead of icon/label (for custom content) */
-  children?: React.ReactNode;
 }
 
-/**
- * Shared dropdown item component that matches NavItem styling exactly
- * Used across all dropdowns (navbar, chat input, message editor) for consistency
- *
- * Features:
- * - Exact same styling as NavItem component
- * - Rainbow variant when selected/hovered
- * - Ghost variant when not selected
- * - Border styling matches navbar exactly
- * - Full width with left alignment
- * - Hover state management
- *
- * @param props - DropdownItem component props
- * @returns JSX element representing a dropdown item
- */
 export function DropdownItem({
   isSelected = false,
   onClick,
@@ -49,61 +32,26 @@ export function DropdownItem({
   description,
   disabled = false,
   className = "",
-  children,
 }: DropdownItemProps): JSX.Element {
   const [isHovered, setIsHovered] = useState(false);
   const shouldShowRainbow = isSelected || isHovered;
 
-  /**
-   * Handles mouse enter events
-   * Updates local hover state
-   */
   const handleMouseEnter = (): void => {
     if (!disabled) {
       setIsHovered(true);
     }
   };
 
-  /**
-   * Handles mouse leave events
-   * Updates local hover state
-   */
   const handleMouseLeave = (): void => {
     setIsHovered(false);
   };
 
-  /**
-   * Handles click events
-   */
   const handleClick = (e: MouseEvent<HTMLButtonElement>): void => {
     if (!disabled && onClick) {
       onClick(e);
     }
   };
 
-  // If children are provided, render them directly
-  if (children) {
-    return (
-      <Button
-        variant={shouldShowRainbow ? "rainbow" : "ghost"}
-        size="sm"
-        isHover={shouldShowRainbow}
-        className={`w-full justify-start font-medium ${
-          shouldShowRainbow
-            ? "border-2 border-blue-500/50"
-            : "border-2 border-transparent"
-        } ${className}`}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onClick={handleClick}
-        disabled={disabled}
-      >
-        {children}
-      </Button>
-    );
-  }
-
-  // Default rendering with icon and label
   return (
     <Button
       variant={shouldShowRainbow ? "rainbow" : "ghost"}

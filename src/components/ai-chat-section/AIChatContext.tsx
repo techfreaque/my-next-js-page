@@ -67,9 +67,6 @@ interface AIChatContextValue {
 
   // Storage
   saveMessagesToStorage: (messages: StoredMessage[]) => void;
-  loadMessagesFromStorage: () => StoredMessage[];
-  clearMessagesFromStorage: () => void;
-  getDefaultMessages: () => StoredMessage[];
   ensureLatestWelcomeMessage: (messages: StoredMessage[]) => StoredMessage[];
 
   // API & Actions
@@ -125,8 +122,7 @@ export function AIChatProvider({
   const {
     saveMessagesToStorage,
     loadMessagesFromStorage,
-    clearMessagesFromStorage,
-    getDefaultMessages,
+    getDefaultMessage,
     ensureLatestWelcomeMessage,
   } = useChatStorage();
 
@@ -221,15 +217,15 @@ export function AIChatProvider({
       }
     } else {
       // If no messages in storage, set default welcome message
-      const defaultMessages = getDefaultMessages();
-      setMessages(defaultMessages);
-      saveMessagesToStorage(defaultMessages);
+      const defaultMessage = getDefaultMessage();
+      setMessages([defaultMessage]);
+      saveMessagesToStorage([defaultMessage]);
     }
     setMounted(true);
   }, [
     loadMessagesFromStorage,
     ensureLatestWelcomeMessage,
-    getDefaultMessages,
+    getDefaultMessage,
     setMessages,
     saveMessagesToStorage,
   ]);
@@ -292,9 +288,6 @@ export function AIChatProvider({
 
     // Storage
     saveMessagesToStorage,
-    loadMessagesFromStorage,
-    clearMessagesFromStorage,
-    getDefaultMessages,
     ensureLatestWelcomeMessage,
 
     // API & Actions

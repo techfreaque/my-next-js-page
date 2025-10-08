@@ -12,7 +12,7 @@ import { Button } from "components/ui/button";
 import { Textarea } from "components/ui/textarea";
 import { Check, X } from "lucide-react";
 import type { JSX } from "react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import type { ModelId } from "utils/model-config";
 import type { ToneId } from "utils/tone-config";
 
@@ -41,14 +41,23 @@ export function MessageEditor({
   const { selectedTone, selectedModel } = useAIChatContext();
   const [content, setContent] = useState(message.content);
   const [isLoading, setIsLoading] = useState(false);
+  const editorRef = useRef<HTMLDivElement>(null);
 
-  // Sync content with message prop changes ONLY when message ID changes (new editing session)
-  // This prevents content from reverting during the editing process
   useEffect(() => {
     setContent(message.content);
     // eslint-disable-next-line react-compiler/react-compiler
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [message.id]); // Intentionally NOT including message.content to prevent revert
+
+  // Scroll into view when editor is mounted
+  useEffect(() => {
+    if (editorRef.current) {
+      editorRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, []); // Empty dependency array - only run once on mount
 
   const handleSave = async (): Promise<void> => {
     if (!content.trim()) {
@@ -74,21 +83,25 @@ export function MessageEditor({
   };
 
   return (
-    <div className="space-y-4 p-5 border border-border/30 rounded-2xl bg-background/50 backdrop-blur-sm shadow-lg  min-w-[400px] max-w-[85vw]">
-      <Textarea
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        onKeyDown={handleKeyDown}
-        placeholder="Edit your message..."
-        className="min-h-[100px] resize-none border-2 border-border/30 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 rounded-xl transition-all duration-200"
-        disabled={isLoading}
-      />
+    <div
+      ref={editorRef}
+      className="space-y-4 pb-5 border border-border/30 rounded-md bg-background/50 backdrop-blur-sm shadow-lg  min-w-[400px] max-w-[85vw]"
+    >
+      <div className="overflow-hidden rounded-t-md border-b border-border/30">
+        <Textarea
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder="Edit your message..."
+          disabled={isLoading}
+        />
+      </div>
 
-      <div className="flex flex-col lg:flex-row gap-2">
+      <div className="flex flex-col lg:flex-row gap-2 px-5">
         <div className="flex flex-col md:flex-1 md:flex-row gap-2">
           <ModelSelector
             disabled={isLoading}
-            className="w-full md:w-[49%] lg:w-[220px]"
+            className="w-full md:w-[49%] lg:w-[230px]"
           />
           <ToneSelector
             disabled={isLoading}

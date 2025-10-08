@@ -1,13 +1,11 @@
 import type { CSSProperties } from "react";
 
-export type RainbowVariant =
-  | "primary"
-  | "success"
-  | "info"
-  | "accent"
-  | "warning"
-  | "sub1"
-  | "sub2";
+export type RainbowVariant = "primary" | "secondary";
+
+export const gradients = {
+  primary: "var(--rainbow-gradient)",
+  secondary: "var(--rainbow-gradient-2)",
+};
 
 /**
  * Creates a rainbow text style object for use in React components.
@@ -22,16 +20,6 @@ export function createRainbowTextStyle(
   isHover: boolean,
   variant: RainbowVariant = "primary",
 ): CSSProperties {
-  const gradients = {
-    primary: "var(--rainbow-gradient)",
-    success: "var(--rainbow-gradient-alt1)",
-    info: "var(--rainbow-gradient-alt2)",
-    accent: "var(--rainbow-gradient-alt3)",
-    warning: "var(--rainbow-gradient-alt4)",
-    sub1: "var(--rainbow-gradient-alt2)",
-    sub2: "var(--rainbow-gradient-alt3)",
-  };
-
   return {
     color: "transparent",
     backgroundImage: gradients[variant],

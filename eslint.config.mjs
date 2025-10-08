@@ -9,7 +9,6 @@ import eslintPluginPrettier from "eslint-plugin-prettier";
 import reactCompiler from "eslint-plugin-react-compiler";
 import reactHooks from "eslint-plugin-react-hooks";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
-import unusedImports from "eslint-plugin-unused-imports";
 import globals from "globals";
 import nodePlugin from "eslint-plugin-node";
 import { FlatCompat } from '@eslint/eslintrc';
@@ -17,10 +16,7 @@ import reactPlugin from "eslint-plugin-react";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import promisePlugin from "eslint-plugin-promise";
 import useServerPlugin from "@c-ehrlich/eslint-plugin-use-server";
-
-// currently AI's don't like that, as it gets removed before they add the actual code
-// has to be reevaluated over time
-const autoFixUnusedImports = false;
+import nextPlugin from "@next/eslint-plugin-next";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -37,31 +33,20 @@ const compat = new FlatCompat({
 });
 
 const config = [
-  // 1) Files/Folders to ignore
   {
     ignores: [
       ".next",
-      ".tmp",
       "node_modules",
       ".git",
       "public",
       ".vscode",
       "next-env.d.ts",
-
-      "components/old"
     ],
   },
-
-  // 2) Base configuration for TypeScript files
   {
     files: [
       "**/*.ts",
       "**/*.tsx",
-      "**/*.d.ts",
-      "**/*.test.ts",
-      "**/*.test.tsx",
-      "**/*.spec.ts",
-      "**/*.spec.tsx",
     ],
 
     languageOptions: {
@@ -76,7 +61,6 @@ const config = [
       globals: {
         ...globals.node,
         ...cleanGlobals(globals.browser),
-        ...globals.webextensions,
       },
     },
     settings: {
@@ -84,8 +68,15 @@ const config = [
         "@typescript-eslint/parser": [".ts", ".tsx"],
       },
       "import/resolver": {
-        typescript: { project: "./tsconfig.json", alwaysTryTypes: true },
-        node: { extensions: [".ts", ".tsx", ".js", ".jsx"] },
+        typescript: {
+          project: "./tsconfig.json",
+          alwaysTryTypes: true,
+          extensions: [".ts", ".tsx", ".js", ".jsx", ".d.ts"]
+        },
+        node: {
+          extensions: [".ts", ".tsx", ".js", ".jsx", ".d.ts"],
+          moduleDirectory: ["node_modules", "src"]
+        },
       },
       react: { version: "detect" },
     },
@@ -97,12 +88,12 @@ const config = [
       'react-compiler': reactCompiler,
       'react-hooks': reactHooks,
       'simple-import-sort': simpleImportSort,
-      'unused-imports': unusedImports,
       node: nodePlugin,
       react: reactPlugin,
       'jsx-a11y': jsxA11y,
       promise: promisePlugin,
       '@c-ehrlich/use-server': useServerPlugin,
+      '@next/next': nextPlugin,
     },
 
     rules: {
@@ -115,10 +106,6 @@ const config = [
       // TypeScript custom rules
       "@typescript-eslint/no-unused-vars": [
         "error",
-        {
-          // we don't do shit like that
-          // argsIgnorePattern: "^_"
-        },
       ],
       "@typescript-eslint/explicit-function-return-type": "error",
       "@typescript-eslint/no-explicit-any": "error",
@@ -176,6 +163,25 @@ const config = [
       "react/self-closing-comp": "error",
       "react/react-in-jsx-scope": "error", // Next.js doesn't require React import
 
+      // Next.js specific rules
+      "@next/next/google-font-display": "error",
+      "@next/next/google-font-preconnect": "error",
+      "@next/next/next-script-for-ga": "error",
+      "@next/next/no-before-interactive-script-outside-document": "error",
+      "@next/next/no-css-tags": "error",
+      "@next/next/no-document-import-in-page": "error",
+      "@next/next/no-duplicate-head": "error",
+      "@next/next/no-head-element": "error",
+      "@next/next/no-head-import-in-document": "error",
+      "@next/next/no-html-link-for-pages": "error",
+      "@next/next/no-img-element": "error",
+      "@next/next/no-page-custom-font": "error",
+      "@next/next/no-styled-jsx-in-document": "error",
+      "@next/next/no-sync-scripts": "error",
+      "@next/next/no-title-in-document-head": "error",
+      "@next/next/no-typos": "error",
+      "@next/next/no-unwanted-polyfillio": "error",
+
       // Accessibility
       "jsx-a11y/alt-text": "error",
       "jsx-a11y/aria-props": "error",
@@ -194,12 +200,8 @@ const config = [
       "simple-import-sort/imports": "error",
       "simple-import-sort/exports": "error",
 
-      "unused-imports/no-unused-imports": autoFixUnusedImports ? "error" : "off",
       "import/no-unresolved": [
         "error",
-        {
-          ignore: ["^geist/font/"]
-        }
       ],
       "import/first": "error",
       "import/no-duplicates": "error",
@@ -254,50 +256,7 @@ const config = [
           quoteProps: "consistent",
         },
       ],
-    },
-  },
 
-  // 3) Configuration for plain JavaScript files
-  {
-    files: ["**/*.js", "**/*.jsx"],
-    languageOptions: {
-      ecmaVersion: 2021,
-      sourceType: "module",
-      globals: {
-        ...globals.node,
-        ...cleanGlobals(globals.browser),
-        ...globals.webextensions,
-      },
-    },
-  },
-
-  // 2.1) Additional config for restricted syntax
-  {
-    files: [
-      "**/*.ts",
-      "**/*.tsx",
-      "**/*.d.ts",
-      "**/*.test.ts",
-      "**/*.test.tsx",
-      "**/*.spec.ts",
-      "**/*.spec.tsx",
-    ],
-    ignores: [
-      "src/packages/next-vibe/cli/**",
-      "src/packages/next-vibe/testing/**",
-      "**/seeds.ts",
-    ],
-    languageOptions: {
-      parser: tsParser,
-      parserOptions: {
-        ecmaVersion: 2021,
-        sourceType: "module",
-        project: [resolve(__dirname, "tsconfig.json")],
-        tsconfigRootDir: __dirname,
-        ecmaFeatures: { jsx: true },
-      },
-    },
-    rules: {
       "no-restricted-syntax": [
         "error",
         {

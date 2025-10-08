@@ -31,22 +31,9 @@ export function EmailButton({
   const [isHovered, setIsHovered] = useState(false);
   const shouldShowRainbow = isHover || isHovered;
 
-  /**
-   * Handles mouse enter events
-   * Updates local hover state and triggers navbar hover callback
-   */
-  const handleMouseEnter = (): void => {
-    setIsHovered(true);
-    onNavbarHover?.(true);
-  };
-
-  /**
-   * Handles mouse leave events
-   * Updates local hover state and triggers navbar hover callback
-   */
-  const handleMouseLeave = (): void => {
-    setIsHovered(false);
-    onNavbarHover?.(false);
+  const handleHover = (_isHover: boolean): void => {
+    setIsHovered(_isHover);
+    onNavbarHover?.(_isHover);
   };
 
   return (
@@ -56,12 +43,11 @@ export function EmailButton({
       isHover={shouldShowRainbow}
       asChild
       className={`font-semibold sm:px-2`}
+      setIsHover={handleHover}
     >
       <a
         href={`mailto:${personalInfo.email}?subject=${encodeURIComponent(personalInfo.contactEmailSubject)}`}
         className="flex items-center"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
       >
         <Mail className={`h-4 w-4 sm:mr-1 mr-2`} />
         <span className="sm:text-xs">Say Hello</span>

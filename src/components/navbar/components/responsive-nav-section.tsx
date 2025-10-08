@@ -28,10 +28,8 @@ export interface ResponsiveNavSectionProps {
   onNavbarHover: (isHovering: boolean) => void;
   /** Number of items to show before collapsing to dropdown */
   visibleItemsCount: number;
-  /** Whether items should use tablet styling */
-  isTablet?: boolean;
-  /** Left margin class for the container */
-  marginClass?: string;
+  /** Whether items should use mobile styling */
+  isMobile?: boolean;
 }
 
 /**
@@ -50,8 +48,7 @@ export function ResponsiveNavSection({
   onToggleMobileMenu,
   onNavbarHover,
   visibleItemsCount,
-  isTablet = false,
-  marginClass = "",
+  isMobile = false,
 }: ResponsiveNavSectionProps): JSX.Element {
   const { closeMobileMenu, menuRef } = useMobileMenu();
   // Get visible items based on count
@@ -62,7 +59,7 @@ export function ResponsiveNavSection({
 
   return (
     <div className={className}>
-      <div className={`${marginClass} flex items-center ${spacingClass}`}>
+      <div className={`flex items-center ${spacingClass}`}>
         {/* Visible Navigation Items */}
         {visibleItems.map((item) => {
           const isActive = activeSection === item.pageId;
@@ -76,7 +73,7 @@ export function ResponsiveNavSection({
               onNavClick={closeMobileMenu}
               icon={IconComponent}
               label={item.label}
-              isTablet={isTablet}
+              isMobile={isMobile}
               onNavbarHover={onNavbarHover}
             />
           );
@@ -90,9 +87,7 @@ export function ResponsiveNavSection({
               size="sm"
               onClick={onToggleMobileMenu}
               title="More menu items"
-              className="px-3 cursor-pointer"
-              onMouseEnter={() => onNavbarHover(true)}
-              onMouseLeave={() => onNavbarHover(false)}
+              setIsHover={onNavbarHover}
             >
               {isMobileMenuOpen ? (
                 <X className="h-4 w-4" />

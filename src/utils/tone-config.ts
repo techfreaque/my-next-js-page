@@ -1,15 +1,4 @@
 /**
- * @fileoverview AI Chat Tone Configuration
- *
- * This module defines all available conversation tones for the AI chat system.
- * Each tone modifies the AI's personality and response style while maintaining
- * accuracy and helpfulness. Tones range from professional to creative and fun.
- *
- * @author Max Brandstaetter
- * @version 2.0.0
- */
-
-/**
  * Available tone identifiers for AI chat responses.
  * Each tone creates a different personality and communication style.
  */
@@ -122,20 +111,4 @@ export function getToneById(toneId: ToneId): ToneOption {
  */
 export function getAllToneIds(): ToneId[] {
   return toneOptions.map((tone) => tone.id);
-}
-
-/**
- * Helper function to get a random tone for variety.
- * Excludes the current tone to ensure a different selection.
- *
- * @param excludeToneId - Optional tone ID to exclude from selection
- * @returns A randomly selected tone configuration
- */
-export function getRandomTone(excludeToneId?: ToneId): ToneOption {
-  const availableTones = excludeToneId
-    ? toneOptions.filter((tone) => tone.id !== excludeToneId)
-    : toneOptions;
-
-  const randomIndex = Math.floor(Math.random() * availableTones.length);
-  return availableTones[randomIndex] ?? toneOptions[0];
 }

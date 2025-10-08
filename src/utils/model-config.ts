@@ -18,11 +18,11 @@ export enum ModelId {
   MISTRAL_NEMO = "mistral-nemo",
   DEEPSEEK_R1_DISTILL = "deepseek-r1-distill",
   QWEN_2_5_7B = "qwen-2-5-7b",
-  KIMI_K2_FREE = "kimi-k2:free",
-  DEEPSEEK_V3_FREE = "deepseek-v3.1-free",
-  QWEN3_235B_FREE = "qwen3_235b_free",
-  GPT_OSS_120B = "gpt-oss-120b",
-  GROK_4_FAST_FREE = "grok-4-fast:free",
+  KIMI_K2_FREE = "kimi-k2-free",
+  DEEPSEEK_V31_FREE = "deepseek-v3.1-free",
+  QWEN3_235B_FREE = "qwen3_235b-free",
+  GPT_OSS_120B_FREE = "gpt-oss-120b-free",
+  GROK_4_FAST_FREE = "grok-4-fast-free",
 }
 
 /**
@@ -54,13 +54,13 @@ export const modelOptions: ModelOption[] = [
     name: "GPT-5 Nano",
     provider: "OpenAI",
     description: "Latest nano model with excellent performance-to-cost ratio",
-    parameterCount: 14.3,
+    parameterCount: undefined,
     contextWindow: 400000,
     icon: SiOpenai,
     openRouterModel: "openai/gpt-5-nano",
   },
   {
-    id: ModelId.GPT_OSS_120B,
+    id: ModelId.GPT_OSS_120B_FREE,
     name: "GPT-OSS 120B (Free)",
     provider: "OpenAI",
     description: "Open-source GPT model with 120B parameters",
@@ -84,33 +84,10 @@ export const modelOptions: ModelOption[] = [
     name: "Mistral Nemo (Free)",
     provider: "Mistral AI",
     description: "European AI model with strong performance and privacy focus",
-    inputPrice: 0,
-    outputPrice: 0,
+    parameterCount: 12,
     contextWindow: 131072,
     icon: SiMistralai,
     openRouterModel: "mistralai/mistral-nemo:free",
-  },
-  {
-    id: ModelId.DEEPSEEK_R1_DISTILL,
-    name: "DeepSeek R1 Distill 8B",
-    provider: "DeepSeek",
-    description: "Distilled reasoning model with excellent performance",
-    inputPrice: 0.04,
-    outputPrice: 0.04,
-    contextWindow: 32000,
-    icon: "🎯",
-    openRouterModel: "deepseek/deepseek-r1-distill-llama-8b",
-  },
-  {
-    id: ModelId.QWEN_2_5_7B,
-    name: "Qwen 2.5 7B",
-    provider: "Alibaba",
-    description: "Fast and efficient Chinese model with multilingual support",
-    inputPrice: 0.036,
-    outputPrice: 0.144,
-    contextWindow: 131072,
-    icon: "🚄",
-    openRouterModel: "qwen/qwen-2.5-7b-instruct",
   },
   {
     id: ModelId.KIMI_K2_FREE,
@@ -118,21 +95,19 @@ export const modelOptions: ModelOption[] = [
     provider: "MoonshotAI",
     description:
       "Kimi K2 Instruct is a large-scale Mixture-of-Experts (MoE) language model developed by Moonshot AI.",
-    inputPrice: 0,
-    outputPrice: 0,
+    parameterCount: 1000,
     contextWindow: 33000,
     icon: MoonIcon,
     openRouterModel: "moonshotai/kimi-k2:free",
   },
   {
-    id: ModelId.DEEPSEEK_V3_FREE,
+    id: ModelId.DEEPSEEK_V31_FREE,
     name: "DeepSeek V3.1 (Free)",
     provider: "DeepSeek",
     description: "Powerful 671B parameter model - completely free!",
-    inputPrice: 0.0,
-    outputPrice: 0.0,
+    parameterCount: 671,
     contextWindow: 164000,
-    icon: "🆓",
+    icon: "🐋",
     openRouterModel: "deepseek/deepseek-chat-v3.1:free",
   },
   {
@@ -193,25 +168,4 @@ export function getModelById(modelId: ModelId): ModelOption {
  */
 export function getAllModelIds(): ModelId[] {
   return modelOptions.map((model) => model.id);
-}
-
-/**
- * Helper function to get models by provider.
- *
- * @param provider - The provider name to filter by
- * @returns Array of models from the specified provider
- */
-export function getModelsByProvider(provider: string): ModelOption[] {
-  return modelOptions.filter((model) => model.provider === provider);
-}
-
-/**
- * Helper function to get free models only.
- *
- * @returns Array of models with zero cost
- */
-export function getFreeModels(): ModelOption[] {
-  return modelOptions.filter(
-    (model) => model.inputPrice === 0 && model.outputPrice === 0,
-  );
 }

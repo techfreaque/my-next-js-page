@@ -6,9 +6,6 @@ import { useTheme } from "next-themes";
 import type { JSX } from "react";
 import React from "react";
 
-/**
- * Props for the ThemeToggle component
- */
 export interface ThemeToggleProps {
   /** Callback when navbar hover state changes */
   onNavbarHover?: (isHovering: boolean) => void;
@@ -25,22 +22,6 @@ export function ThemeToggle({ onNavbarHover }: ThemeToggleProps): JSX.Element {
   const { theme, setTheme } = useTheme();
 
   /**
-   * Handles mouse enter events
-   * Triggers navbar hover callback
-   */
-  const handleMouseEnter = (): void => {
-    onNavbarHover?.(true);
-  };
-
-  /**
-   * Handles mouse leave events
-   * Triggers navbar hover callback
-   */
-  const handleMouseLeave = (): void => {
-    onNavbarHover?.(false);
-  };
-
-  /**
    * Toggles between light and dark themes
    */
   const toggleTheme = (): void => {
@@ -53,8 +34,7 @@ export function ThemeToggle({ onNavbarHover }: ThemeToggleProps): JSX.Element {
       size="sm"
       onClick={toggleTheme}
       className="px-2 sm:px-3 cursor-pointer"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      setIsHover={onNavbarHover}
     >
       <Sun className="h-4 w-4 rotate-0 scale-100 transition-all duration-300 dark:-rotate-90 dark:scale-0" />
       <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all duration-300 dark:rotate-0 dark:scale-100" />

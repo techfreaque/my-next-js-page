@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 import type { JSX } from "react";
 import React, { useState } from "react";
 
-import { NAV_ITEMS, RESPONSIVE_CONFIG } from "../constants";
+import { NAV_ITEMS } from "../constants";
 import { useMobileMenu } from "../hooks/useMobileMenu";
 import { useScrollDetection } from "../hooks/useScrollDetection";
 import { EmailButton } from "./email-button";
@@ -43,7 +43,7 @@ export function Navigation(): JSX.Element {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 ${
+      className={`fixed top-[0] left-[0] right-[0] z-50 ${
         isScrolled
           ? "bg-background/100 backdrop-blur-md shadow-sm"
           : "bg-background/90 backdrop-blur-sm"
@@ -56,68 +56,63 @@ export function Navigation(): JSX.Element {
             <Logo />
           </div>
 
-          {/* Navigation sections - Centered with flex-1 */}
+          {/* Navigation sections */}
+          {/* intentionally rendering all menu variants so we have all ready before hydration */}
           <div className="flex-1 flex justify-center">
             {/* Desktop Navigation (xl+) - Full menu */}
             <ResponsiveNavSection
-              className={RESPONSIVE_CONFIG.desktop.className}
+              className={"hidden xl:block"}
               navItems={NAV_ITEMS}
               activeSection={activeSection}
               isMobileMenuOpen={isMobileMenuOpen}
               onToggleMobileMenu={toggleMobileMenu}
               onNavbarHover={handleNavbarHover}
-              visibleItemsCount={RESPONSIVE_CONFIG.desktop.visibleItems}
-              marginClass=""
+              visibleItemsCount={NAV_ITEMS.length}
             />
 
-            {/* Large Tablet Navigation (lg-xl) - Show first 3 items */}
+            {/* Large Tablet Navigation (lg-xl) - Show first 5 items */}
             <ResponsiveNavSection
-              className={RESPONSIVE_CONFIG.largeTablet.className}
+              className={"hidden lg:block xl:hidden"}
               navItems={NAV_ITEMS}
               activeSection={activeSection}
               isMobileMenuOpen={isMobileMenuOpen}
               onToggleMobileMenu={toggleMobileMenu}
               onNavbarHover={handleNavbarHover}
-              visibleItemsCount={RESPONSIVE_CONFIG.largeTablet.visibleItems}
-              isTablet={true}
-              marginClass=""
+              visibleItemsCount={5}
             />
 
-            {/* Medium Tablet Navigation (md-lg) - Show first 2 items */}
+            {/* Medium Tablet Navigation (md-lg) - Show first 3 items */}
             <ResponsiveNavSection
-              className={RESPONSIVE_CONFIG.mediumTablet.className}
+              className={"hidden md:block lg:hidden"}
               navItems={NAV_ITEMS}
               activeSection={activeSection}
               isMobileMenuOpen={isMobileMenuOpen}
               onToggleMobileMenu={toggleMobileMenu}
               onNavbarHover={handleNavbarHover}
-              visibleItemsCount={RESPONSIVE_CONFIG.mediumTablet.visibleItems}
-              isTablet={true}
-              marginClass=""
+              visibleItemsCount={3}
             />
 
-            {/* Small Tablet Navigation (sm-md) - Show first 1 item */}
+            {/* Small Tablet Navigation (sm-md) - Show first 2 item */}
             <ResponsiveNavSection
-              className={RESPONSIVE_CONFIG.smallTablet.className}
+              className={"hidden sm:block md:hidden"}
               navItems={NAV_ITEMS}
               activeSection={activeSection}
               isMobileMenuOpen={isMobileMenuOpen}
               onToggleMobileMenu={toggleMobileMenu}
               onNavbarHover={handleNavbarHover}
-              visibleItemsCount={RESPONSIVE_CONFIG.smallTablet.visibleItems}
-              isTablet={true}
-              marginClass=""
+              visibleItemsCount={2}
             />
 
             {/* Mobile Navigation (xs) - Hamburger menu only */}
             <ResponsiveNavSection
-              className={RESPONSIVE_CONFIG.mobile.className}
+              className={"sm:hidden"}
               navItems={NAV_ITEMS}
               activeSection={activeSection}
               isMobileMenuOpen={isMobileMenuOpen}
               onToggleMobileMenu={toggleMobileMenu}
               onNavbarHover={handleNavbarHover}
-              visibleItemsCount={RESPONSIVE_CONFIG.mobile.visibleItems}
+              visibleItemsCount={0}
+              isMobile={true}
             />
           </div>
 
@@ -143,8 +138,7 @@ export function Navigation(): JSX.Element {
                 onClick={toggleMobileMenu}
                 title="Menu"
                 className="px-2 cursor-pointer"
-                onMouseEnter={() => handleNavbarHover(true)}
-                onMouseLeave={() => handleNavbarHover(false)}
+                setIsHover={handleNavbarHover}
               >
                 {isMobileMenuOpen ? (
                   <X className="h-4 w-4" />

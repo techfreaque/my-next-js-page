@@ -1,34 +1,33 @@
 "use client";
 
+import { SiGithub } from "@icons-pack/react-simple-icons";
 import { Title } from "components/ui/title";
 import { ArrowDown, Mail } from "lucide-react";
 import { personalInfo } from "me/about-me";
 import type { JSX } from "react";
 import React, { useEffect, useState } from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 import Typewriter from "typewriter-effect";
 
-// ===== HERO SECTION TYPEWRITER STRINGS =====
 export const heroTypewriterStrings = [
   "Max Brandstaetter",
-  "your Cross-Platform Dev",
-  "an experienced Entrepreneur",
-  "your Tech Innovator",
-  "a Problem Identifier",
+  "a Cross-Platform Dev",
+  "an Entrepreneur",
+  "a Framework Builder",
   "Marcus Brandstaetter",
-  "your Problem Solver",
-  "an AI-Native Developer",
-  "your Framework Builder",
-  "a proven Team Leader",
-  "your Software Architect",
+  "a Problem Solver",
+  "an AI Enthusiast",
+  "a Team Builder",
+  "a DIY Problem Solver",
+  "your next teammate",
 ] as const;
 
 export function HeroSection(): JSX.Element {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const [isHover, setIsHover] = useState(false);
 
   useEffect(() => {
-    setIsVisible(true);
+    setIsMounted(true);
   }, []);
 
   return (
@@ -38,7 +37,7 @@ export function HeroSection(): JSX.Element {
     >
       {/* Video Background */}
       <video
-        className="absolute inset-0 w-full h-full object-cover -z-10"
+        className="absolute inset-[0] w-full h-full object-cover -z-10"
         autoPlay
         loop
         muted
@@ -47,13 +46,13 @@ export function HeroSection(): JSX.Element {
       </video>
 
       {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/50 -z-5" />
+      <div className="absolute inset-[0] bg-black/50 -z-5" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
           {/* Main heading with video-style text */}
           <div
-            className={`mb-8 transition-all duration-1000 ${isVisible ? "animate-in fade-in slide-in-from-bottom-8" : "opacity-0"}`}
+            className={`mb-8 transition-all duration-1000 ${isMounted ? "animate-in fade-in slide-in-from-bottom-8" : "opacity-0"}`}
           >
             <Title
               level={1}
@@ -77,24 +76,24 @@ export function HeroSection(): JSX.Element {
 
           {/* Fancy subtitle with hover effects */}
           <div
-            className={`mb-8 transition-all duration-1000 delay-500 ${isVisible ? "animate-in fade-in slide-in-from-bottom-8" : "opacity-0"}`}
+            className={`mb-8 transition-all duration-1000 delay-500 ${isMounted ? "animate-in fade-in slide-in-from-bottom-8" : "opacity-0"}`}
           >
             <Title
               level={2}
               variant="primary"
               isHover={isHover}
-              onMouseEnter={() => setIsHover(true)}
-              onMouseLeave={() => setIsHover(false)}
+              setIsHover={setIsHover}
               customSizeClassName="text-lg sm:text-md text-center leading-relaxed max-w-3xl mx-auto"
             >
-              Because I'm always making the worst PDF versions of my CV...
-              <br />I did what I always do: I built an app instead!
+              From fixing Ferraris to building frameworks
+              <br />
+              13+ years turning problems into code that actually works
             </Title>
           </div>
 
           {/* Social Links */}
           <div
-            className={`mb-8 transition-all duration-1000 delay-700 ${isVisible ? "animate-in fade-in slide-in-from-bottom-8" : "opacity-0"}`}
+            className={`mb-8 transition-all duration-1000 delay-700 ${isMounted ? "animate-in fade-in slide-in-from-bottom-8" : "opacity-0"}`}
           >
             <div className="flex justify-center space-x-6">
               <a
@@ -103,7 +102,7 @@ export function HeroSection(): JSX.Element {
                 rel="noopener noreferrer"
                 className="text-white/80 hover:text-white transition-colors duration-200 p-3 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 border border-white/20 hover:border-white/40"
               >
-                <FaGithub className="h-6 w-6" />
+                <SiGithub className="h-6 w-6" />
                 <span className="sr-only">GitHub</span>
               </a>
               <a
@@ -127,7 +126,7 @@ export function HeroSection(): JSX.Element {
 
           {/* Scroll indicator with fancy colors */}
           <div
-            className={`transition-all duration-1000 delay-1000 ${isVisible ? "animate-in fade-in slide-in-from-bottom-8" : "opacity-0"}`}
+            className={`transition-all duration-1000 delay-1000 ${isMounted ? "animate-in fade-in slide-in-from-bottom-8" : "opacity-0"}`}
           >
             <a
               href="#chat"
@@ -148,7 +147,7 @@ export function HeroSection(): JSX.Element {
                   transition: "background-position ease-in-out 2s",
                 }}
               >
-                Scroll to explore
+                See what I've built
               </span>
               <ArrowDown className="h-7 w-7 animate-bounce group-hover:animate-pulse transition-all duration-300" />
             </a>

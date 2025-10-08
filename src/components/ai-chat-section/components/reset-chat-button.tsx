@@ -7,20 +7,14 @@ import { useChatReset } from "../hooks/useChatReset";
 import type { StoredMessage } from "../hooks/useChatStorage";
 
 interface ResetChatButtonProps {
-  clearMessagesFromStorage: () => void;
   setMessages: (messages: StoredMessage[]) => void;
-  getDefaultMessages: () => StoredMessage[];
 }
 
 export function ResetChatButton({
-  clearMessagesFromStorage,
   setMessages,
-  getDefaultMessages,
 }: ResetChatButtonProps): JSX.Element {
   const { resetClickCount, handleResetClick } = useChatReset({
-    clearMessagesFromStorage,
     setMessages,
-    getDefaultMessages,
   });
   return (
     <Button

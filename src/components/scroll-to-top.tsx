@@ -36,9 +36,10 @@ export function ScrollToTop(): JSX.Element | null {
     <Button
       onClick={scrollToTop}
       size="icon"
-      className="fixed bottom-8 right-8 z-50 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 rounded-full w-12 h-12"
+      variant="rainbow"
+      className="fixed bottom-8 right-8 z-50  w-12 h-12"
     >
-      <ArrowUp className="h-5 w-5" />
+      <ArrowUp className="size-6" />
       <span className="sr-only">Scroll to top</span>
     </Button>
   );

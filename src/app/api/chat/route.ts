@@ -1,5 +1,4 @@
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
-import type { ModelMessage } from "ai";
 import { streamText } from "ai";
 import type { ChatRequest } from "lib/api-validation";
 import {
@@ -28,17 +27,11 @@ export async function POST(req: NextRequest): Promise<Response> {
   // Get the selected model configuration from our curated list
   const selectedModel = getModelById(modelId);
 
-  // Convert messages to the format expected by the AI SDK
-  const formattedMessages: ModelMessage[] = messages.map((msg) => ({
-    role: msg.role,
-    content: msg.content,
-  }));
-
   // Stream the response using the selected model and tone-specific system prompt
   try {
     const result = streamText({
       model: openrouter.chat(selectedModel.openRouterModel),
-      messages: formattedMessages,
+      messages,
       system: generateSystemPrompt(tone),
     });
 

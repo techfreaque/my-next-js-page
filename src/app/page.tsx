@@ -2,7 +2,8 @@ import { AboutSection } from "components/about-section";
 import { AIChatSection } from "components/ai-chat-section/ai-chat-section";
 import { EducationSkillsSection } from "components/education-skills-section";
 import { ExperienceSection } from "components/experience-section";
-import { Footer } from "components/footer";
+import { Footer } from "components/footer/footer";
+import { FormalEducationSection } from "components/formal-education";
 import { HeroSection } from "components/hero-section";
 import { Navigation } from "components/navbar/components/navigation";
 import { ProjectsSection } from "components/projects-section";
@@ -28,32 +29,33 @@ export default function Home(): JSX.Element {
         <section id={PAGE_SECTIONS.HOME}>
           <HeroSection />
         </section>
+        <div className="bg-gradient-to-br from-slate-50 via-indigo-50 to-violet-50 dark:from-slate-900 dark:via-indigo-950 dark:to-violet-950 border-t border-slate-200 dark:border-slate-700">
+          {/* AI chat section - interactive assistant */}
+          <section id={PAGE_SECTIONS.CHAT}>
+            <AIChatSection />
+          </section>
 
-        {/* AI chat section - interactive assistant */}
-        <section id={PAGE_SECTIONS.CHAT}>
-          <AIChatSection />
-        </section>
+          {/* About section - personal story and background */}
+          <section id={PAGE_SECTIONS.ABOUT}>
+            <AboutSection />
+          </section>
 
-        {/* About section - personal story and background */}
-        <section id={PAGE_SECTIONS.ABOUT}>
-          <AboutSection />
-        </section>
+          {/* Experience section - professional experience */}
+          <section id={PAGE_SECTIONS.EXPERIENCE}>
+            <ExperienceSection />
+            <FormalEducationSection />
+          </section>
 
-        {/* Projects section - portfolio of work */}
-        <section id={PAGE_SECTIONS.PROJECTS}>
-          <ProjectsSection />
-        </section>
+          {/* Projects section - portfolio of work */}
+          <section id={PAGE_SECTIONS.PROJECTS}>
+            <ProjectsSection />
+          </section>
 
-        {/* Skills & Education section - technical skills and learning journey */}
-        <section id={PAGE_SECTIONS.SKILLS}>
-          <EducationSkillsSection />
-        </section>
-
-        {/* Experience section - professional experience */}
-        <section id={PAGE_SECTIONS.EXPERIENCE}>
-          <ExperienceSection />
-        </section>
-
+          {/* Skills & Education section - technical skills and learning journey */}
+          <section id={PAGE_SECTIONS.SKILLS}>
+            <EducationSkillsSection />
+          </section>
+        </div>
         {/* Footer with contact information */}
         <Footer />
 

@@ -15,22 +15,15 @@ const suggestedQuestions = [
 ];
 
 export function SuggestedQuestions(): JSX.Element {
-  const { setInput, handleSubmit, inputRef } = useAIChatContext();
+  const { setInput, inputRef } = useAIChatContext();
 
-  const onQuestionClick = async (question: string): Promise<void> => {
+  const onQuestionClick = (question: string): void => {
     setInput(question);
-    // Create a synthetic form event to trigger submission
-    const syntheticEvent = {
-      preventDefault: () => {},
-      stopPropagation: () => {},
-    } as React.FormEvent;
-
-    await handleSubmit(syntheticEvent);
     inputRef.current?.focus();
   };
 
   return (
-    <div className="px-2 sm:px-6 md:px-8 pb-6">
+    <div className="px-2 sm:px-6 md:px-8 pb-6 mt-[-70px]">
       <p className="text-sm text-muted-foreground mb-4 font-medium flex items-center gap-2">
         <span className="text-lg">💬</span>
         Try asking:
@@ -39,8 +32,8 @@ export function SuggestedQuestions(): JSX.Element {
         {suggestedQuestions.slice(0, 6).map((question, index) => (
           <Badge
             key={index}
-            variant="secondary"
-            className="word-break-all cursor-pointer hover:bg-primary/10 hover:border-primary/30 hover:text-primary transition-all duration-200 text-xs py-3 px-4 justify-start border border-border/30 shadow-sm hover:shadow-md"
+            variant="sectionBadge"
+            className="word-break-all cursor-pointer rounded-md"
             onClick={() => onQuestionClick(question)}
           >
             {question}

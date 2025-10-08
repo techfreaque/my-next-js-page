@@ -46,10 +46,9 @@ export function SystemPromptModal({
           <DialogHeader>
             <DialogTitle>AI System Prompt</DialogTitle>
             <DialogDescription>
-              This is the comprehensive system prompt that guides the AI
-              assistant's responses about Max's professional background.
+              The same data that builds this website also powers the AI chat.
               Currently using{" "}
-              <Badge variant="secondary" className="ml-1">
+              <Badge variant="default" className="ml-1">
                 {toneOptions.find((t) => t.id === selectedTone)?.emoji}{" "}
                 {toneOptions.find((t) => t.id === selectedTone)?.name}
               </Badge>{" "}

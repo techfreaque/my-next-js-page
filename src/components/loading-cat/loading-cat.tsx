@@ -1,3 +1,5 @@
+import "./styles.css";
+
 import type { JSX } from "react";
 import React from "react";
 
@@ -13,7 +15,7 @@ export default function LoadingCat({
   }
 
   return (
-    <div className="fixed inset-0 w-screen h-screen bg-background z-[999999] flex items-center justify-center m-0 p-0">
+    <div className="fixed inset-[0] w-screen h-screen bg-background z-[999999] flex items-center justify-center m-0 p-0">
       <div className="cat">
         <div className="cat__body" />
         <div className="cat__body" />

@@ -6,29 +6,11 @@
 @variant light (&:not(.dark *));
 
 :root {
-  /* === CORE DESIGN SYSTEM === */
-  /* Primary brand colors - single source of truth */
-  --brand-primary: #3b82f6;
-  /* blue-500 - main brand color */
-  --brand-accent: #8b5cf6;
-  /* violet-500 - accent highlights */
-  --brand-success: #10b981;
-  /* emerald-500 - success states */
-  --brand-warning: #f59e0b;
-  /* amber-500 - warning states */
-  --brand-danger: #ef4444;
-  /* red-500 - error states */
-  --brand-info: #06b6d4;
-  /* cyan-500 - info states */
-  --brand-pink: #ec4899;
-  /* pink-500 - special highlights */
+
 
   /* Rainbow gradients - used across all fancy components */
-  --rainbow-gradient: linear-gradient(to right, var(--brand-primary), var(--brand-accent), var(--brand-info), var(--brand-pink), var(--brand-primary));
-  --rainbow-gradient-alt1: linear-gradient(to right, var(--brand-success), var(--brand-info), var(--brand-primary), var(--brand-success));
-  --rainbow-gradient-alt2: linear-gradient(to right, var(--brand-info), var(--brand-primary), var(--brand-accent), var(--brand-info));
-  --rainbow-gradient-alt3: linear-gradient(to right, var(--brand-pink), var(--brand-accent), var(--brand-info), var(--brand-pink));
-  --rainbow-gradient-alt4: linear-gradient(to right, var(--brand-accent), var(--brand-pink), var(--brand-warning), var(--brand-accent));
+  --rainbow-gradient: linear-gradient(to right, var(--primary), var(--accent), var(--info), var(--pink), var(--primary));
+  --rainbow-gradient-2: linear-gradient(to right, var(--accent), var(--primary), var(--accent), var(--primary));
 
   /* Design system tokens */
   --radius-lg: 0.75rem;
@@ -41,38 +23,37 @@
   --card-foreground: #0f172a;
   --popover: #ffffff;
   --popover-foreground: #0f172a;
-  --primary: var(--brand-primary);
+  --primary: #3b82f6;
   --primary-foreground: #f7f8fb;
   --secondary: #e0e7ff;
   --secondary-foreground: #1e1b4b;
   --muted: #f8fafc;
   --muted-foreground: #475569;
-  --accent: var(--brand-accent);
+  --accent: #8b5cf6;
   --accent-foreground: #ffffff;
-  --destructive: var(--brand-danger);
+  --destructive: #ef4444;
   --destructive-foreground: #ffffff;
+  --info: #06b6d4;
+  --pink: #ec4899;
   --border: #cbd5e1;
   --input: #ffffff;
   --ring: rgba(59, 130, 246, 0.3);
 }
 
 .dark {
-  /* Dark mode color system - inherits brand colors from :root */
+  /* Dark mode color system - inherits colors from :root */
   --background: #0a0a0a;
   --foreground: #fafafa;
   --card: #1a1a1a;
   --card-foreground: #fafafa;
   --popover: #1a1a1a;
   --popover-foreground: #fafafa;
-  --primary: var(--brand-primary);
   --primary-foreground: #ffffff;
   --secondary: #262626;
   --secondary-foreground: #fafafa;
   --muted: #171717;
   --muted-foreground: #a3a3a3;
-  --accent: var(--brand-accent);
   --accent-foreground: #ffffff;
-  --destructive: var(--brand-danger);
   --destructive-foreground: #ffffff;
   --border: #404040;
   --input: #262626;
@@ -117,43 +98,28 @@
     @apply scroll-smooth;
   }
 
-  /* === ENHANCED SCROLLBAR STYLING === */
-  /* Works across all browsers and themes */
+  /* hide scrollbar */
   ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    display: none;
+
   }
 
   ::-webkit-scrollbar-track {
-    background: hsl(var(--muted));
-    border-radius: var(--radius-lg);
+    display: none;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg,
-        hsl(var(--primary) / 0.3),
-        hsl(var(--accent) / 0.3));
-    border-radius: var(--radius-lg);
-    border: 2px solid hsl(var(--muted));
-    transition: all 0.2s ease;
+    display: none;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg,
-        hsl(var(--primary) / 0.6),
-        hsl(var(--accent) / 0.6));
-    transform: scale(1.1);
+    display: none;
   }
 
   ::-webkit-scrollbar-corner {
-    background: hsl(var(--muted));
+    display: none;
   }
 
-  /* Firefox scrollbar styling */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: hsl(var(--primary) / 0.3) hsl(var(--muted));
-  }
 
   /* Dark mode adjustments for code highlighting */
   .dark .hljs {
@@ -162,7 +128,7 @@
   }
 }
 
-/* Custom animations that can't be replaced with Tailwind */
+/* animations for background decorations */
 @keyframes float {
 
   0%,
@@ -178,91 +144,3 @@
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
-
-/* === CAT LOADER === */
-/* Critical animation - DO NOT MODIFY without testing */
-
-.cat {
-  @apply relative w-full max-w-80 overflow-hidden;
-}
-
-.cat::before {
-  content: "";
-  @apply block;
-  padding-bottom: 100%;
-}
-
-.cat:active>* {
-  animation-play-state: running;
-}
-
-.cat__body,
-.cat__tail,
-.cat__head {
-  @apply absolute inset-0;
-  animation: rotating 2.79s cubic-bezier(0.65, 0.54, 0.12, 0.93) infinite;
-}
-
-.cat__body::before,
-.cat__tail::before,
-.cat__head::before {
-  content: "";
-  @apply absolute w-1/2 h-1/2 bg-no-repeat;
-  background-size: 200%;
-  background-image: url("/loading-cat.jpg");
-}
-
-.cat__head::before {
-  @apply top-0 right-0;
-  background-position: 100% 0%;
-  transform-origin: 0% 100%;
-  transform: rotate(90deg);
-}
-
-.cat__tail {
-  animation-delay: 0.2s;
-}
-
-.cat__tail::before {
-  @apply left-0 bottom-0;
-  background-position: 0% 100%;
-  transform-origin: 100% 0%;
-  transform: rotate(-30deg);
-}
-
-.cat__body {
-  animation-delay: 0.1s;
-}
-
-.cat__body:nth-of-type(2) {
-  animation-delay: 0.2s;
-}
-
-.cat__body::before {
-  @apply right-0 bottom-0;
-  background-position: 100% 100%;
-  transform-origin: 0% 0%;
-}
-
-@-webkit-keyframes rotating {
-  from {
-    transform: rotate(720deg);
-  }
-
-  to {
-    transform: none;
-  }
-}
-
-@keyframes rotating {
-  from {
-    transform: rotate(720deg);
-  }
-
-  to {
-    transform: none;
-  }
-}
-
-
-/* CatLoader END */

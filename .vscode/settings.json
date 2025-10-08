@@ -29,4 +29,9 @@
   },
   "files.eol": "\n",
   "files.exclude": {},
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.next": true,
+    "bun.lock": true
+  }
 }

@@ -6,6 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "components/ui/dropdown-menu";
+import { cn } from "lib/utils";
 import { ChevronDown } from "lucide-react";
 import type { JSX } from "react";
 import React, { useState } from "react";
@@ -16,6 +17,7 @@ import { useAIChatContext } from "../AIChatContext";
 interface ToneSelectorProps {
   disabled?: boolean;
   className?: string;
+  textClassName?: string;
 }
 
 /**
@@ -25,6 +27,7 @@ interface ToneSelectorProps {
 export function ToneSelector({
   disabled = false,
   className = "w-[170px]",
+  textClassName,
 }: ToneSelectorProps): JSX.Element {
   const [toneHover, setToneHover] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -42,16 +45,15 @@ export function ToneSelector({
           variant="rainbow"
           size="sm"
           isHover={shouldShowHover}
-          className={`${className} h-8 font-medium justify-between`}
-          onMouseEnter={() => setToneHover(true)}
-          onMouseLeave={() => setToneHover(false)}
+          className={cn("h-8 font-medium justify-between", className)}
+          setIsHover={setToneHover}
           disabled={disabled}
         >
           <span className="flex items-center gap-2">
             <span className="text-base w-4 h-4 flex items-center justify-center">
               {toneOptions.find((t) => t.id === selectedTone)?.emoji}
             </span>
-            <span className="font-medium text-sm">
+            <span className={cn("font-medium text-sm", textClassName)}>
               {toneOptions.find((t) => t.id === selectedTone)?.name}
             </span>
           </span>

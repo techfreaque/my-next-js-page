@@ -1,6 +1,6 @@
 "use client";
 
-import { createRainbowTextStyle } from "lib/design-system";
+import { createRainbowTextStyle } from "lib/rainbow-style";
 import { cn } from "lib/utils";
 import type { JSX } from "react";
 import React from "react";

@@ -1,4 +1,4 @@
-import LoadingCat from "components/loading-cat";
+import LoadingCat from "components/loading-cat/loading-cat";
 import type { JSX } from "react";
 import React from "react";
 

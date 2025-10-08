@@ -6,6 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "components/ui/dropdown-menu";
+import { cn } from "lib/utils";
 import { ChevronDown } from "lucide-react";
 import type { JSX } from "react";
 import React, { useState } from "react";
@@ -15,7 +16,8 @@ import { useAIChatContext } from "../AIChatContext";
 
 interface ModelSelectorProps {
   disabled?: boolean;
-  className?: string;
+  className: string;
+  textClassName?: string;
 }
 
 /**
@@ -24,7 +26,8 @@ interface ModelSelectorProps {
  */
 export function ModelSelector({
   disabled = false,
-  className = "w-[200px]",
+  className,
+  textClassName,
 }: ModelSelectorProps): JSX.Element {
   const [modelHover, setModelHover] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -42,13 +45,14 @@ export function ModelSelector({
           variant="rainbow"
           size="sm"
           isHover={shouldShowHover}
-          className={`${className} h-8 font-medium justify-between`}
-          onMouseEnter={() => setModelHover(true)}
-          onMouseLeave={() => setModelHover(false)}
+          className={cn("h-8 font-medium justify-between", className)}
+          setIsHover={setModelHover}
           disabled={disabled}
         >
           <span className="flex items-center gap-2">
-            <span className="text-base w-6 h-6 flex items-center justify-center">
+            <span
+              className={"text-base w-6 h-6 flex items-center justify-center"}
+            >
               {icon &&
                 (React.isValidElement(icon)
                   ? icon
@@ -62,7 +66,7 @@ export function ModelSelector({
                         { className: "h-6 w-6 size-6" },
                       ))}
             </span>
-            <span className="font-medium text-sm">
+            <span className={cn("font-medium text-sm", textClassName)}>
               {modelOptions.find((m) => m.id === selectedModel)?.name}
             </span>
           </span>
@@ -80,7 +84,7 @@ export function ModelSelector({
                 isSelected={isSelected}
                 icon={model.icon}
                 label={model.name}
-                description={`${model.provider} • ${(model.contextWindow / 1000).toFixed(0)}K context`}
+                description={`${model.provider} • ${(model.contextWindow / 1000).toFixed(0)}K context${model.parameterCount ? ` • ${model.parameterCount}B params` : ""}`}
                 onClick={() => setSelectedModel(model.id)}
               />
             </DropdownMenuItem>

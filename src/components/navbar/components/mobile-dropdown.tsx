@@ -4,7 +4,7 @@ import type { JSX } from "react";
 import React from "react";
 
 import type { NavItemConfig } from "../constants";
-import { GitHubButton } from "./github-button";
+import { GitHubNavButton } from "./github-button";
 import { NavItem } from "./nav-item";
 
 /**
@@ -56,7 +56,7 @@ export function MobileDropdown({
     <div
       ref={ref}
       className={
-        "absolute top-full right-0 mt-2 z-50 w-[160px] p-2 space-y-1 bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg"
+        "absolute top-full right-[0] mt-2 z-50 w-[160px] p-2 space-y-1 bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg"
       }
     >
       {/* Navigation Items */}
@@ -83,7 +83,7 @@ export function MobileDropdown({
       {/* Additional Options */}
       <div className="border-t border-border/50 pt-2 mt-2 space-y-1">
         <div className="w-full">
-          <GitHubButton onNavbarHover={onNavbarHover} />
+          <GitHubNavButton onNavbarHover={onNavbarHover} />
         </div>
       </div>
     </div>

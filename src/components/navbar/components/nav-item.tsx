@@ -19,8 +19,8 @@ export interface NavItemProps {
   icon: React.ComponentType<{ className?: string }>;
   /** Display label */
   label: string;
-  /** Whether this is displayed in tablet mode (smaller text) */
-  isTablet?: boolean;
+  /** Whether this is displayed in mobile mode (smaller text) */
+  isMobile?: boolean;
   /** Whether the item should take full width (for dropdowns) */
   fullWidth?: boolean;
   /** Callback when navbar hover state changes */
@@ -40,29 +40,16 @@ export function NavItem({
   onNavClick,
   icon: IconComponent,
   label,
-  isTablet = false,
+  isMobile = false,
   fullWidth = false,
   onNavbarHover,
 }: NavItemProps): JSX.Element {
   const [isHovered, setIsHovered] = useState(false);
   const shouldShowRainbow = isActive || isHovered;
 
-  /**
-   * Handles mouse enter events
-   * Updates local hover state and triggers navbar hover callback
-   */
-  const handleMouseEnter = (): void => {
-    setIsHovered(true);
-    onNavbarHover?.(true); // Trigger email button animation
-  };
-
-  /**
-   * Handles mouse leave events
-   * Updates local hover state and triggers navbar hover callback
-   */
-  const handleMouseLeave = (): void => {
-    setIsHovered(false);
-    onNavbarHover?.(false); // Stop email button animation
+  const handleHover = (_isHover: boolean): void => {
+    setIsHovered(_isHover);
+    onNavbarHover?.(_isHover); // Trigger email button animation
   };
 
   return (
@@ -76,8 +63,7 @@ export function NavItem({
           ? "border-2 border-blue-500/50"
           : "border-2 border-transparent"
       }`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      setIsHover={handleHover}
     >
       <a
         href={`#${href}`}
@@ -85,7 +71,7 @@ export function NavItem({
         className={`flex items-center gap-2 ${fullWidth ? "w-full justify-start" : ""}`}
       >
         <IconComponent className="w-4 h-4" />
-        <span className={isTablet ? "text-xs" : "text-sm"}>{label}</span>
+        <span className={isMobile ? "text-xs" : "text-sm"}>{label}</span>
       </a>
     </Button>
   );

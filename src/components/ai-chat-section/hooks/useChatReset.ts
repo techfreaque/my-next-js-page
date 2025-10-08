@@ -1,21 +1,17 @@
 import { useState } from "react";
 
-import type { StoredMessage } from "./useChatStorage";
+import { type StoredMessage, useChatStorage } from "./useChatStorage";
 
 interface UseChatResetProps {
-  clearMessagesFromStorage: () => void;
-  getDefaultMessages: () => StoredMessage[];
   setMessages: (messages: StoredMessage[]) => void;
 }
 
-export function useChatReset({
-  clearMessagesFromStorage,
-  getDefaultMessages,
-  setMessages,
-}: UseChatResetProps): {
+export function useChatReset({ setMessages }: UseChatResetProps): {
   resetClickCount: number;
   handleResetClick: () => void;
 } {
+  const { getDefaultMessage: getDefaultMessage, clearMessagesFromStorage } =
+    useChatStorage();
   const [resetClickCount, setResetClickCount] = useState(0);
 
   const handleResetClick = (): void => {
@@ -26,7 +22,7 @@ export function useChatReset({
       }, 5000);
     } else {
       clearMessagesFromStorage();
-      setMessages(getDefaultMessages());
+      setMessages([getDefaultMessage()]);
       setResetClickCount(0);
     }
   };

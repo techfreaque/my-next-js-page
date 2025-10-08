@@ -1,6 +1,6 @@
 "use client";
 
-import { SiGithub } from "@icons-pack/react-simple-icons";
+import { SiGithub, SiX } from "@icons-pack/react-simple-icons";
 import { Button } from "components/ui/button";
 import { createRainbowTextStyle, gradients } from "lib/rainbow-style";
 import { Coffee, Mail, Sparkles } from "lucide-react";
@@ -105,6 +105,12 @@ export function Footer(): JSX.Element {
                   <Button size={"lg"} variant="rainbow" setIsHover={setIsHover}>
                     <FaLinkedin />
                     <span>LinkedIn</span>
+                  </Button>
+                </a>
+                <a target={"_blank"} href={personalInfo.twitter}>
+                  <Button size={"lg"} variant="rainbow" setIsHover={setIsHover}>
+                    <SiX />
+                    <span>Twitter</span>
                   </Button>
                 </a>
               </div>

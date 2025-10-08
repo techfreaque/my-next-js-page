@@ -1,6 +1,5 @@
 import { AboutSection } from "components/about-section";
 import { AIChatSection } from "components/ai-chat-section/ai-chat-section";
-import { EducationSkillsSection } from "components/education-skills-section";
 import { ExperienceSection } from "components/experience-section";
 import { Footer } from "components/footer/footer";
 import { FormalEducationSection } from "components/formal-education";
@@ -34,27 +33,23 @@ export default function Home(): JSX.Element {
           <section id={PAGE_SECTIONS.CHAT}>
             <AIChatSection />
           </section>
-
           {/* About section - personal story and background */}
           <section id={PAGE_SECTIONS.ABOUT}>
             <AboutSection />
           </section>
-
           {/* Experience section - professional experience */}
           <section id={PAGE_SECTIONS.EXPERIENCE}>
             <ExperienceSection />
             <FormalEducationSection />
           </section>
-
           {/* Projects section - portfolio of work */}
           <section id={PAGE_SECTIONS.PROJECTS}>
             <ProjectsSection />
           </section>
-
           {/* Skills & Education section - technical skills and learning journey */}
-          <section id={PAGE_SECTIONS.SKILLS}>
+          {/* <section id={PAGE_SECTIONS.SKILLS}>
             <EducationSkillsSection />
-          </section>
+          </section> */}
         </div>
         {/* Footer with contact information */}
         <Footer />

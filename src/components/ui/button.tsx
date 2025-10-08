@@ -11,11 +11,11 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+          "hover:[&_svg]:!text-violet-500 border-2 hover:bg-blue-500/20 hover:border-blue-500/50 transition-all duration-300",
         rainbow:
           "border-2 border-blue-500/50 bg-blue-500/10 hover:bg-blue-500/20 font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 [&_svg]:!text-blue-500 hover:[&_svg]:!text-violet-500 [&_svg]:transition-colors [&_svg]:duration-300",
         ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+          "hover:[&_svg]:!text-violet-500 border-2 border-transparent hover:bg-blue-500/20 hover:border-blue-500/50 transition-all duration-300",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
@@ -73,7 +73,7 @@ export function Button({
   };
 
   const rainbowStyle =
-    variant === "rainbow"
+    variant === "rainbow" || currentHover
       ? createRainbowTextStyle(currentHover, "primary")
       : {};
 

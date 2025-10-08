@@ -9,6 +9,7 @@ export const personalInfo = {
   email: "max@a42.ch",
   github: myGithub,
   linkedIn: "https://www.linkedin.com/in/marcus-brandstaetter",
+  twitter: "https://x.com/sir_freaque",
   thisProject: `${myGithub}/my-next-js-page`,
   website: "max.a42.ch",
   experienceYears: "13+",

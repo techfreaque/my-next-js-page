@@ -33,6 +33,7 @@ COPY --from=builder /app/next.config.ts ./
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 COPY --from=builder /app/package.json ./
+COPY --from=builder /app/.env ./
 
 # Install only production dependencies
 RUN bun install --production --frozen-lockfile

@@ -107,15 +107,12 @@ export function validateChatRequest(data: ChatRequest): ChatRequest {
 
   if (!result.success) {
     const issues = result.error.issues.map((issue) => {
-      // Custom error message for invalid model attempts (security feature)
       if (issue.path.includes("model")) {
         return `Invalid model. Nice try hackerman! 🕵️ Valid models: ${Object.values(ModelId).join(", ")}`;
       }
-      // Custom error message for invalid tone attempts
       if (issue.path.includes("tone")) {
         return `Invalid tone. Valid tones: ${Object.values(ToneId).join(", ")}`;
       }
-      // Default error message for other validation failures
       return `${issue.path.join(".")}: ${issue.message}`;
     });
 

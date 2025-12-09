@@ -9,8 +9,6 @@ services:
     restart: unless-stopped
     networks:
       - caddy_internal
-    ports:
-      - "3000:3000"
     environment:
       - NODE_ENV=production
       - PORT=3000

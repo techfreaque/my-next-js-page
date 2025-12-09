@@ -16,17 +16,30 @@
     "resolveJsonModule": true,
     "noUncheckedSideEffectImports": false,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
+    "ignoreDeprecations": "6.0",
     "baseUrl": "./src",
     "paths": {
       "@/*": [
-        "./src/*"
+        "./*"
+      ],
+      "components/*": [
+        "./components/*"
+      ],
+      "lib/*": [
+        "./lib/*"
+      ],
+      "utils/*": [
+        "./utils/*"
+      ],
+      "me/*": [
+        "./me/*"
       ]
     },
     "target": "ES2017"
@@ -35,7 +48,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

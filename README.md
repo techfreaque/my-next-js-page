@@ -233,7 +233,7 @@ GPL-V3 License - see [LICENSE](LICENSE) for details.
 
 **Built with ❤️ and lots of ☕ by [Max Brandstaetter](https://max.a42.ch)**
 
-*A production-ready portfolio template for the modern web*
+**A production-ready portfolio template for the modern web**
 
 ⭐ **Star this repo if it helped you!** ⭐
 

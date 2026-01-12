@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "es6"
-    ],
+    "lib": ["dom", "dom.iterable", "es6"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -23,23 +19,12 @@
         "name": "next"
       }
     ],
-    "baseUrl": "./src",
     "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "components/*": [
-        "./components/*"
-      ],
-      "lib/*": [
-        "./lib/*"
-      ],
-      "utils/*": [
-        "./utils/*"
-      ],
-      "me/*": [
-        "./me/*"
-      ]
+      "@/*": ["./src/*"],
+      "components/*": ["./src/components/*"],
+      "lib/*": ["./src/lib/*"],
+      "utils/*": ["./src/utils/*"],
+      "me/*": ["./src/me/*"]
     },
     "target": "ES2017"
   },
@@ -50,8 +35,5 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    ".next"
-  ]
+  "exclude": ["node_modules", ".next"]
 }

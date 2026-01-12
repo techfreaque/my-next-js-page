@@ -91,13 +91,7 @@ export function useChatInput(
       // Storage errors are expected in some environments, fail silently
     }
 
-    await handleFormSubmit(
-      undefined,
-      input,
-      selectedTone,
-      selectedModel,
-      setInput,
-    );
+    await handleFormSubmit(undefined, input, selectedTone, selectedModel, setInput);
   }, [input, isLoading, handleFormSubmit, selectedTone, selectedModel]);
 
   // Form submit handler

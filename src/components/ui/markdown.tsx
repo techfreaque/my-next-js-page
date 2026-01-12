@@ -14,11 +14,7 @@ interface MarkdownProps {
   isHover?: boolean;
 }
 
-export function Markdown({
-  content,
-  className,
-  isHover = false,
-}: MarkdownProps): JSX.Element {
+export function Markdown({ content, className, isHover = false }: MarkdownProps): JSX.Element {
   return (
     <div className={cn("leading-relaxed max-w-none", className)}>
       <ReactMarkdown
@@ -72,33 +68,22 @@ export function Markdown({
             </p>
           ),
 
-          ul: ({ children }) => (
-            <ul className="space-y-2 mb-3 text-sm ml-4">{children}</ul>
-          ),
-          ol: ({ children }) => (
-            <ol className="space-y-2 mb-3 text-sm ml-4">{children}</ol>
-          ),
+          ul: ({ children }) => <ul className="space-y-2 mb-3 text-sm ml-4">{children}</ul>,
+          ol: ({ children }) => <ol className="space-y-2 mb-3 text-sm ml-4">{children}</ol>,
           li: ({ children }) => (
             <li className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed flex items-start gap-2">
-              <span className="text-blue-500 dark:text-blue-400 mt-1 flex-shrink-0">
-                •
-              </span>
+              <span className="text-blue-500 dark:text-blue-400 mt-1 flex-shrink-0">•</span>
               <span>{children}</span>
             </li>
           ),
 
           strong: ({ children }) => (
-            <strong
-              className="font-bold"
-              style={createRainbowTextStyle(isHover, "primary")}
-            >
+            <strong className="font-bold" style={createRainbowTextStyle(isHover, "primary")}>
               {children}
             </strong>
           ),
           em: ({ children }) => (
-            <em className="italic text-slate-600 dark:text-slate-400">
-              {children}
-            </em>
+            <em className="italic text-slate-600 dark:text-slate-400">{children}</em>
           ),
 
           // Code with enhanced styling
@@ -111,11 +96,7 @@ export function Markdown({
                 </code>
               );
             }
-            return (
-              <code className={cn("text-xs font-mono", className)}>
-                {children}
-              </code>
-            );
+            return <code className={cn("text-xs font-mono", className)}>{children}</code>;
           },
           pre: ({ children }) => (
             <pre className="bg-slate-900 dark:bg-slate-950 text-slate-100 p-4 rounded-lg overflow-x-auto mb-3 text-xs border border-slate-200 dark:border-slate-800">
@@ -153,9 +134,7 @@ export function Markdown({
             </th>
           ),
           td: ({ children }) => (
-            <td className="border border-border px-2 py-1 text-foreground">
-              {children}
-            </td>
+            <td className="border border-border px-2 py-1 text-foreground">{children}</td>
           ),
 
           hr: () => <hr className="border-border my-3" />,

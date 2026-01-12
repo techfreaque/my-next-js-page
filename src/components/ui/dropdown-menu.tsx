@@ -13,25 +13,19 @@ function DropdownMenu({
 
 function DropdownMenuTrigger({
   ...props
-}: React.ComponentProps<
-  typeof DropdownMenuPrimitive.Trigger
->): React.JSX.Element {
+}: React.ComponentProps<typeof DropdownMenuPrimitive.Trigger>): React.JSX.Element {
   return <DropdownMenuPrimitive.Trigger {...props} />;
 }
 
 function DropdownMenuGroup({
   ...props
-}: React.ComponentProps<
-  typeof DropdownMenuPrimitive.Group
->): React.JSX.Element {
+}: React.ComponentProps<typeof DropdownMenuPrimitive.Group>): React.JSX.Element {
   return <DropdownMenuPrimitive.Group {...props} />;
 }
 
 function DropdownMenuPortal({
   ...props
-}: React.ComponentProps<
-  typeof DropdownMenuPrimitive.Portal
->): React.JSX.Element {
+}: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>): React.JSX.Element {
   return <DropdownMenuPrimitive.Portal {...props} />;
 }
 
@@ -43,9 +37,7 @@ function DropdownMenuSub({
 
 function DropdownMenuRadioGroup({
   ...props
-}: React.ComponentProps<
-  typeof DropdownMenuPrimitive.RadioGroup
->): React.JSX.Element {
+}: React.ComponentProps<typeof DropdownMenuPrimitive.RadioGroup>): React.JSX.Element {
   return <DropdownMenuPrimitive.RadioGroup {...props} />;
 }
 
@@ -75,9 +67,7 @@ function DropdownMenuSubTrigger({
 function DropdownMenuSubContent({
   className,
   ...props
-}: React.ComponentProps<
-  typeof DropdownMenuPrimitive.SubContent
->): React.JSX.Element {
+}: React.ComponentProps<typeof DropdownMenuPrimitive.SubContent>): React.JSX.Element {
   return (
     <DropdownMenuPrimitive.SubContent
       className={cn(
@@ -93,9 +83,7 @@ function DropdownMenuContent({
   className,
   sideOffset = 4,
   ...props
-}: React.ComponentProps<
-  typeof DropdownMenuPrimitive.Content
->): React.JSX.Element {
+}: React.ComponentProps<typeof DropdownMenuPrimitive.Content>): React.JSX.Element {
   return (
     <DropdownMenuPrimitive.Portal>
       <DropdownMenuPrimitive.Content
@@ -137,9 +125,7 @@ function DropdownMenuCheckboxItem({
   children,
   checked,
   ...props
-}: React.ComponentProps<
-  typeof DropdownMenuPrimitive.CheckboxItem
->): React.JSX.Element {
+}: React.ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem>): React.JSX.Element {
   return (
     <DropdownMenuPrimitive.CheckboxItem
       className={cn(
@@ -163,9 +149,7 @@ function DropdownMenuRadioItem({
   className,
   children,
   ...props
-}: React.ComponentProps<
-  typeof DropdownMenuPrimitive.RadioItem
->): React.JSX.Element {
+}: React.ComponentProps<typeof DropdownMenuPrimitive.RadioItem>): React.JSX.Element {
   return (
     <DropdownMenuPrimitive.RadioItem
       className={cn(
@@ -193,11 +177,7 @@ function DropdownMenuLabel({
 }): React.JSX.Element {
   return (
     <DropdownMenuPrimitive.Label
-      className={cn(
-        "px-2 py-1.5 text-sm font-semibold",
-        inset && "pl-8",
-        className,
-      )}
+      className={cn("px-2 py-1.5 text-sm font-semibold", inset && "pl-8", className)}
       {...props}
     />
   );
@@ -206,9 +186,7 @@ function DropdownMenuLabel({
 function DropdownMenuSeparator({
   className,
   ...props
-}: React.ComponentProps<
-  typeof DropdownMenuPrimitive.Separator
->): React.JSX.Element {
+}: React.ComponentProps<typeof DropdownMenuPrimitive.Separator>): React.JSX.Element {
   return (
     <DropdownMenuPrimitive.Separator
       className={cn("-mx-1 my-1 h-px bg-muted", className)}
@@ -222,10 +200,7 @@ function DropdownMenuShortcut({
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>): React.JSX.Element {
   return (
-    <span
-      className={cn("ml-auto text-xs tracking-widest opacity-60", className)}
-      {...props}
-    />
+    <span className={cn("ml-auto text-xs tracking-widest opacity-60", className)} {...props} />
   );
 }
 

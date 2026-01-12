@@ -11,14 +11,7 @@
  * Eliminates ALL prop drilling by providing complete chat state through context.
  */
 
-import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import type { ModelId } from "utils/model-config";
 import { defaultModel, getAllModelIds } from "utils/model-config";
 import type { ToneId } from "utils/tone-config";
@@ -102,9 +95,7 @@ interface AIChatProviderProps {
   children: React.ReactNode;
 }
 
-export function AIChatProvider({
-  children,
-}: AIChatProviderProps): React.JSX.Element {
+export function AIChatProvider({ children }: AIChatProviderProps): React.JSX.Element {
   // Settings state with localStorage
   const [settings, setSettings] = useState<ChatSettings>(DEFAULT_SETTINGS);
   const [mounted, setMounted] = useState(false);
@@ -132,8 +123,7 @@ export function AIChatProvider({
   // Input hook
 
   // Loading hook
-  const { loadingText, startLoadingAnimation, stopLoadingAnimation } =
-    useChatLoading();
+  const { loadingText, startLoadingAnimation, stopLoadingAnimation } = useChatLoading();
 
   // API hook
   const { handleSubmit: apiHandleSubmit, handleStop } = useChatApi({
@@ -145,13 +135,12 @@ export function AIChatProvider({
     setIsLoading,
   });
 
-  const { input, setInput, handleInputChange, handleKeyDown, handleSubmit } =
-    useChatInput(
-      apiHandleSubmit,
-      settings.selectedTone,
-      settings.selectedModel,
-      isLoading,
-    );
+  const { input, setInput, handleInputChange, handleKeyDown, handleSubmit } = useChatInput(
+    apiHandleSubmit,
+    settings.selectedTone,
+    settings.selectedModel,
+    isLoading,
+  );
 
   // Message management hook
   const messageManagement = useMessageManagement({
@@ -193,10 +182,7 @@ export function AIChatProvider({
           validatedSettings.selectedTone !== parsedSettings.selectedTone ||
           validatedSettings.selectedModel !== parsedSettings.selectedModel
         ) {
-          localStorage.setItem(
-            CHAT_SETTINGS_KEY,
-            JSON.stringify(validatedSettings),
-          );
+          localStorage.setItem(CHAT_SETTINGS_KEY, JSON.stringify(validatedSettings));
         }
       }
     } catch {
@@ -312,11 +298,7 @@ export function AIChatProvider({
     setIsEditing,
   };
 
-  return (
-    <AIChatContext.Provider value={contextValue}>
-      {children}
-    </AIChatContext.Provider>
-  );
+  return <AIChatContext.Provider value={contextValue}>{children}</AIChatContext.Provider>;
 }
 
 /**

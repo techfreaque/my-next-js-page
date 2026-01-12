@@ -33,10 +33,7 @@ export function useScrollDetection(): {
           const offsetTop = element.offsetTop;
           const offsetHeight = element.offsetHeight;
 
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
             setActiveSection(section);
             break;
           }

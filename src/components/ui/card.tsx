@@ -8,12 +8,7 @@ interface CardProps extends ComponentProps<"div"> {
   setIsHover?: (hover: boolean) => void;
 }
 
-function Card({
-  className,
-  colorScheme = "blue",
-  setIsHover,
-  ...props
-}: CardProps): JSX.Element {
+function Card({ className, colorScheme = "blue", setIsHover, ...props }: CardProps): JSX.Element {
   const handleMouseEnter = (): void => {
     if (setIsHover) {
       setIsHover(true);
@@ -49,10 +44,7 @@ function Card({
   );
 }
 
-function CardHeader({
-  className,
-  ...props
-}: ComponentProps<"div">): JSX.Element {
+function CardHeader({ className, ...props }: ComponentProps<"div">): JSX.Element {
   return (
     <div
       data-slot="card-header"
@@ -65,10 +57,7 @@ function CardHeader({
   );
 }
 
-function CardTitle({
-  className,
-  ...props
-}: ComponentProps<"div">): JSX.Element {
+function CardTitle({ className, ...props }: ComponentProps<"div">): JSX.Element {
   return (
     <div
       data-slot="card-title"
@@ -78,10 +67,7 @@ function CardTitle({
   );
 }
 
-function CardDescription({
-  className,
-  ...props
-}: ComponentProps<"div">): JSX.Element {
+function CardDescription({ className, ...props }: ComponentProps<"div">): JSX.Element {
   return (
     <div
       data-slot="card-description"
@@ -91,39 +77,21 @@ function CardDescription({
   );
 }
 
-function CardAction({
-  className,
-  ...props
-}: ComponentProps<"div">): JSX.Element {
+function CardAction({ className, ...props }: ComponentProps<"div">): JSX.Element {
   return (
     <div
       data-slot="card-action"
-      className={cn(
-        "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
-        className,
-      )}
+      className={cn("col-start-2 row-span-2 row-start-1 self-start justify-self-end", className)}
       {...props}
     />
   );
 }
 
-function CardContent({
-  className,
-  ...props
-}: ComponentProps<"div">): JSX.Element {
-  return (
-    <div
-      data-slot="card-content"
-      className={cn("px-6", className)}
-      {...props}
-    />
-  );
+function CardContent({ className, ...props }: ComponentProps<"div">): JSX.Element {
+  return <div data-slot="card-content" className={cn("px-6", className)} {...props} />;
 }
 
-function CardFooter({
-  className,
-  ...props
-}: ComponentProps<"div">): JSX.Element {
+function CardFooter({ className, ...props }: ComponentProps<"div">): JSX.Element {
   return (
     <div
       data-slot="card-footer"
@@ -133,12 +101,4 @@ function CardFooter({
   );
 }
 
-export {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-};
+export { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle };

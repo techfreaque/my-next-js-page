@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "vibe": {
+      "command": "npx",
+      "args": ["--yes", "@next-vibe/checker@latest", "mcp"],
+      "env": {
+        "PROJECT_ROOT": "/home/max/projects/my-next-js-page"
+      }
+    }
+  }
+}

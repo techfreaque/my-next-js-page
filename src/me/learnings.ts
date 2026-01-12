@@ -37,19 +37,12 @@ export const learnings: {
 } = {
   category: "Continuous Self-Study & Professional Development",
   period: "2012-Present",
-  description:
-    "Countless offline/online courses, seminars, and hands-on learning",
+  description: "Countless offline/online courses, seminars, and hands-on learning",
   learningRabbitHoles: [
     {
       category: "JavaScript Ecosystem Deep Dive",
       icon: Code2,
-      technologies: [
-        "JavaScript (ES6+)",
-        "TypeScript",
-        "JSX",
-        "Node.js",
-        "Bun",
-      ],
+      technologies: ["JavaScript (ES6+)", "TypeScript", "JSX", "Node.js", "Bun"],
       story: `## My JavaScript Journey: From Frankensteining to Framework Building
 
 ### The Beginning: Learning by Doing
@@ -135,12 +128,7 @@ Why deal with shell scripting chaos when you can have:
     {
       category: "AI & Natural Language Coding",
       icon: Brain,
-      technologies: [
-        "AI Agents",
-        "Prompt Engineering",
-        "Code Generation",
-        "LLMs",
-      ],
+      technologies: ["AI Agents", "Prompt Engineering", "Code Generation", "LLMs"],
       story: `## The AI Revolution: From Skeptic to Conductor
 
 **Agents just changed everything.** This isn't hyperbole - it's reality.
@@ -170,18 +158,15 @@ We're not just using tools anymore - we're **orchestrating intelligence**. The d
       skills: [
         {
           name: "AI Prompt Engineering",
-          description:
-            "Crafting precise prompts that get exactly what I want from AI systems.",
+          description: "Crafting precise prompts that get exactly what I want from AI systems.",
         },
         {
           name: "AI Code Generation",
-          description:
-            "Using AI to generate high-quality code while maintaining my standards.",
+          description: "Using AI to generate high-quality code while maintaining my standards.",
         },
         {
           name: "AI Workflow Integration",
-          description:
-            "Building sophisticated AI-powered development workflows.",
+          description: "Building sophisticated AI-powered development workflows.",
         },
       ],
     },
@@ -217,8 +202,7 @@ The mental model of **React DOM Server streaming UI** paired with client hydrati
 
 > The future is streaming, not static.`,
       passion: "Extremely High",
-      currentFocus:
-        "Component architecture, state management, and performance optimization",
+      currentFocus: "Component architecture, state management, and performance optimization",
       customSections: {
         passionLabel: "Enthusiasm Level",
         focusLabel: "Current Research",
@@ -299,8 +283,7 @@ So instead, I'm still running my **good old ping pong bot** which:
 
 > Sometimes the boring solution is the best solution.`,
       passion: "Nostalgic",
-      currentFocus:
-        "Maintaining existing trading systems while focusing more on web technologies",
+      currentFocus: "Maintaining existing trading systems while focusing more on web technologies",
       customSections: {
         passionLabel: "Current Status",
         focusLabel: "Reality Check",
@@ -348,14 +331,7 @@ But then I discovered **Next.js** and other TypeScript backend frameworks and fe
     {
       category: "Database & Backend Architecture",
       icon: Database,
-      technologies: [
-        "MySQL",
-        "PostgreSQL",
-        "SQLite",
-        "Drizzle ORM",
-        "REST APIs",
-        "GraphQL",
-      ],
+      technologies: ["MySQL", "PostgreSQL", "SQLite", "Drizzle ORM", "REST APIs", "GraphQL"],
       story: `## Database Evolution: From Raw SQL to Type-Safe Heaven
 
 ### The Type-Safe Revolution
@@ -451,19 +427,11 @@ When GraphQL makes sense:
     {
       category: "DevOps & Infrastructure",
       icon: Cloud,
-      technologies: [
-        "Docker",
-        "Docker Compose",
-        "Linux",
-        "Bash",
-        "PowerShell",
-        "CI/CD",
-      ],
+      technologies: ["Docker", "Docker Compose", "Linux", "Bash", "PowerShell", "CI/CD"],
       story:
         "Started with basic containerization and now handle complex multi-service orchestration. I love the reliability and reproducibility that proper DevOps practices bring to development. It's not just about deployment - it's about creating sustainable, scalable systems.",
       passion: "Medium-High",
-      currentFocus:
-        "Container orchestration and automated deployment pipelines",
+      currentFocus: "Container orchestration and automated deployment pipelines",
       skills: [
         {
           name: "Docker & Containerization",
@@ -472,13 +440,11 @@ When GraphQL makes sense:
         },
         {
           name: "CI/CD Pipelines",
-          description:
-            "Automated deployment pipelines for reliable and consistent releases.",
+          description: "Automated deployment pipelines for reliable and consistent releases.",
         },
         {
           name: "Linux System Administration",
-          description:
-            "Managing Linux servers and environments for development and production.",
+          description: "Managing Linux servers and environments for development and production.",
         },
       ],
     },
@@ -536,8 +502,7 @@ From car technician to tech entrepreneur:
         },
         {
           name: "Strategic Planning",
-          description:
-            "Long-term thinking and collaborative goal-setting with team involvement.",
+          description: "Long-term thinking and collaborative goal-setting with team involvement.",
         },
       ],
     },
@@ -624,55 +589,34 @@ One API definition becomes:
     {
       category: "Integration & API Architecture",
       icon: Globe,
-      technologies: [
-        "REST APIs",
-        "GraphQL",
-        "Webhooks",
-        "OAuth",
-        "API Gateway",
-        "Microservices",
-      ],
+      technologies: ["REST APIs", "GraphQL", "Webhooks", "OAuth", "API Gateway", "Microservices"],
       story:
         "APIs are the nervous system of modern applications. I've built everything from simple REST endpoints to complex microservice architectures. The key is designing APIs that are intuitive for developers while being robust and scalable. Documentation and developer experience are just as important as the code itself.",
       passion: "High",
-      currentFocus:
-        "Event-driven architectures and real-time data synchronization",
+      currentFocus: "Event-driven architectures and real-time data synchronization",
       skills: [
         {
           name: "REST API Design",
-          description:
-            "Building intuitive and scalable REST APIs with proper documentation.",
+          description: "Building intuitive and scalable REST APIs with proper documentation.",
         },
         {
           name: "GraphQL Implementation",
-          description:
-            "Flexible data fetching and type-safe API design with GraphQL.",
+          description: "Flexible data fetching and type-safe API design with GraphQL.",
         },
         {
           name: "Microservices Architecture",
-          description:
-            "Designing and implementing complex microservice architectures.",
+          description: "Designing and implementing complex microservice architectures.",
         },
       ],
     },
     {
       category: "Other Languages & Legacy Systems",
       icon: Code2,
-      technologies: [
-        "PHP",
-        "Go",
-        "C#",
-        "SQL",
-        "MongoDB",
-        "Redis",
-        "Prisma",
-        "MySQL",
-      ],
+      technologies: ["PHP", "Go", "C#", "SQL", "MongoDB", "Redis", "Prisma", "MySQL"],
       story:
         "Sometimes you have to work with what's there. PHP? If I have to use it to bridge legacy systems, I can do it. But I rather use TypeScript or other typesafe languages. Go is nice for backend services and microservices. C#? I used it here and there, but never got into it. The alternatives just make more sense to me. I get the idea of NoSQL with MongoDB, but I didn't have a use case yet. Prisma was a great time, but flexibility and type-safety of drizzle won me over.",
       passion: "Low-Medium",
-      currentFocus:
-        "Migrating legacy systems to modern, type-safe alternatives",
+      currentFocus: "Migrating legacy systems to modern, type-safe alternatives",
       skills: [
         {
           name: "PHP",
@@ -694,8 +638,7 @@ One API definition becomes:
         },
         {
           name: "MongoDB",
-          description:
-            "I get the idea of NoSQL, but I didn't have a use case yet.",
+          description: "I get the idea of NoSQL, but I didn't have a use case yet.",
         },
         {
           name: "Redis",
@@ -724,8 +667,7 @@ One API definition becomes:
       story:
         "I mean what choice do you have for iOS development? I recently managed to build a webview based component and a demo app for it. I built a demo app and the Sovendus web view based flutter component. While Flutter is pretty nice, I rather use React Native or a Kotlin/Swift based solution. The mental model consistency between web and mobile development is what I'm after.",
       passion: "Medium",
-      currentFocus:
-        "Cross-platform solutions that maintain native performance and feel",
+      currentFocus: "Cross-platform solutions that maintain native performance and feel",
       skills: [
         {
           name: "React Native",
@@ -787,8 +729,7 @@ One API definition becomes:
         },
         {
           name: "File Server Management",
-          description:
-            "Network file systems, storage solutions, and backup systems",
+          description: "Network file systems, storage solutions, and backup systems",
         },
         {
           name: "Print Server Setup",
@@ -824,8 +765,7 @@ One API definition becomes:
       story:
         "My background as a car technician gave me a deep understanding of how things work at the hardware level. I can diagnose and repair electronics down to the component level, do precision SMD soldering, and even handle metalworking like brazing and TIG welding. This hardware knowledge gives me a unique perspective on software optimization and system architecture - when you understand how electrons flow through circuits, debugging software becomes intuitive.",
       passion: "Medium",
-      currentFocus:
-        "Applying hardware troubleshooting methodologies to software debugging",
+      currentFocus: "Applying hardware troubleshooting methodologies to software debugging",
       skills: [
         {
           name: "Server Hardware",
@@ -833,13 +773,11 @@ One API definition becomes:
         },
         {
           name: "PC & Notebook Repair",
-          description:
-            "Complete hardware diagnosis and repair of desktop and laptop systems",
+          description: "Complete hardware diagnosis and repair of desktop and laptop systems",
         },
         {
           name: "Mobile Device Repair",
-          description:
-            "Smartphone and tablet hardware repair and troubleshooting",
+          description: "Smartphone and tablet hardware repair and troubleshooting",
         },
         {
           name: "Automotive Electronics",
@@ -847,8 +785,7 @@ One API definition becomes:
         },
         {
           name: "SMD Soldering",
-          description:
-            "Surface-mount device soldering and microelectronics assembly",
+          description: "Surface-mount device soldering and microelectronics assembly",
         },
         {
           name: "Brazing & Welding",
@@ -865,8 +802,7 @@ One API definition becomes:
         },
         {
           name: "IoT & Wearables",
-          description:
-            "Internet of Things devices and wearable technology repair",
+          description: "Internet of Things devices and wearable technology repair",
         },
         {
           name: "Household Electronics",

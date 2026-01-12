@@ -40,11 +40,7 @@ export interface MessageManagementActions {
     newModel: ModelId,
   ) => Promise<void>;
   /** Add an error message to the chat */
-  addErrorMessage: (error: {
-    type: string;
-    message: string;
-    code?: string;
-  }) => void;
+  addErrorMessage: (error: { type: string; message: string; code?: string }) => void;
 }
 
 /**
@@ -153,10 +149,7 @@ export function useMessageManagement({
       // STEP 4: Create clean message array - ATOMIC OPERATION
       // Keep only messages up to and including the edited message
       // This removes ALL following messages (assistant responses, errors, etc.)
-      const cleanMessages: StoredMessage[] = [
-        ...messages.slice(0, messageIndex),
-        updatedMessage,
-      ];
+      const cleanMessages: StoredMessage[] = [...messages.slice(0, messageIndex), updatedMessage];
 
       // STEP 5: Update state and storage
       setMessages(cleanMessages);

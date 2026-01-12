@@ -152,9 +152,7 @@ export function getModelById(modelId: ModelId): ModelOption {
   }
 
   // Fallback to default model - this should never fail as default model is in the array
-  const defaultModelOption = modelOptions.find(
-    (model) => model.id === defaultModel,
-  );
+  const defaultModelOption = modelOptions.find((model) => model.id === defaultModel);
 
   // This should never happen in a properly configured system, but we handle it gracefully
   return defaultModelOption ?? modelOptions[0];

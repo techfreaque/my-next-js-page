@@ -22,13 +22,9 @@ function validateEnvironment(): z.infer<typeof envSchema> {
     return envSchema.parse(process.env);
   } catch (error) {
     if (error instanceof z.ZodError) {
-      const errorMessages = error.issues.map(
-        (err) => `${err.path.join(".")}: ${err.message}`,
-      );
+      const errorMessages = error.issues.map((err) => `${err.path.join(".")}: ${err.message}`);
 
-      console.error(
-        `Server environment validation failed:\n${errorMessages.join("\n")}`,
-      );
+      console.error(`Server environment validation failed:\n${errorMessages.join("\n")}`);
     } else {
       console.error(
         `Server environment validation error: ${error instanceof Error ? error.message : String(error)}`,

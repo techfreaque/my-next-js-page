@@ -6,11 +6,22 @@
 @variant light (&:not(.dark *));
 
 :root {
-
-
   /* Rainbow gradients - used across all fancy components */
-  --rainbow-gradient: linear-gradient(to right, var(--primary), var(--accent), var(--info), var(--pink), var(--primary));
-  --rainbow-gradient-2: linear-gradient(to right, var(--accent), var(--primary), var(--accent), var(--primary));
+  --rainbow-gradient: linear-gradient(
+    to right,
+    var(--primary),
+    var(--accent),
+    var(--info),
+    var(--pink),
+    var(--primary)
+  );
+  --rainbow-gradient-2: linear-gradient(
+    to right,
+    var(--accent),
+    var(--primary),
+    var(--accent),
+    var(--primary)
+  );
 
   /* Design system tokens */
   --radius-lg: 0.75rem;
@@ -101,7 +112,6 @@
   /* hide scrollbar */
   ::-webkit-scrollbar {
     display: none;
-
   }
 
   ::-webkit-scrollbar-track {
@@ -120,7 +130,6 @@
     display: none;
   }
 
-
   /* Dark mode adjustments for code highlighting */
   .dark .hljs {
     background: hsl(var(--muted)) !important;
@@ -130,7 +139,6 @@
 
 /* animations for background decorations */
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0px);

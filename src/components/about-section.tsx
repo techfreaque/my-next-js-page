@@ -33,10 +33,7 @@ export function AboutSection(): JSX.Element {
               setIsHover={setIsHover}
               useRainbow={false}
             >
-              A bit{" "}
-              <span style={createRainbowTextStyle(isHover, "primary")}>
-                about me
-              </span>
+              A bit <span style={createRainbowTextStyle(isHover, "primary")}>about me</span>
             </Title>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto text-pretty leading-relaxed">
               {aboutContent.welcomeText}

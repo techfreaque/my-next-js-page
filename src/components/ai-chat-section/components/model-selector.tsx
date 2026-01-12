@@ -50,9 +50,7 @@ export function ModelSelector({
           disabled={disabled}
         >
           <span className="flex items-center gap-2">
-            <span
-              className={"text-base w-6 h-6 flex items-center justify-center"}
-            >
+            <span className={"text-base w-6 h-6 flex items-center justify-center"}>
               {icon &&
                 (React.isValidElement(icon)
                   ? icon

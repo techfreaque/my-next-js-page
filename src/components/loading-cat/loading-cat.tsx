@@ -7,9 +7,7 @@ interface LoadingCatProps {
   loading: boolean;
 }
 
-export default function LoadingCat({
-  loading,
-}: LoadingCatProps): JSX.Element | null {
+export default function LoadingCat({ loading }: LoadingCatProps): JSX.Element | null {
   if (!loading) {
     return null;
   }

@@ -44,32 +44,17 @@ export function ChatInput({
           <div className="p-4 border-t border-border/10 bg-background/10 rounded-b-xl">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-2">
               <div className="flex flex-col md:flex-row md:items-center gap-2">
-                <ModelSelector
-                  disabled={isLoading}
-                  className="w-full md:w-[210px]"
-                />
-                <ToneSelector
-                  disabled={isLoading}
-                  className="w-full md:w-[170px]"
-                />
+                <ModelSelector disabled={isLoading} className="w-full md:w-[210px]" />
+                <ToneSelector disabled={isLoading} className="w-full md:w-[170px]" />
               </div>
 
               {/* Action buttons */}
               <div className="flex items-center justify-between md:justify-end gap-2">
-                {messages?.length > 1 && (
-                  <ResetChatButton setMessages={setMessages} />
-                )}
+                {messages?.length > 1 && <ResetChatButton setMessages={setMessages} />}
 
-                <SystemPromptModal
-                  selectedTone={selectedTone}
-                  toneOptions={toneOptions}
-                />
+                <SystemPromptModal selectedTone={selectedTone} toneOptions={toneOptions} />
 
-                <ChatSubmitButton
-                  chatInput={input}
-                  isLoading={isLoading}
-                  onStop={handleStop}
-                />
+                <ChatSubmitButton chatInput={input} isLoading={isLoading} onStop={handleStop} />
               </div>
             </div>
           </div>

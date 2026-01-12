@@ -21,9 +21,7 @@ export interface GitHubButtonProps {
  * @param props - GitHubButton component props
  * @returns JSX element representing the GitHub button
  */
-export function GitHubNavButton({
-  onNavbarHover,
-}: GitHubButtonProps): JSX.Element {
+export function GitHubNavButton({ onNavbarHover }: GitHubButtonProps): JSX.Element {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleHover = (_isHover: boolean): void => {
@@ -38,9 +36,7 @@ export function GitHubNavButton({
       isHover={isHovered}
       asChild
       className={`w-full justify-start text-sm font-medium ${
-        isHovered
-          ? "border-2 border-blue-500/50"
-          : "border-2 border-transparent"
+        isHovered ? "border-2 border-blue-500/50" : "border-2 border-transparent"
       }`}
       setIsHover={handleHover}
     >

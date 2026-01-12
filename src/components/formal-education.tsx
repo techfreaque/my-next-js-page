@@ -51,17 +51,15 @@ export function FormalEducationSection(): JSX.Element {
                       </p>
                       {"achievements" in item && item.achievements && (
                         <ul className="space-y-1">
-                          {item.achievements.map(
-                            (achievement: string, idx: number) => (
-                              <li
-                                key={idx}
-                                className="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"
-                              >
-                                <span className="text-purple-500 mt-1">•</span>
-                                {achievement}
-                              </li>
-                            ),
-                          )}
+                          {item.achievements.map((achievement: string, idx: number) => (
+                            <li
+                              key={idx}
+                              className="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"
+                            >
+                              <span className="text-purple-500 mt-1">•</span>
+                              {achievement}
+                            </li>
+                          ))}
                         </ul>
                       )}
                     </div>

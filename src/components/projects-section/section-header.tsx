@@ -16,11 +16,7 @@ export function SectionHeader({
   onMouseLeave,
 }: SectionHeaderProps): JSX.Element {
   return (
-    <div
-      className="text-center mb-16"
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
+    <div className="text-center mb-16" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <Badge variant="sectionBadge" className="mb-4">
         <Code className="h-4 w-4" />
         Projects & Work
@@ -37,9 +33,9 @@ export function SectionHeader({
         </span>
       </h2>
       <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto text-pretty leading-relaxed">
-        SaaS platforms, trading bots, custom frameworks, and developer tools.
-        Some are live in production, some are still in development, and a few
-        are retired but taught me valuable lessons.
+        SaaS platforms, trading bots, custom frameworks, and developer tools. Some are live in
+        production, some are still in development, and a few are retired but taught me valuable
+        lessons.
       </p>
     </div>
   );

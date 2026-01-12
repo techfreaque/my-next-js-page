@@ -1,11 +1,7 @@
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { streamText } from "ai";
 import type { ChatRequest } from "lib/api-validation";
-import {
-  APIValidationError,
-  createErrorResponse,
-  validateChatRequest,
-} from "lib/api-validation";
+import { APIValidationError, createErrorResponse, validateChatRequest } from "lib/api-validation";
 import { env } from "lib/env";
 import type { NextRequest } from "next/server";
 import { getModelById } from "utils/model-config";
@@ -45,10 +41,7 @@ export async function POST(req: NextRequest): Promise<Response> {
 
         if (chunk.error && typeof chunk.error === "object") {
           // Try to extract from responseBody (OpenRouter errors)
-          if (
-            "responseBody" in chunk.error &&
-            typeof chunk.error.responseBody === "string"
-          ) {
+          if ("responseBody" in chunk.error && typeof chunk.error.responseBody === "string") {
             try {
               const errorData = JSON.parse(chunk.error.responseBody) as {
                 error?: { message?: string };
@@ -60,19 +53,15 @@ export async function POST(req: NextRequest): Promise<Response> {
           }
 
           // Fallback to error.message if available
-          if (
-            "message" in chunk.error &&
-            typeof chunk.error.message === "string"
-          ) {
+          if ("message" in chunk.error && typeof chunk.error.message === "string") {
             errorMessage = chunk.error.message;
           }
         }
 
         // Return HTTP error response
-        return Response.json(
-          createErrorResponse("AI Service Error", errorMessage, "AI_ERROR"),
-          { status: 400 },
-        );
+        return Response.json(createErrorResponse("AI Service Error", errorMessage, "AI_ERROR"), {
+          status: 400,
+        });
       }
     }
 
@@ -80,18 +69,13 @@ export async function POST(req: NextRequest): Promise<Response> {
     return result.toTextStreamResponse();
   } catch (error) {
     if (error instanceof APIValidationError) {
-      return Response.json(
-        createErrorResponse(error.name, error.message, error.code),
-        { status: error.statusCode },
-      );
+      return Response.json(createErrorResponse(error.name, error.message, error.code), {
+        status: error.statusCode,
+      });
     }
 
     return Response.json(
-      createErrorResponse(
-        "Server Error",
-        "Internal server error",
-        "SERVER_ERROR",
-      ),
+      createErrorResponse("Server Error", "Internal server error", "SERVER_ERROR"),
       { status: 500 },
     );
   }

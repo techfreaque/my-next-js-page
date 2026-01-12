@@ -13,17 +13,14 @@ export function useProjectsData(activeFilter: Category): {
       projectCategories.map((category) => ({
         id: category.id,
         label: category.label,
-        count: projects.filter((project) =>
-          project.categories.includes(category.id),
-        ).length,
+        count: projects.filter((project) => project.categories.includes(category.id)).length,
         icon: category.icon,
       })),
     [],
   );
 
   const filteredProjects = useMemo(
-    () =>
-      projects.filter((project) => project.categories.includes(activeFilter)),
+    () => projects.filter((project) => project.categories.includes(activeFilter)),
     [activeFilter],
   );
 

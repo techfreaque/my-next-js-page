@@ -48,18 +48,11 @@ export function ProjectCard({
           </div>
           <div className="flex items-center gap-2">
             {project.categories.includes(Category.FEATURED) && (
-              <Badge
-                variant="default"
-                className="bg-primary/20 text-primary text-xs"
-              >
+              <Badge variant="default" className="bg-primary/20 text-primary text-xs">
                 Featured
               </Badge>
             )}
-            <div
-              className={`transition-all duration-300 ${
-                isExpanded ? "rotate-180" : ""
-              }`}
-            >
+            <div className={`transition-all duration-300 ${isExpanded ? "rotate-180" : ""}`}>
               <ChevronDown
                 className={`h-5 w-5 transition-colors duration-300 ${
                   isHovered ? "text-cyan-500" : "text-slate-400"
@@ -73,9 +66,7 @@ export function ProjectCard({
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="text-muted-foreground leading-relaxed text-sm">
-          {project.description}
-        </p>
+        <p className="text-muted-foreground leading-relaxed text-sm">{project.description}</p>
 
         {/* Technologies */}
         <div>
@@ -104,10 +95,7 @@ export function ProjectCard({
             </h4>
             <ul className="space-y-2">
               {project.achievements.map((achievement, idx) => (
-                <li
-                  key={idx}
-                  className="text-xs text-muted-foreground flex items-start"
-                >
+                <li key={idx} className="text-xs text-muted-foreground flex items-start">
                   <span className="text-cyan-500 mr-2 mt-0.5">•</span>
                   {achievement}
                 </li>
@@ -119,22 +107,16 @@ export function ProjectCard({
         {!isExpanded && project.achievements.length > 0 && (
           <div>
             <ul className="space-y-1">
-              {project.achievements
-                .slice(0, maxPreviewAchievements)
-                .map((achievement, idx) => (
-                  <li
-                    key={idx}
-                    className="text-xs text-muted-foreground flex items-start"
-                  >
-                    <span className="text-cyan-500 mr-2 mt-0.5">•</span>
-                    {achievement}
-                  </li>
-                ))}
+              {project.achievements.slice(0, maxPreviewAchievements).map((achievement, idx) => (
+                <li key={idx} className="text-xs text-muted-foreground flex items-start">
+                  <span className="text-cyan-500 mr-2 mt-0.5">•</span>
+                  {achievement}
+                </li>
+              ))}
             </ul>
             {project.achievements.length > maxPreviewAchievements && (
               <p className="text-xs text-muted-foreground mt-1 italic">
-                +{project.achievements.length - maxPreviewAchievements} more
-                achievements...
+                +{project.achievements.length - maxPreviewAchievements} more achievements...
               </p>
             )}
           </div>
@@ -186,11 +168,7 @@ export function ProjectCard({
               </div>
             ) : (
               <div className="pt-2">
-                <Button
-                  variant="rainbow"
-                  size="sm"
-                  className="w-full justify-center py-2 text-xs"
-                >
+                <Button variant="rainbow" size="sm" className="w-full justify-center py-2 text-xs">
                   Status: {project.status}
                 </Button>
               </div>

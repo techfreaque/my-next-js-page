@@ -55,8 +55,7 @@ export function useChatApi({
   /** Function to stop ongoing API requests */
   handleStop: () => void;
 } {
-  const [abortController, setAbortController] =
-    useState<AbortController | null>(null);
+  const [abortController, setAbortController] = useState<AbortController | null>(null);
 
   /**
    * Stops the current API request if one is in progress.
@@ -104,10 +103,7 @@ export function useChatApi({
       const cleanMessages = messages.filter(
         (msg) =>
           msg.role !== "error" &&
-          !(
-            msg.role === "assistant" &&
-            (!msg.content || msg.content.trim().length === 0)
-          ),
+          !(msg.role === "assistant" && (!msg.content || msg.content.trim().length === 0)),
       );
       newMessages = [...cleanMessages, userMessage];
       setMessages(newMessages);
@@ -131,9 +127,7 @@ export function useChatApi({
             .filter(
               (msg) =>
                 // Only include valid roles and non-empty content
-                (msg.role === "user" ||
-                  msg.role === "assistant" ||
-                  msg.role === "system") &&
+                (msg.role === "user" || msg.role === "assistant" || msg.role === "system") &&
                 msg.content &&
                 msg.content.trim().length > 0,
             )
@@ -161,8 +155,7 @@ export function useChatApi({
             message?: string;
             code?: string;
           };
-          errorMessage =
-            errorData.error?.message || errorData.message || errorMessage;
+          errorMessage = errorData.error?.message || errorData.message || errorMessage;
           errorCode = errorData.error?.code || errorData.code || errorCode;
         } catch {
           // If parsing fails, use the raw text or default message
@@ -173,9 +166,7 @@ export function useChatApi({
         setMessages((currentMessages) => {
           // Remove any existing errors and incomplete assistant messages
           const cleanMessages = currentMessages.filter(
-            (msg) =>
-              msg.role !== "error" &&
-              !(msg.role === "assistant" && !msg.content?.trim()),
+            (msg) => msg.role !== "error" && !(msg.role === "assistant" && !msg.content?.trim()),
           );
 
           const errorMsg: StoredMessage = {
@@ -202,9 +193,7 @@ export function useChatApi({
         // ATOMIC: Add error message directly
         setMessages((currentMessages) => {
           const cleanMessages = currentMessages.filter(
-            (msg) =>
-              msg.role !== "error" &&
-              !(msg.role === "assistant" && !msg.content?.trim()),
+            (msg) => msg.role !== "error" && !(msg.role === "assistant" && !msg.content?.trim()),
           );
 
           const errorMsg: StoredMessage = {
@@ -249,9 +238,7 @@ export function useChatApi({
 
         setMessages((prev) =>
           prev.map((msg) =>
-            msg.id === assistantMessage.id
-              ? { ...msg, content: fullContent }
-              : msg,
+            msg.id === assistantMessage.id ? { ...msg, content: fullContent } : msg,
           ),
         );
       }
@@ -282,9 +269,7 @@ export function useChatApi({
       // ATOMIC: Add error message directly
       setMessages((currentMessages) => {
         const cleanMessages = currentMessages.filter(
-          (msg) =>
-            msg.role !== "error" &&
-            !(msg.role === "assistant" && !msg.content?.trim()),
+          (msg) => msg.role !== "error" && !(msg.role === "assistant" && !msg.content?.trim()),
         );
 
         const errorMsg: StoredMessage = {

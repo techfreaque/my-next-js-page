@@ -82,11 +82,7 @@ export class APIValidationError extends Error {
  * @param code - Optional error code for programmatic handling
  * @returns Standardized error response object
  */
-export function createErrorResponse(
-  error: string,
-  message: string,
-  code?: string,
-): ErrorResponse {
+export function createErrorResponse(error: string, message: string, code?: string): ErrorResponse {
   return {
     error,
     message,

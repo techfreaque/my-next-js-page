@@ -10,8 +10,7 @@ export function useChatReset({ setMessages }: UseChatResetProps): {
   resetClickCount: number;
   handleResetClick: () => void;
 } {
-  const { getDefaultMessage: getDefaultMessage, clearMessagesFromStorage } =
-    useChatStorage();
+  const { getDefaultMessage, clearMessagesFromStorage } = useChatStorage();
   const [resetClickCount, setResetClickCount] = useState(0);
 
   const handleResetClick = (): void => {

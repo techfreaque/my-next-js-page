@@ -25,13 +25,8 @@ export function Navigation(): JSX.Element {
   const [isNavbarHovered, setIsNavbarHovered] = useState(false);
 
   const { isScrolled, activeSection } = useScrollDetection();
-  const {
-    isMobileMenuOpen,
-    toggleMobileMenu,
-    closeMobileMenu,
-    menuButtonRef,
-    menuRef,
-  } = useMobileMenu();
+  const { isMobileMenuOpen, toggleMobileMenu, closeMobileMenu, menuButtonRef, menuRef } =
+    useMobileMenu();
 
   /**
    * Handles navbar hover state changes
@@ -119,10 +114,7 @@ export function Navigation(): JSX.Element {
           {/* Right side actions - Fixed right position */}
           <div className="flex-shrink-0 flex items-center space-x-1 sm:space-x-2 min-[380px]:ml-4 sm:ml-6 md:ml-8">
             {/* Say Hello Button */}
-            <EmailButton
-              onNavbarHover={handleNavbarHover}
-              isHover={isNavbarHovered}
-            />
+            <EmailButton onNavbarHover={handleNavbarHover} isHover={isNavbarHovered} />
 
             {/* Theme Toggle - Always visible */}
             <div>
@@ -140,11 +132,7 @@ export function Navigation(): JSX.Element {
                 className="px-2 cursor-pointer"
                 setIsHover={handleNavbarHover}
               >
-                {isMobileMenuOpen ? (
-                  <X className="h-4 w-4" />
-                ) : (
-                  <Menu className="h-4 w-4" />
-                )}
+                {isMobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
               </Button>
 
               {/* Mobile Dropdown */}

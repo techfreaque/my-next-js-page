@@ -34,9 +34,8 @@ export function ViewSourceSection(): JSX.Element {
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
         >
-          Dive into the source code and see my development approach,
-          architecture decisions, and coding practices in action. Built with
-          modern tech stack and clean, maintainable code.
+          Dive into the source code and see my development approach, architecture decisions, and
+          coding practices in action. Built with modern tech stack and clean, maintainable code.
         </p>
 
         <div className="flex flex-wrap justify-center gap-3 mb-6">

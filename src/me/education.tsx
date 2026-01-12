@@ -1,7 +1,6 @@
 export const formalEducation = {
   category: "Formal Education",
-  subTitle:
-    "From fixing Ferraris to building software - the unconventional path",
+  subTitle: "From fixing Ferraris to building software - the unconventional path",
   items: [
     {
       degree: "Military Service",
@@ -27,8 +26,7 @@ export const formalEducation = {
       degree: "Polytechnic School - Electrical Engineering",
       institution: "Neumarkt (Department of Electrical Engineering)",
       period: "2006-2007",
-      focus:
-        "Electrical engineering basics - where I learned Ohm's law and soldering",
+      focus: "Electrical engineering basics - where I learned Ohm's law and soldering",
     },
   ],
 } as const;

@@ -31,9 +31,7 @@ export const buttonVariants = cva(
   },
 );
 
-interface ButtonProps
-  extends ComponentProps<"button">,
-    VariantProps<typeof buttonVariants> {
+interface ButtonProps extends ComponentProps<"button">, VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   isHover?: boolean;
   setIsHover?: (hover: boolean) => void;
@@ -73,9 +71,7 @@ export function Button({
   };
 
   const rainbowStyle =
-    variant === "rainbow" || currentHover
-      ? createRainbowTextStyle(currentHover, "primary")
-      : {};
+    variant === "rainbow" || currentHover ? createRainbowTextStyle(currentHover, "primary") : {};
 
   return (
     <Comp

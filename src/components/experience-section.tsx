@@ -86,9 +86,7 @@ export function ExperienceSection(): JSX.Element {
                         <p className="text-lg font-medium text-slate-700 dark:text-slate-300">
                           {job.company}
                         </p>
-                        <span className="hidden sm:inline text-slate-400">
-                          •
-                        </span>
+                        <span className="hidden sm:inline text-slate-400">•</span>
                         <p className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-1">
                           <span>{job.location}</span>
                           <span className="text-xs">({job.type})</span>
@@ -103,9 +101,7 @@ export function ExperienceSection(): JSX.Element {
                     {/* Expand/Collapse Indicator */}
                     <div className="absolute bottom-4 right-6">
                       <div
-                        className={`transition-all duration-300 ${
-                          isExpanded ? "rotate-180" : ""
-                        }`}
+                        className={`transition-all duration-300 ${isExpanded ? "rotate-180" : ""}`}
                       >
                         <ChevronDown
                           className={`h-5 w-5 transition-colors duration-300 ${
@@ -138,9 +134,7 @@ export function ExperienceSection(): JSX.Element {
                                 className="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-3"
                               >
                                 <Sparkles className="h-4 w-4 text-emerald-500 mt-0.5 flex-shrink-0" />
-                                <span className="leading-relaxed">
-                                  {achievement}
-                                </span>
+                                <span className="leading-relaxed">{achievement}</span>
                               </li>
                             ))}
                           </ul>

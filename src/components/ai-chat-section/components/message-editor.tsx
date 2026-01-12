@@ -32,11 +32,7 @@ interface MessageEditorProps {
   onCancel: (messageId: string) => void;
 }
 
-export function MessageEditor({
-  message,
-  onSave,
-  onCancel,
-}: MessageEditorProps): JSX.Element {
+export function MessageEditor({ message, onSave, onCancel }: MessageEditorProps): JSX.Element {
   // Get settings from context
   const { selectedTone, selectedModel } = useAIChatContext();
   const [content, setContent] = useState(message.content);
@@ -99,14 +95,8 @@ export function MessageEditor({
 
       <div className="flex flex-col lg:flex-row gap-2 px-5">
         <div className="flex flex-col md:flex-1 md:flex-row gap-2">
-          <ModelSelector
-            disabled={isLoading}
-            className="w-full md:w-[49%] lg:w-[230px]"
-          />
-          <ToneSelector
-            disabled={isLoading}
-            className="w-full md:w-[49%] lg:w-[200px]"
-          />
+          <ModelSelector disabled={isLoading} className="w-full md:w-[49%] lg:w-[230px]" />
+          <ToneSelector disabled={isLoading} className="w-full md:w-[49%] lg:w-[200px]" />
         </div>
 
         <div className="flex gap-2">

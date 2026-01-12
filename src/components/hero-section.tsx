@@ -36,12 +36,7 @@ export function HeroSection(): JSX.Element {
       className="h-screen min-h-[600px] flex items-center justify-center relative overflow-hidden"
     >
       {/* Video Background */}
-      <video
-        className="absolute inset-[0] w-full h-full object-cover -z-10"
-        autoPlay
-        loop
-        muted
-      >
+      <video className="absolute inset-[0] w-full h-full object-cover -z-10" autoPlay loop muted>
         <source src="/red_hero.mp4" type="video/mp4" />
       </video>
 

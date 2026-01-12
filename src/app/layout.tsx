@@ -4,7 +4,6 @@ import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
-import type React from "react";
 import type { JSX, ReactNode } from "react";
 import { Suspense } from "react";
 
@@ -27,9 +26,7 @@ export default function RootLayout({
 }>): JSX.Element {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}
-      >
+      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
         <Suspense fallback={null}>
           <ThemeProvider
             attribute="class"

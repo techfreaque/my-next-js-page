@@ -12,8 +12,8 @@ export function PrivacyNotice(): JSX.Element {
         <div className="text-sm text-blue-800 dark:text-blue-200">
           <p className="font-medium mb-1">Privacy Notice</p>
           <p>
-            Your conversations are stored locally in your browser only and never
-            sent to me. AI responses are powered by{" "}
+            Your conversations are stored locally in your browser only and never sent to me. AI
+            responses are powered by{" "}
             <a
               href="https://openrouter.ai"
               target="_blank"
@@ -22,10 +22,9 @@ export function PrivacyNotice(): JSX.Element {
             >
               OpenRouter
             </a>
-            , which routes requests to various AI providers. While I cannot see
-            your messages, the AI providers may retain your conversations
-            according to their privacy policies, particularly when using free
-            models.
+            , which routes requests to various AI providers. While I cannot see your messages, the
+            AI providers may retain your conversations according to their privacy policies,
+            particularly when using free models.
           </p>
         </div>
       </div>

@@ -24,10 +24,7 @@ export interface EmailButtonProps {
  * @param props - EmailButton component props
  * @returns JSX element representing the email button
  */
-export function EmailButton({
-  onNavbarHover,
-  isHover = false,
-}: EmailButtonProps): JSX.Element {
+export function EmailButton({ onNavbarHover, isHover = false }: EmailButtonProps): JSX.Element {
   const [isHovered, setIsHovered] = useState(false);
   const shouldShowRainbow = isHover || isHovered;
 

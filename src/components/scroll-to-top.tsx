@@ -21,13 +21,6 @@ export function ScrollToTop(): JSX.Element | null {
     return (): void => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  const scrollToTop = (): void => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
   if (!isVisible) {
     return null;
   }
@@ -44,3 +37,10 @@ export function ScrollToTop(): JSX.Element | null {
     </Button>
   );
 }
+
+const scrollToTop = (): void => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};

@@ -1,13 +1,6 @@
 import type { PageSection } from "lib/constants";
 import { PAGE_SECTIONS } from "lib/constants";
-import {
-  Briefcase,
-  FolderOpen,
-  GraduationCap,
-  Home,
-  MessageCircle,
-  User,
-} from "lucide-react";
+import { Briefcase, FolderOpen, GraduationCap, Home, MessageCircle, User } from "lucide-react";
 import type { ComponentType } from "react";
 
 /**

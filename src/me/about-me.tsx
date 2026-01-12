@@ -28,8 +28,7 @@ export const aboutContent = {
 
 // ===== PROFESSIONAL SUMMARY =====
 export const professionalSummary = {
-  title:
-    "Full Stack Developer, AI enthusiast, entrepreneur, and framework builder",
+  title: "Full Stack Developer, AI enthusiast, entrepreneur, and framework builder",
   description:
     "13+ years building software that solves real problems. Started as a car mechanic, taught myself to code through open source, founded a few companies, and now I build frameworks and developer tools. I'm too cheap to pay for things I can do myself - fixed my own car, phone, washing machine, and did my own bookkeeping. My teams tend to become close friends who actually enjoy working together.",
   specializations: [
@@ -67,18 +66,13 @@ export const personalityApproach = {
     "I solve problems and build things. My teams tend to become close friends who respect each other. I create environments where people can learn, fail, and grow together without anyone being an asshole about it.",
   leadership: {
     style: "Everyone's voice matters - I don't have all the answers",
-    teamDynamics:
-      "Teams work best when they're friends who respect each other and learn together",
-    communication:
-      "I talk about my failures and blind spots openly - mistakes are how we learn",
-    approach:
-      "We make goals and plans together as a team, not top-down mandates",
+    teamDynamics: "Teams work best when they're friends who respect each other and learn together",
+    communication: "I talk about my failures and blind spots openly - mistakes are how we learn",
+    approach: "We make goals and plans together as a team, not top-down mandates",
   },
   learningMindset: {
-    philosophy:
-      "Question everything. What worked yesterday might not work tomorrow",
-    transparency:
-      "I show my thinking process - collaborative problem-solving beats lone genius",
+    philosophy: "Question everything. What worked yesterday might not work tomorrow",
+    transparency: "I show my thinking process - collaborative problem-solving beats lone genius",
     failureHandling:
       "I focus on how I've failed and what I learned - mistakes are just expensive lessons",
     environment:

@@ -46,8 +46,7 @@ export function SystemPromptModal({
           <DialogHeader>
             <DialogTitle>AI System Prompt</DialogTitle>
             <DialogDescription>
-              The same data that builds this website also powers the AI chat.
-              Currently using{" "}
+              The same data that builds this website also powers the AI chat. Currently using{" "}
               <Badge variant="default" className="ml-1">
                 {toneOptions.find((t) => t.id === selectedTone)?.emoji}{" "}
                 {toneOptions.find((t) => t.id === selectedTone)?.name}

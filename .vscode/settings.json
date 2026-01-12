@@ -2,36 +2,53 @@
   "cSpell.words": [],
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
   },
-  "eslint.format.enable": true,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
   "prettier.enable": false,
   "typescript.validate.enable": true,
   "typescript.suggest.autoImports": true,
   "prettier.requireConfig": true,
   "[typescript]": {
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
+      "source.organizeImports": "always"
     },
-    "editor.formatOnSave": false
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[typescriptreact]": {
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
+      "source.organizeImports": "always"
     },
-    "editor.formatOnSave": false
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "files.eol": "\n",
   "files.exclude": {},
   "search.exclude": {
     "**/node_modules": true,
     "**/.next": true,
-    "bun.lock": true
+    "bun.lock": true,
+    "**/tsconfig.tsbuildinfo": true,
+    "**/*.tmp": true,
+    "**/*.next": true
+  },
+  "oxc.enable": true,
+  "oxc.lint.run": "onSave",
+  "oxc.configPath": ".tmp/.oxlintrc.json",
+  "oxc.fmt.configPath": ".tmp/.oxfmtrc.json",
+  "oxc.fmt.experimental": true,
+  "oxc.typeAware": true,
+  "oxc.trace.server": "verbose",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
+  "typescript.experimental.useTsgo": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.formatOnSave": true
   }
 }

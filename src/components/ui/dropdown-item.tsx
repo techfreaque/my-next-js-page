@@ -74,10 +74,9 @@ export function DropdownItem({
               ? icon
               : typeof icon === "string"
                 ? icon
-                : React.createElement(
-                    icon as React.ComponentType<{ className?: string }>,
-                    { className: "w-6 h-6 size-6" },
-                  )}
+                : React.createElement(icon as React.ComponentType<{ className?: string }>, {
+                    className: "w-6 h-6 size-6",
+                  })}
           </span>
         )}
         <div className="flex flex-col items-start flex-1 min-w-0 text-left">

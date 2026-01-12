@@ -2,11 +2,7 @@ import { cn } from "lib/utils";
 import type { ComponentProps, JSX } from "react";
 import React from "react";
 
-function Textarea({
-  className,
-  rows = 3,
-  ...props
-}: ComponentProps<"textarea">): JSX.Element {
+function Textarea({ className, rows = 3, ...props }: ComponentProps<"textarea">): JSX.Element {
   return (
     <div className="overflow-hidden rounded-t-md border-b border-border/30">
       <textarea

@@ -59,9 +59,7 @@ export function NavItem({
       isHover={shouldShowRainbow}
       asChild
       className={`relative font-medium ${fullWidth ? "w-full justify-start" : ""} ${
-        shouldShowRainbow
-          ? "border-2 border-blue-500/50"
-          : "border-2 border-transparent"
+        shouldShowRainbow ? "border-2 border-blue-500/50" : "border-2 border-transparent"
       }`}
       setIsHover={handleHover}
     >

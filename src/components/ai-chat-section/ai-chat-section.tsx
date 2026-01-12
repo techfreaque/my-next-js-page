@@ -5,7 +5,6 @@ import { Card } from "components/ui/card";
 import { Title } from "components/ui/title";
 import { createRainbowTextStyle } from "lib/rainbow-style";
 import { Sparkles } from "lucide-react";
-import type React from "react";
 import type { JSX } from "react";
 
 import { AIChatProvider, useAIChatContext } from "./AIChatContext";
@@ -27,9 +26,7 @@ function AIChatSectionInternal(): JSX.Element {
           </Badge>
           <Title level={2} useRainbow={false}>
             Chat with My{" "}
-            <span style={createRainbowTextStyle(isHover, "primary")}>
-              AI Assistant
-            </span>
+            <span style={createRainbowTextStyle(isHover, "primary")}>AI Assistant</span>
           </Title>
         </div>
 

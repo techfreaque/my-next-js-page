@@ -39,9 +39,7 @@ export function Title({
     }
   };
 
-  const rainbowStyle = useRainbow
-    ? createRainbowTextStyle(currentHover, variant)
-    : {};
+  const rainbowStyle = useRainbow ? createRainbowTextStyle(currentHover, variant) : {};
 
   return (
     <Tag

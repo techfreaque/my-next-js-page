@@ -13,9 +13,7 @@ export function useChatLoading(): {
 
   const startLoadingAnimation = (): void => {
     // Randomly select a loading messages block
-    const randomBlockIndex = Math.floor(
-      Math.random() * loadingMessagesBlocks.length,
-    );
+    const randomBlockIndex = Math.floor(Math.random() * loadingMessagesBlocks.length);
     const selectedBlock = loadingMessagesBlocks[randomBlockIndex];
 
     const allMessages = [...selectedBlock, ...loadingMessagesEnd];
@@ -31,9 +29,7 @@ export function useChatLoading(): {
       } else {
         // After all messages, cycle through the last few funny ones
         const funnyMessages = allMessages.slice(-5);
-        setLoadingText(
-          funnyMessages[messageIndex % funnyMessages.length] || "",
-        );
+        setLoadingText(funnyMessages[messageIndex % funnyMessages.length] || "");
       }
     }, 2000); // Change message every 2 seconds
   };

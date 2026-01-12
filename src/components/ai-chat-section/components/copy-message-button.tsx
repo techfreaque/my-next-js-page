@@ -7,9 +7,7 @@ interface CopyMessageButtonProps {
   content: string;
 }
 
-export function CopyMessageButton({
-  content,
-}: CopyMessageButtonProps): JSX.Element {
+export function CopyMessageButton({ content }: CopyMessageButtonProps): JSX.Element {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async (): Promise<void> => {

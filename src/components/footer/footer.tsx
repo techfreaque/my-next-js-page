@@ -49,9 +49,8 @@ export function Footer(): JSX.Element {
 
             {/* Subtitle */}
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mb-12">
-              Looking for a technical co-founder, senior developer, or
-              innovation partner? Let's connect and build the future together!
-              🚀
+              Looking for a technical co-founder, senior developer, or innovation partner? Let's
+              connect and build the future together! 🚀
             </p>
           </div>
 
@@ -64,17 +63,11 @@ export function Footer(): JSX.Element {
                 Ready to Collaborate?
               </h4>
               <p className="text-slate-700 dark:text-slate-200 mb-6 leading-relaxed">
-                Whether you're hiring senior talent, seeking a technical
-                co-founder, or just want to connect with a fellow innovator -
-                I'm always open to meaningful conversations about building the
-                future.
+                Whether you're hiring senior talent, seeking a technical co-founder, or just want to
+                connect with a fellow innovator - I'm always open to meaningful conversations about
+                building the future.
               </p>
-              <Button
-                asChild
-                variant="rainbow"
-                size="lg"
-                setIsHover={setIsHover}
-              >
+              <Button asChild variant="rainbow" size="lg" setIsHover={setIsHover}>
                 <a
                   href={`mailto:${personalInfo.email}?subject=${encodeURIComponent(personalInfo.contactEmailSubject)}`}
                 >
@@ -91,8 +84,8 @@ export function Footer(): JSX.Element {
                 Follow the Journey
               </h4>
               <p className="text-slate-700 dark:text-slate-200 mb-6 leading-relaxed">
-                Connect with me to stay updated on my latest projects, technical
-                insights, and opportunities for collaboration in the tech space.
+                Connect with me to stay updated on my latest projects, technical insights, and
+                opportunities for collaboration in the tech space.
               </p>
               <div className="flex justify-center md:justify-end gap-4">
                 <a target={"_blank"} href={personalInfo.github}>

@@ -8,11 +8,7 @@ import type { StoredMessage } from "../hooks/useChatStorage";
 import { CopyMessageButton } from "./copy-message-button";
 import { MessageEditor } from "./message-editor";
 
-export function UserMessage({
-  message,
-}: {
-  message: StoredMessage;
-}): JSX.Element {
+export function UserMessage({ message }: { message: StoredMessage }): JSX.Element {
   const {
     startEditingMessage,
     deleteMessageAndFollowing,

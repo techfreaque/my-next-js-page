@@ -4,11 +4,7 @@ import React from "react";
 
 import type { StoredMessage } from "../hooks/useChatStorage";
 
-export function ChatMessageError({
-  message,
-}: {
-  message: StoredMessage;
-}): JSX.Element {
+export function ChatMessageError({ message }: { message: StoredMessage }): JSX.Element {
   return (
     <div className="flex justify-center">
       <div className="max-w-[90%] bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800/30 text-red-800 dark:text-red-200 rounded-xl px-4 py-3">

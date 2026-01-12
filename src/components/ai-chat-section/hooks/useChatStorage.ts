@@ -37,16 +37,13 @@ export function useChatStorage(): {
   getDefaultMessage: () => StoredMessage;
   ensureLatestWelcomeMessage: (messages: StoredMessage[]) => StoredMessage[];
 } {
-  const saveMessagesToStorage = useCallback(
-    (messages: StoredMessage[]): void => {
-      try {
-        localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(messages));
-      } catch {
-        // Storage errors are expected in some environments
-      }
-    },
-    [],
-  );
+  const saveMessagesToStorage = useCallback((messages: StoredMessage[]): void => {
+    try {
+      localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(messages));
+    } catch {
+      // Storage errors are expected in some environments
+    }
+  }, []);
 
   const loadMessagesFromStorage = useCallback((): StoredMessage[] => {
     try {
@@ -88,10 +85,7 @@ export function useChatStorage(): {
 
       // Check if the first message is the welcome message
       const firstMessage = messages[0];
-      if (
-        firstMessage.id === WELCOME_MESSAGE_ID &&
-        firstMessage.role === "assistant"
-      ) {
+      if (firstMessage.id === WELCOME_MESSAGE_ID && firstMessage.role === "assistant") {
         // Replace with the latest welcome message
         const latestWelcome = getDefaultMessage();
         return [latestWelcome, ...messages.slice(1)];

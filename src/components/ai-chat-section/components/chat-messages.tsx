@@ -23,8 +23,7 @@ export function ChatMessages(): JSX.Element {
   // Auto-scroll to bottom when new messages arrive
   const scrollToBottom = useCallback((): void => {
     if (!isEditing && messages.length > 1 && messagesContainerRef?.current) {
-      messagesContainerRef.current.scrollTop =
-        messagesContainerRef.current.scrollHeight;
+      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
     }
   }, [isEditing, messages.length, messagesContainerRef]);
 
@@ -54,10 +53,7 @@ export function ChatMessages(): JSX.Element {
                 /* Assistant Message - Full width, no background */
                 <div className="w-full">
                   <div className="prose prose-sm dark:prose-invert max-w-none text-foreground">
-                    <Markdown
-                      content={message.content || ""}
-                      isHover={isHover}
-                    />
+                    <Markdown content={message.content || ""} isHover={isHover} />
                     {/* Message Actions - Below message, right aligned but slightly inset */}
                     {index !== 0 && (
                       <div className="flex justify-end mt-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
@@ -65,9 +61,7 @@ export function ChatMessages(): JSX.Element {
                           <Button
                             variant="rainbow"
                             size="sm"
-                            onClick={() =>
-                              startEditingMessage(messages[index - 1].id)
-                            }
+                            onClick={() => startEditingMessage(messages[index - 1].id)}
                             className="h-7 w-7 p-0"
                             title="Edit"
                           >
@@ -97,9 +91,7 @@ export function ChatMessages(): JSX.Element {
                       style={{ animationDelay: "0.3s" }}
                     />
                   </div>
-                  <span className="text-sm italic transition-all duration-500">
-                    {loadingText}
-                  </span>
+                  <span className="text-sm italic transition-all duration-500">{loadingText}</span>
                 </div>
               </div>
             </div>

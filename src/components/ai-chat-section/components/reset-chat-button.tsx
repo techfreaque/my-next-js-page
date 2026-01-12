@@ -1,6 +1,5 @@
 import { Button } from "components/ui/button";
 import { RotateCcw } from "lucide-react";
-import type React from "react";
 import type { JSX } from "react";
 
 import { useChatReset } from "../hooks/useChatReset";
@@ -10,9 +9,7 @@ interface ResetChatButtonProps {
   setMessages: (messages: StoredMessage[]) => void;
 }
 
-export function ResetChatButton({
-  setMessages,
-}: ResetChatButtonProps): JSX.Element {
+export function ResetChatButton({ setMessages }: ResetChatButtonProps): JSX.Element {
   const { resetClickCount, handleResetClick } = useChatReset({
     setMessages,
   });

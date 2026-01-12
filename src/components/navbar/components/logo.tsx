@@ -16,21 +16,14 @@ export function Logo(): JSX.Element {
   // prevents flickering when system theme is dark
   return (
     <div className="flex-shrink-0">
-      <a
-        href={`#${PAGE_SECTIONS.HOME}`}
-        className="hover:opacity-80 transition-opacity"
-      >
+      <a href={`#${PAGE_SECTIONS.HOME}`} className="hover:opacity-80 transition-opacity">
         <div className="text-4xl h-8 flex items-center fancy-title mr-0 min-[480px]:mr-6 md:mr-8">
           <Image
             src={logoWhite}
             alt="max.a42.ch logo white"
             className="h-full w-auto light:hidden"
           />
-          <Image
-            src={logo}
-            alt="max.a42.ch logo dark"
-            className="h-full w-auto dark:hidden"
-          />
+          <Image src={logo} alt="max.a42.ch logo dark" className="h-full w-auto dark:hidden" />
         </div>
       </a>
     </div>

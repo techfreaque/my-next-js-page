@@ -12,9 +12,7 @@ import { SectionHeader } from "./section-header";
 import { useProjectsData } from "./use-projects-data";
 
 export function ProjectsSection(): JSX.Element {
-  const [activeFilter, setActiveFilter] = useState<Category>(
-    CategoryEnum.FEATURED,
-  );
+  const [activeFilter, setActiveFilter] = useState<Category>(CategoryEnum.FEATURED);
   const [isHover, setIsHover] = useState(false);
   const [expandedProject, setExpandedProject] = useState<number | null>(null);
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);

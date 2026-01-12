@@ -52,14 +52,7 @@ export const projects: Project[] = [
     description:
       "SaaS platform that connects to 20+ newsletter systems through one simple API. Built it because managing leads across Klaviyo, Mailchimp, Salesforce, and others was a nightmare. Now it's just one API call.",
     icon: Mail,
-    technologies: [
-      "Next.js",
-      "React",
-      "PayPal SDK",
-      "Prisma",
-      "TypeScript",
-      "PostgreSQL",
-    ],
+    technologies: ["Next.js", "React", "PayPal SDK", "Prisma", "TypeScript", "PostgreSQL"],
     categories: [
       Category.SAAS_PRODUCTS,
       Category.API_INTEGRATION,
@@ -148,15 +141,7 @@ export const projects: Project[] = [
     description:
       "Website and management system for beauty studios. Multi-location partner portal, appointment booking, automated deployment. Used Matomo for analytics because Google doesn't need to know everything.",
     icon: Palette,
-    technologies: [
-      "Next.js",
-      "React",
-      "Python",
-      "Flask",
-      "Docker",
-      "Caddy",
-      "Matomo",
-    ],
+    technologies: ["Next.js", "React", "Python", "Flask", "Docker", "Caddy", "Matomo"],
     categories: [Category.SAAS_PRODUCTS, Category.BUSINESS_LEADERSHIP],
     achievements: [
       "Multi-location partner portal",
@@ -376,13 +361,7 @@ export const projects: Project[] = [
     description:
       "Co-founded two IT support companies from scratch. Started fixing phones and laptops, grew into full IT consultancies. Built the teams, the systems, the websites. Sold both - they're still running today.",
     icon: Building2,
-    technologies: [
-      "PHP",
-      "JavaScript",
-      "Odoo",
-      "Team Leadership",
-      "Business Operations",
-    ],
+    technologies: ["PHP", "JavaScript", "Odoo", "Team Leadership", "Business Operations"],
     categories: [Category.BUSINESS_LEADERSHIP],
     achievements: [
       "Built two companies from zero to profitable",
@@ -397,13 +376,7 @@ export const projects: Project[] = [
     description:
       "Led Swiss business tech support team for Samsung. Solved complex enterprise issues that nobody else could figure out. Coordinated with global teams, got bugs fixed, features added.",
     icon: Headset,
-    technologies: [
-      "Samsung Knox",
-      "MagicInfo",
-      "Python",
-      "JavaScript",
-      "Team Leadership",
-    ],
+    technologies: ["Samsung Knox", "MagicInfo", "Python", "JavaScript", "Team Leadership"],
     categories: [Category.BUSINESS_LEADERSHIP],
     achievements: [
       "Led 10-person support team across subcontractors",

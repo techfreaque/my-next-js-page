@@ -2,9 +2,10 @@
 
 import { Badge } from "components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "components/ui/card";
+import { CollapsibleContent } from "components/ui/collapsible";
 import { Markdown } from "components/ui/markdown";
 import { Title } from "components/ui/title";
-import { ChevronDown, ChevronRight, GraduationCap } from "lucide-react";
+import { ChevronDown, GraduationCap } from "lucide-react";
 import { learnings } from "me/learnings";
 import type { JSX } from "react";
 import React, { useState } from "react";
@@ -123,17 +124,15 @@ export function EducationSkillsSection(): JSX.Element {
                                   rabbitHole.customSections?.passionLabel) ||
                                   "Passion"}
                               </Badge>
-                              {isExpanded ? (
-                                <ChevronDown className="h-5 w-5 text-slate-500" />
-                              ) : (
-                                <ChevronRight className="h-5 w-5 text-slate-500" />
-                              )}
+                                  <ChevronDown
+                                className={`h-5 w-5 text-slate-500 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
+                              />
                             </div>
                           </div>
                         </CardHeader>
 
-                        {isExpanded && (
-                          <CardContent className="pt-0 animate-in slide-in-from-top-2 duration-500">
+                        <CollapsibleContent isOpen={isExpanded}>
+                          <CardContent className="pt-0">
                             <div className="space-y-4">
                               <div className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
                                 <Markdown
@@ -182,7 +181,7 @@ export function EducationSkillsSection(): JSX.Element {
                               )}
                             </div>
                           </CardContent>
-                        )}
+                        </CollapsibleContent>
                       </Card>
                     );
                   })}

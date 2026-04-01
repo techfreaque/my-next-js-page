@@ -2,6 +2,7 @@ import { SiGithub } from "@icons-pack/react-simple-icons";
 import { Badge } from "components/ui/badge";
 import { Button } from "components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "components/ui/card";
+import { CollapsibleContent } from "components/ui/collapsible";
 import { ChevronDown, ExternalLink } from "lucide-react";
 import type { Project } from "me/projects";
 import { Category } from "me/projects";
@@ -48,11 +49,16 @@ export function ProjectCard({
           </div>
           <div className="flex items-center gap-2">
             {project.categories.includes(Category.FEATURED) && (
-              <Badge variant="default" className="bg-primary/20 text-primary text-xs">
+              <Badge
+                variant="default"
+                className="bg-primary/20 text-primary text-xs"
+              >
                 Featured
               </Badge>
             )}
-            <div className={`transition-all duration-300 ${isExpanded ? "rotate-180" : ""}`}>
+            <div
+              className={`transition-all duration-300 ${isExpanded ? "rotate-180" : ""}`}
+            >
               <ChevronDown
                 className={`h-5 w-5 transition-colors duration-300 ${
                   isHovered ? "text-cyan-500" : "text-slate-400"
@@ -66,15 +72,14 @@ export function ProjectCard({
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="text-muted-foreground leading-relaxed text-sm">{project.description}</p>
+        <p className="text-muted-foreground leading-relaxed text-sm">
+          {project.description}
+        </p>
 
         {/* Technologies */}
         <div>
           <div className="flex flex-wrap gap-1">
-            {(isExpanded
-              ? project.technologies
-              : project.technologies.slice(0, maxPreviewTechs)
-            ).map((tech) => (
+            {project.technologies.slice(0, maxPreviewTechs).map((tech) => (
               <Badge key={tech} variant="default" className="text-xs">
                 {tech}
               </Badge>
@@ -84,47 +89,60 @@ export function ProjectCard({
                 +{project.technologies.length - maxPreviewTechs}
               </Badge>
             )}
+            {isExpanded &&
+              project.technologies.slice(maxPreviewTechs).map((tech) => (
+                <Badge key={tech} variant="default" className="text-xs">
+                  {tech}
+                </Badge>
+              ))}
           </div>
         </div>
 
-        {/* Key Highlights */}
-        {isExpanded && (
-          <div className="animate-in slide-in-from-top-2 duration-500">
-            <h4 className="text-sm font-semibold text-slate-900 dark:text-white mb-2">
-              Key Achievements
-            </h4>
-            <ul className="space-y-2">
-              {project.achievements.map((achievement, idx) => (
-                <li key={idx} className="text-xs text-muted-foreground flex items-start">
-                  <span className="text-cyan-500 mr-2 mt-0.5">•</span>
-                  {achievement}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
+        {/* Preview achievements - hidden when expanded */}
         {!isExpanded && project.achievements.length > 0 && (
           <div>
             <ul className="space-y-1">
-              {project.achievements.slice(0, maxPreviewAchievements).map((achievement, idx) => (
-                <li key={idx} className="text-xs text-muted-foreground flex items-start">
-                  <span className="text-cyan-500 mr-2 mt-0.5">•</span>
-                  {achievement}
-                </li>
-              ))}
+              {project.achievements
+                .slice(0, maxPreviewAchievements)
+                .map((achievement, idx) => (
+                  <li
+                    key={idx}
+                    className="text-xs text-muted-foreground flex items-start"
+                  >
+                    <span className="text-cyan-500 mr-2 mt-0.5">•</span>
+                    {achievement}
+                  </li>
+                ))}
             </ul>
             {project.achievements.length > maxPreviewAchievements && (
               <p className="text-xs text-muted-foreground mt-1 italic">
-                +{project.achievements.length - maxPreviewAchievements} more achievements...
+                +{project.achievements.length - maxPreviewAchievements} more
+                achievements...
               </p>
             )}
           </div>
         )}
 
-        {/* Action Buttons - Only visible when expanded */}
-        {isExpanded && (
-          <>
+        {/* Expanded content with smooth animation */}
+        <CollapsibleContent isOpen={isExpanded}>
+          <div className="space-y-4 pt-2">
+            <div>
+              <h4 className="text-sm font-semibold text-slate-900 dark:text-white mb-2">
+                Key Achievements
+              </h4>
+              <ul className="space-y-2">
+                {project.achievements.map((achievement, idx) => (
+                  <li
+                    key={idx}
+                    className="text-xs text-muted-foreground flex items-start"
+                  >
+                    <span className="text-cyan-500 mr-2 mt-0.5">•</span>
+                    {achievement}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             {project.url || project.github ? (
               <div className="flex flex-wrap gap-2 pt-2">
                 {project.url && (
@@ -168,13 +186,17 @@ export function ProjectCard({
               </div>
             ) : (
               <div className="pt-2">
-                <Button variant="rainbow" size="sm" className="w-full justify-center py-2 text-xs">
+                <Button
+                  variant="rainbow"
+                  size="sm"
+                  className="w-full justify-center py-2 text-xs"
+                >
                   Status: {project.status}
                 </Button>
               </div>
             )}
-          </>
-        )}
+          </div>
+        </CollapsibleContent>
       </CardContent>
     </Card>
   );

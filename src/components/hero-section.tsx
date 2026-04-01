@@ -14,7 +14,6 @@ export const heroTypewriterStrings = [
   "a Cross-Platform Dev",
   "an Entrepreneur",
   "a Framework Builder",
-  "Marcus Brandstaetter",
   "a Problem Solver",
   "an AI Enthusiast",
   "a Team Builder",

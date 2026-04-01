@@ -1,11 +1,8 @@
 import {
-  SiAlibabadotcom,
+  SiAnthropic,
   SiGooglegemini,
-  SiMistralai,
   SiOpenai,
-  SiX,
 } from "@icons-pack/react-simple-icons";
-import { MoonIcon } from "lucide-react";
 import type { ComponentType } from "react";
 
 /**
@@ -13,16 +10,10 @@ import type { ComponentType } from "react";
  * Each model has different pricing, capabilities, and context windows.
  */
 export enum ModelId {
+  CLAUDE_HAIKU = "claude-haiku",
+  GPT_5_MINI = "gpt-5-mini",
   GPT_5_NANO = "gpt-5-nano",
-  GEMINI_FLASH_2_0_LITE = "gemini-flash-2.0-lite",
-  MISTRAL_NEMO = "mistral-nemo",
-  DEEPSEEK_R1_DISTILL = "deepseek-r1-distill",
-  QWEN_2_5_7B = "qwen-2-5-7b",
-  KIMI_K2_FREE = "kimi-k2-free",
-  DEEPSEEK_V31_FREE = "deepseek-v3.1-free",
-  QWEN3_235B_FREE = "qwen3_235b-free",
-  GPT_OSS_120B_FREE = "gpt-oss-120b-free",
-  GROK_4_FAST_FREE = "grok-4-fast-free",
+  GEMINI_3_1_FLASH_LITE = "gemini-3.1-flash-lite",
 }
 
 /**
@@ -50,92 +41,50 @@ export interface ModelOption {
 
 export const modelOptions: ModelOption[] = [
   {
+    id: ModelId.CLAUDE_HAIKU,
+    name: "Claude Haiku 4.5",
+    provider: "Anthropic",
+    description:
+      "Fast, capable, and cost-efficient - Anthropic's best small model",
+    parameterCount: undefined,
+    contextWindow: 200000,
+    icon: SiAnthropic,
+    openRouterModel: "anthropic/claude-haiku-4-5",
+  },
+  {
+    id: ModelId.GPT_5_MINI,
+    name: "GPT-5 Mini",
+    provider: "OpenAI",
+    description: "Latest capable small model from OpenAI",
+    parameterCount: undefined,
+    contextWindow: 200000,
+    icon: SiOpenai,
+    openRouterModel: "openai/gpt-5-mini",
+  },
+  {
     id: ModelId.GPT_5_NANO,
     name: "GPT-5 Nano",
     provider: "OpenAI",
-    description: "Latest nano model with excellent performance-to-cost ratio",
+    description: "Fastest and most lightweight GPT-5 variant",
     parameterCount: undefined,
     contextWindow: 400000,
     icon: SiOpenai,
     openRouterModel: "openai/gpt-5-nano",
   },
   {
-    id: ModelId.GPT_OSS_120B_FREE,
-    name: "GPT-OSS 120B (Free)",
-    provider: "OpenAI",
-    description: "Open-source GPT model with 120B parameters",
-    parameterCount: 117,
-    contextWindow: 33000,
-    icon: SiOpenai,
-    openRouterModel: "openai/gpt-oss-120b",
-  },
-  {
-    id: ModelId.GEMINI_FLASH_2_0_LITE,
-    name: "Gemini 2.0 Flash Lite",
+    id: ModelId.GEMINI_3_1_FLASH_LITE,
+    name: "Gemini 3.1 Flash Lite",
     provider: "Google",
-    description: "Ultra-fast and efficient 14B model with large context",
-    parameterCount: 14.3,
+    description: "Latest Gemini small model - ultra-fast with large context",
+    parameterCount: undefined,
     contextWindow: 1050000,
     icon: SiGooglegemini,
-    openRouterModel: "google/gemini-2.0-flash-lite-001",
-  },
-  {
-    id: ModelId.MISTRAL_NEMO,
-    name: "Mistral Nemo (Free)",
-    provider: "Mistral AI",
-    description: "European AI model with strong performance and privacy focus",
-    parameterCount: 12,
-    contextWindow: 131072,
-    icon: SiMistralai,
-    openRouterModel: "mistralai/mistral-nemo:free",
-  },
-  {
-    id: ModelId.KIMI_K2_FREE,
-    name: "Kimi K2 (Free)",
-    provider: "MoonshotAI",
-    description:
-      "Kimi K2 Instruct is a large-scale Mixture-of-Experts (MoE) language model developed by Moonshot AI.",
-    parameterCount: 1000,
-    contextWindow: 33000,
-    icon: MoonIcon,
-    openRouterModel: "moonshotai/kimi-k2:free",
-  },
-  {
-    id: ModelId.DEEPSEEK_V31_FREE,
-    name: "DeepSeek V3.1 (Free)",
-    provider: "DeepSeek",
-    description: "Powerful 671B parameter model - completely free!",
-    parameterCount: 671,
-    contextWindow: 164000,
-    icon: "🐋",
-    openRouterModel: "deepseek/deepseek-chat-v3.1:free",
-  },
-  {
-    id: ModelId.QWEN3_235B_FREE,
-    name: "Qwen3 235B (Free) ",
-    provider: "Alibaba",
-    description:
-      "Mixture-of-experts (MoE) model developed by Qwen, supports seamless switching between modes.",
-    parameterCount: 235,
-    contextWindow: 131000,
-    icon: SiAlibabadotcom,
-    openRouterModel: "qwen/qwen3-235b-a22b:free",
-  },
-
-  {
-    id: ModelId.GROK_4_FAST_FREE,
-    name: "Grok 4 Fast (Free)",
-    provider: "X-AI",
-    description: "X-AI Grok 4 Fast - completely free!",
-    parameterCount: undefined,
-    contextWindow: 2000000,
-    icon: SiX,
-    openRouterModel: "x-ai/grok-4-fast:free",
+    openRouterModel: "google/gemini-3.1-flash-lite-preview",
   },
 ];
 
 /** Default model used when no specific model is selected */
-export const defaultModel = ModelId.GPT_5_NANO;
+export const defaultModel = ModelId.CLAUDE_HAIKU;
 
 /**
  * Retrieves a model configuration by its ID.
@@ -152,7 +101,9 @@ export function getModelById(modelId: ModelId): ModelOption {
   }
 
   // Fallback to default model - this should never fail as default model is in the array
-  const defaultModelOption = modelOptions.find((model) => model.id === defaultModel);
+  const defaultModelOption = modelOptions.find(
+    (model) => model.id === defaultModel,
+  );
 
   // This should never happen in a properly configured system, but we handle it gracefully
   return defaultModelOption ?? modelOptions[0];

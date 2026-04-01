@@ -12,8 +12,39 @@ export const jobs: {
   }[];
 } = {
   subTitle:
-    "My journey from car technician to senior developer - building solutions, leading teams, and creating impact across industries.",
+    "My journey from car technician to framework builder - solving problems, leading teams, and shipping software across industries.",
   jobs: [
+    {
+      title: "Founder & Solo Developer",
+      company: "a42 / next-vibe / unbottled.ai",
+      location: "Remote",
+      period: "Oct 2025 - Present",
+      type: "Full-time",
+      description:
+        "Full-time on next-vibe and unbottled.ai after leaving Sovendus. My role has shifted into something I didn't expect to enjoy: architect, technical director, and code reviewer - with AI as the implementation partner. I spec the architecture, set the patterns, review everything, and direct AI agents to execute. We ship at a pace that would've required a team of five. I miss writing every line myself, but the output is hard to argue with.",
+      achievements: [
+        "Built unbottled.ai: free speech AI platform with 50+ models (mainstream, open, uncensored) - user-controlled filtering, privacy-first",
+        "next-vibe: one definition.ts → web UI, CLI, MCP server tool, native app screen, AI-callable function - zero duplication",
+        "Vibe Sense: TradingView-style rich timeseries analytics for any business domain - pipe endpoints together or describe a graph in plain language",
+        "Switched to ts-go for 2M+ line codebase - check times from minutes to seconds, revealed architectural debt, drove systematic untangling",
+        "Human-AI symbiosis: I architect and review, Hermes and Claude Code implement - patterns strict enough that both human and AI review are fast",
+        "TanStack Start + Vite (dev) + Next.js App Router (prod) from the same codebase - zero DX compromise",
+        "Hermes (local) and Thea (cloud) AI agents built into the platform - they monitor, delegate, and call endpoints as tools",
+      ],
+      technologies: [
+        "TypeScript",
+        "Next.js",
+        "TanStack Start",
+        "Vite",
+        "Bun",
+        "Drizzle ORM",
+        "PostgreSQL",
+        "React",
+        "MCP Servers",
+        "AI Agents",
+        "Docker",
+      ],
+    },
     {
       title: "Integration Team Lead",
       company: "Sovendus",
@@ -21,9 +52,9 @@ export const jobs: {
       period: "Sep 2023 - Oct 2025",
       type: "Full-time",
       description:
-        "Led the integration team. Partners were struggling with onboarding, so I built tools that let them help themselves. Turned a reactive support nightmare into a proactive developer experience.",
+        "Led the integration team. Partners were struggling with onboarding, so I built tools that let them help themselves. Turned a reactive support nightmare into a proactive developer experience. Nights and weekends during this period went into building what became next-vibe.",
       achievements: [
-        "Built developer-hub.sovendus.com - documentation platform where partners actually find answers (plugins and testing app linked there)",
+        "Built developer-hub.sovendus.com - documentation platform where partners actually find answers",
         "Created a testing app that lets partners diagnose 90% of their own integration issues without waiting for support",
         "Wrote 20+ platform-specific plugins (Shopify, Magento, Shopware, Flutter, React Native, Kotlin, Swift) - same core logic, different wrappers",
         "Designed unified codebase with platform-specific overrides - write once, deploy everywhere",
@@ -53,27 +84,32 @@ export const jobs: {
       title: "Freelance Developer",
       company: "a42",
       location: "Remote",
-      period: "Mar 2019 - June 2024",
-      type: "Freelance",
+      period: "Mar 2019 - Present",
+      type: "Freelance / Side Projects",
       description:
-        "Freelance work building whatever clients needed - mostly via Upwork. Trading bots, websites, AI stuff, social media tools. If someone would pay me to build it, I'd figure out how.",
+        "Client work via Upwork alongside day jobs, plus building my own projects in every spare hour. Trading bots, SaaS tools, social media platforms - if it was interesting or someone would pay me, I built it. The side project work eventually evolved into next-vibe after learnings from Octane, anywhere-widgets, leadThing, and a dozen TypeScript full-stack experiments.",
       achievements: [
-        "Built Octane - open source trading bot with strategy designer",
-        "Created trading algorithms with AI-powered decision-making",
-        "Built hedge fund website connected to Octane for automated trading for a client",
-        "Developed custom trading strategies based on client requirements",
-        "Built social media management platform for a client",
+        "Built Octane - open source trading bot with visual strategy designer (still running)",
+        "Built leadThing.dev - SaaS connecting 20+ newsletter platforms through one API",
+        "Built anywhere-widgets - universal widget engine running on 20+ platforms from one codebase",
+        "Created trading algorithms with ML-powered decision-making (actually 2x'd a test investment)",
+        "Built hedge fund website connected to Octane for automated trading",
+        "Built social media management and lead generation platform",
+        "All of these eventually merged their best ideas into next-vibe",
       ],
       technologies: [
         "Python",
         "TypeScript",
         "React",
+        "Next.js",
         "Machine Learning",
         "Neural Networks",
         "TensorFlow",
         "PyTorch",
         "Flask",
         "PostgreSQL",
+        "Bun",
+        "Drizzle ORM",
       ],
     },
     {

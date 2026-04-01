@@ -37,12 +37,19 @@ export const learnings: {
 } = {
   category: "Continuous Self-Study & Professional Development",
   period: "2012-Present",
-  description: "Countless offline/online courses, seminars, and hands-on learning",
+  description:
+    "Countless offline/online courses, seminars, and hands-on learning",
   learningRabbitHoles: [
     {
       category: "JavaScript Ecosystem Deep Dive",
       icon: Code2,
-      technologies: ["JavaScript (ES6+)", "TypeScript", "JSX", "Node.js", "Bun"],
+      technologies: [
+        "JavaScript (ES6+)",
+        "TypeScript",
+        "JSX",
+        "Node.js",
+        "Bun",
+      ],
       story: `## My JavaScript Journey: From Frankensteining to Framework Building
 
 ### The Beginning: Learning by Doing
@@ -58,15 +65,15 @@ Had a **Python backend phase**, but then **Next.js changed everything** and made
 
 Now I'm pushing **TypeScript everywhere** - not just frontend, but as a backend language too. Even replaced bash with TypeScript!
 
-### Current Innovation: Universal Widget Framework
-Built my own **Next.js-like widget framework** for anywhere-widgets:
-- **SSR + client hydration** for multiple iframe widgets in parallel
-- **Preact signals** for minimal bundle size
-- **Custom compiler** for both SSR and client bundles
-- **Single codebase** running across **20+ platforms** (Shopify, React, Vue, mobile apps)
-- **Native performance** even in webviews
+### Current Innovation: Unified Surface Framework
+The widget framework I built for anywhere-widgets evolved into **next-vibe's unified surface architecture**:
+- **SSR + client hydration** across web, native, and CLI surfaces
+- **TanStack Start** (dev) and **Next.js** (prod) from the same codebase
+- **Custom Vite compiler plugins** to make it all work transparently
+- **One definition** running across web, CLI, MCP server, native app, and cron job
+- **TypeScript everywhere** - even the AI agent configs are type-safe
 
-> JavaScript evolved from a browser toy to the foundation for building anything, anywhere.`,
+> JavaScript went from browser toy to the foundation for building anything, on any surface, with any interface.`,
       passion: "Obsession Level: Maximum",
       currentFocus: "Universal widget frameworks and TypeScript everywhere",
       customSections: {
@@ -128,7 +135,12 @@ Why deal with shell scripting chaos when you can have:
     {
       category: "AI & Natural Language Coding",
       icon: Brain,
-      technologies: ["AI Agents", "Prompt Engineering", "Code Generation", "LLMs"],
+      technologies: [
+        "AI Agents",
+        "Prompt Engineering",
+        "Code Generation",
+        "LLMs",
+      ],
       story: `## The AI Revolution: From Skeptic to Conductor
 
 **Agents just changed everything.** This isn't hyperbole - it's reality.
@@ -158,15 +170,18 @@ We're not just using tools anymore - we're **orchestrating intelligence**. The d
       skills: [
         {
           name: "AI Prompt Engineering",
-          description: "Crafting precise prompts that get exactly what I want from AI systems.",
+          description:
+            "Crafting precise prompts that get exactly what I want from AI systems.",
         },
         {
           name: "AI Code Generation",
-          description: "Using AI to generate high-quality code while maintaining my standards.",
+          description:
+            "Using AI to generate high-quality code while maintaining my standards.",
         },
         {
           name: "AI Workflow Integration",
-          description: "Building sophisticated AI-powered development workflows.",
+          description:
+            "Building sophisticated AI-powered development workflows.",
         },
       ],
     },
@@ -202,7 +217,8 @@ The mental model of **React DOM Server streaming UI** paired with client hydrati
 
 > The future is streaming, not static.`,
       passion: "Extremely High",
-      currentFocus: "Component architecture, state management, and performance optimization",
+      currentFocus:
+        "Component architecture, state management, and performance optimization",
       customSections: {
         passionLabel: "Enthusiasm Level",
         focusLabel: "Current Research",
@@ -283,7 +299,8 @@ So instead, I'm still running my **good old ping pong bot** which:
 
 > Sometimes the boring solution is the best solution.`,
       passion: "Nostalgic",
-      currentFocus: "Maintaining existing trading systems while focusing more on web technologies",
+      currentFocus:
+        "Maintaining existing trading systems while focusing more on web technologies",
       customSections: {
         passionLabel: "Current Status",
         focusLabel: "Reality Check",
@@ -331,7 +348,14 @@ But then I discovered **Next.js** and other TypeScript backend frameworks and fe
     {
       category: "Database & Backend Architecture",
       icon: Database,
-      technologies: ["MySQL", "PostgreSQL", "SQLite", "Drizzle ORM", "REST APIs", "GraphQL"],
+      technologies: [
+        "MySQL",
+        "PostgreSQL",
+        "SQLite",
+        "Drizzle ORM",
+        "REST APIs",
+        "GraphQL",
+      ],
       story: `## Database Evolution: From Raw SQL to Type-Safe Heaven
 
 ### The Type-Safe Revolution
@@ -427,11 +451,19 @@ When GraphQL makes sense:
     {
       category: "DevOps & Infrastructure",
       icon: Cloud,
-      technologies: ["Docker", "Docker Compose", "Linux", "Bash", "PowerShell", "CI/CD"],
+      technologies: [
+        "Docker",
+        "Docker Compose",
+        "Linux",
+        "Bash",
+        "PowerShell",
+        "CI/CD",
+      ],
       story:
         "Started with basic containerization and now handle complex multi-service orchestration. I love the reliability and reproducibility that proper DevOps practices bring to development. It's not just about deployment - it's about creating sustainable, scalable systems.",
       passion: "Medium-High",
-      currentFocus: "Container orchestration and automated deployment pipelines",
+      currentFocus:
+        "Container orchestration and automated deployment pipelines",
       skills: [
         {
           name: "Docker & Containerization",
@@ -440,11 +472,13 @@ When GraphQL makes sense:
         },
         {
           name: "CI/CD Pipelines",
-          description: "Automated deployment pipelines for reliable and consistent releases.",
+          description:
+            "Automated deployment pipelines for reliable and consistent releases.",
         },
         {
           name: "Linux System Administration",
-          description: "Managing Linux servers and environments for development and production.",
+          description:
+            "Managing Linux servers and environments for development and production.",
         },
       ],
     },
@@ -502,7 +536,8 @@ From car technician to tech entrepreneur:
         },
         {
           name: "Strategic Planning",
-          description: "Long-term thinking and collaborative goal-setting with team involvement.",
+          description:
+            "Long-term thinking and collaborative goal-setting with team involvement.",
         },
       ],
     },
@@ -510,39 +545,41 @@ From car technician to tech entrepreneur:
       category: "AI-Native Framework Development",
       icon: Zap,
       technologies: [
-        "Next-Vibe Framework",
+        "next-vibe",
+        "unbottled.ai",
+        "TanStack Start",
         "Zod Schema",
-        "CLI Integration",
-        "AI Tool Integration",
-        "Cron Jobs",
-        "Multi-Interface APIs",
+        "MCP Servers",
+        "CLI Generation",
+        "AI Agents",
+        "Multi-Surface APIs",
       ],
-      story: `## Next-Vibe: The AI-Native WordPress Successor
+      story: `## next-vibe + unbottled.ai: The AI-Native SaaS Platform
 
-### The Vision
-Building **next-vibe** - a spiritual successor to WordPress but **AI-native**. It's basically Next.js with my own framework around it.
+### Where It Started
+The ideas didn't come from nowhere. **Octane** taught me data platforms and real-time signal processing. **anywhere-widgets** taught me how to build a universal runtime that works on every surface. **leadThing** taught me SaaS and multi-platform API design. They all had one thing in common: **defining things once and making them work everywhere**.
 
-### The Architecture
-You have **definition.ts** where you define input, output, and UI of the API. Then the API can be accessed via:
+### The Unified Surface Principle
+**next-vibe** is a SaaS framework built on that principle. You write one \`definition.ts\` - input schema, output schema, field widgets, examples - and the platform figures out the rest:
 
-**CLI Interface**: API payload is just a CLI option
-**Web Interface**: UI defined as Zod + other schema, renders as website page
-**AI Chat Interface**: Each API is a tool the AI can use (depending on user roles)
-**Cron Interface**: Every API can be executed with config and schedule
+- **Web UI** - auto-generated or custom widget, SSR via TanStack Start (dev) or Next.js (prod)
+- **CLI tool** - same definition, rendered as a terminal command
+- **MCP server tool** - AI agents can call it directly, with proper context
+- **Native app screen** - same widget, different platform
+- **Cron job** - scheduled execution with config
 
-### Real-World Example
-*"Give me the signups from this week by country"* - the AI has access to all the same APIs as the website and CLI.
+No duplication. One surface, infinite interfaces.
 
-### The Power
-One API definition becomes:
-- **CLI command** with typed options
-- **Web page** with auto-generated UI
-- **AI tool** with proper context
-- **Scheduled job** with configuration
+### The Flagship: unbottled.ai
+**unbottled.ai** is the real-world proof that it works. Free speech AI platform with 50+ models - mainstream, open, and uncensored - where users control their own filtering level. Privacy-first, open source.
 
-> One definition, infinite interfaces - that's the future of development.`,
+### The AI Agent Layer
+**Thea** (cloud AI) and **Hermes** (local AI) are built into the platform. They monitor everything, delegate tasks, and can call any API as a tool based on user roles. The AI isn't bolted on - it's the interface.
+
+> The future of SaaS isn't a web app with an AI chat widget. It's a platform that is AI-native from the ground up.`,
       passion: "Revolutionary",
-      currentFocus: "Building the future of AI-native web development",
+      currentFocus:
+        "Building unbottled.ai and hardening next-vibe's unified surface architecture",
       customSections: {
         passionLabel: "Innovation Level",
         focusLabel: "Current Mission",
@@ -550,73 +587,94 @@ One API definition becomes:
       },
       skills: [
         {
-          name: "Next-Vibe Framework",
-          description: `**My own Next.js-based framework** that makes APIs accessible through multiple interfaces:
+          name: "Unified Surface Architecture",
+          description: `**One definition.ts becomes every interface:**
 
-- **Single definition** for input/output/UI
-- **Auto-generated CLI** commands
-- **Dynamic web pages** from schema
-- **AI tool integration** with proper context
-- **Cron job scheduling** with configuration
+- **Web UI** with SSR, auto-generated or custom widget
+- **CLI command** with typed options and rich terminal output
+- **MCP server tool** for AI agents with contextual descriptions
+- **Native app screen** - same widget, different runtime
+- **Cron job** with schedule and config
 
-> One API, four interfaces - CLI, Web, AI, Cron.`,
+> Write once. Run on every surface that exists and every surface that doesn't yet.`,
         },
         {
-          name: "Zod Schema Integration",
-          description: `**Type-safe schema definition** that powers everything:
+          name: "AI Agent Architecture (Hermes & Thea)",
+          description: `**Platform-native AI agents, not bolted-on chat widgets:**
 
-- **Input validation** across all interfaces
-- **Auto-generated UI** components
-- **CLI option parsing** with types
-- **AI tool descriptions** from schema
-- **Documentation generation** from types
+- **Thea** (cloud) and **Hermes** (local) monitor and delegate
+- Every API is a **typed tool** the AI can call based on user roles
+- Role-based access - different users, different capabilities
+- **Structured responses** optimized for AI consumption
+- Real-time platform data via Vibe Sense
 
-> Schema as the single source of truth.`,
+> AI that knows your business logic, not just your docs.`,
         },
         {
-          name: "AI Tool Architecture",
-          description: `**Each API becomes an AI tool** based on user roles:
+          name: "TanStack Start + Next.js Dual Runtime",
+          description: `**Dev and prod from the same codebase:**
 
-- **Role-based access** control for AI capabilities
-- **Contextual tool descriptions** from API definitions
-- **Structured responses** for AI consumption
-- **Real-time data access** for AI queries
+- TanStack Start + Vite for instant dev server HMR
+- Next.js App Router for production SSR and edge functions
+- Custom Vite plugins to make them share 100% of the code
+- \`"use client"\` boundary works correctly in both
 
-> AI that actually understands your business logic.`,
+> Zero compromise: DX in dev, performance in prod.`,
         },
       ],
     },
     {
       category: "Integration & API Architecture",
       icon: Globe,
-      technologies: ["REST APIs", "GraphQL", "Webhooks", "OAuth", "API Gateway", "Microservices"],
+      technologies: [
+        "REST APIs",
+        "GraphQL",
+        "Webhooks",
+        "OAuth",
+        "API Gateway",
+        "Microservices",
+      ],
       story:
         "APIs are the nervous system of modern applications. I've built everything from simple REST endpoints to complex microservice architectures. The key is designing APIs that are intuitive for developers while being robust and scalable. Documentation and developer experience are just as important as the code itself.",
       passion: "High",
-      currentFocus: "Event-driven architectures and real-time data synchronization",
+      currentFocus:
+        "Event-driven architectures and real-time data synchronization",
       skills: [
         {
           name: "REST API Design",
-          description: "Building intuitive and scalable REST APIs with proper documentation.",
+          description:
+            "Building intuitive and scalable REST APIs with proper documentation.",
         },
         {
           name: "GraphQL Implementation",
-          description: "Flexible data fetching and type-safe API design with GraphQL.",
+          description:
+            "Flexible data fetching and type-safe API design with GraphQL.",
         },
         {
           name: "Microservices Architecture",
-          description: "Designing and implementing complex microservice architectures.",
+          description:
+            "Designing and implementing complex microservice architectures.",
         },
       ],
     },
     {
       category: "Other Languages & Legacy Systems",
       icon: Code2,
-      technologies: ["PHP", "Go", "C#", "SQL", "MongoDB", "Redis", "Prisma", "MySQL"],
+      technologies: [
+        "PHP",
+        "Go",
+        "C#",
+        "SQL",
+        "MongoDB",
+        "Redis",
+        "Prisma",
+        "MySQL",
+      ],
       story:
         "Sometimes you have to work with what's there. PHP? If I have to use it to bridge legacy systems, I can do it. But I rather use TypeScript or other typesafe languages. Go is nice for backend services and microservices. C#? I used it here and there, but never got into it. The alternatives just make more sense to me. I get the idea of NoSQL with MongoDB, but I didn't have a use case yet. Prisma was a great time, but flexibility and type-safety of drizzle won me over.",
       passion: "Low-Medium",
-      currentFocus: "Migrating legacy systems to modern, type-safe alternatives",
+      currentFocus:
+        "Migrating legacy systems to modern, type-safe alternatives",
       skills: [
         {
           name: "PHP",
@@ -638,7 +696,8 @@ One API definition becomes:
         },
         {
           name: "MongoDB",
-          description: "I get the idea of NoSQL, but I didn't have a use case yet.",
+          description:
+            "I get the idea of NoSQL, but I didn't have a use case yet.",
         },
         {
           name: "Redis",
@@ -667,7 +726,8 @@ One API definition becomes:
       story:
         "I mean what choice do you have for iOS development? I recently managed to build a webview based component and a demo app for it. I built a demo app and the Sovendus web view based flutter component. While Flutter is pretty nice, I rather use React Native or a Kotlin/Swift based solution. The mental model consistency between web and mobile development is what I'm after.",
       passion: "Medium",
-      currentFocus: "Cross-platform solutions that maintain native performance and feel",
+      currentFocus:
+        "Cross-platform solutions that maintain native performance and feel",
       skills: [
         {
           name: "React Native",
@@ -729,7 +789,8 @@ One API definition becomes:
         },
         {
           name: "File Server Management",
-          description: "Network file systems, storage solutions, and backup systems",
+          description:
+            "Network file systems, storage solutions, and backup systems",
         },
         {
           name: "Print Server Setup",
@@ -765,7 +826,8 @@ One API definition becomes:
       story:
         "My background as a car technician gave me a deep understanding of how things work at the hardware level. I can diagnose and repair electronics down to the component level, do precision SMD soldering, and even handle metalworking like brazing and TIG welding. This hardware knowledge gives me a unique perspective on software optimization and system architecture - when you understand how electrons flow through circuits, debugging software becomes intuitive.",
       passion: "Medium",
-      currentFocus: "Applying hardware troubleshooting methodologies to software debugging",
+      currentFocus:
+        "Applying hardware troubleshooting methodologies to software debugging",
       skills: [
         {
           name: "Server Hardware",
@@ -773,11 +835,13 @@ One API definition becomes:
         },
         {
           name: "PC & Notebook Repair",
-          description: "Complete hardware diagnosis and repair of desktop and laptop systems",
+          description:
+            "Complete hardware diagnosis and repair of desktop and laptop systems",
         },
         {
           name: "Mobile Device Repair",
-          description: "Smartphone and tablet hardware repair and troubleshooting",
+          description:
+            "Smartphone and tablet hardware repair and troubleshooting",
         },
         {
           name: "Automotive Electronics",
@@ -785,7 +849,8 @@ One API definition becomes:
         },
         {
           name: "SMD Soldering",
-          description: "Surface-mount device soldering and microelectronics assembly",
+          description:
+            "Surface-mount device soldering and microelectronics assembly",
         },
         {
           name: "Brazing & Welding",
@@ -802,7 +867,8 @@ One API definition becomes:
         },
         {
           name: "IoT & Wearables",
-          description: "Internet of Things devices and wearable technology repair",
+          description:
+            "Internet of Things devices and wearable technology repair",
         },
         {
           name: "Household Electronics",

@@ -3,25 +3,28 @@ import type { Metadata } from "next";
 import { personalInfo } from "./about-me";
 
 export const metadata: Metadata = {
-  title: "Max B - AI & Cross-Platform Developer, Framework Builder",
+  title: "Max B - Framework Builder, AI Platform Founder, Full Stack Developer",
   description:
-    "Entrepreneur and framework builder specializing in AI-native development and universal cross-platform solutions. Built anywhere-widgets and next-vibe. Seeking AI and cross-platform opportunities.",
+    "Building next-vibe (AI-native SaaS framework) and unbottled.ai (free speech AI platform with 50+ models). 14+ years shipping software - from car mechanic to framework builder. Open to AI and cross-platform opportunities.",
   keywords: [
-    "AI developer",
-    "cross-platform",
+    "AI platform",
     "framework builder",
-    "entrepreneur",
-    "universal widgets",
-    "AI-native",
+    "next-vibe",
+    "unbottled.ai",
+    "free speech AI",
+    "cross-platform",
     "TypeScript",
-    "Next.js",
+    "SaaS framework",
+    "full stack developer",
+    "entrepreneur",
   ],
   authors: [{ name: personalInfo.fullName, url: personalInfo.website }],
 
   openGraph: {
-    title: "Max B - AI & Cross-Platform Developer, Framework Builder",
+    title:
+      "Max B - Framework Builder, AI Platform Founder, Full Stack Developer",
     description:
-      "Entrepreneur and framework builder specializing in AI-native development and universal cross-platform solutions.",
+      "Building next-vibe and unbottled.ai. 14+ years shipping software across web, mobile, CLI, and AI surfaces.",
     type: "website",
   },
 } as const;

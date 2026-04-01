@@ -2,7 +2,7 @@ const myGithub = "https://github.com/techfreaque";
 
 // ===== BASIC PERSONAL INFORMATION =====
 export const personalInfo = {
-  fullName: "Marcus Brandstaetter",
+  fullName: "Max Brandstaetter",
   nickname: "Max",
   location: "Germany",
   age: new Date().getFullYear() - 1991,
@@ -12,52 +12,55 @@ export const personalInfo = {
   twitter: "https://x.com/sir_freaque",
   thisProject: `${myGithub}/my-next-js-page`,
   website: "max.a42.ch",
-  experienceYears: "13+",
+  experienceYears: "14+",
   startDate: "January 2012",
-  currentStatus: "Actively seeking AI and/or cross-platform opportunities",
+  currentStatus:
+    "Building next-vibe & unbottled.ai - open to AI and cross-platform opportunities",
   contactEmailSubject: "Let's build something amazing together",
 } as const;
 
 // ===== ABOUT SECTION CONTENT =====
 export const aboutContent = {
-  welcomeText: `With ${personalInfo.experienceYears} years of experience, I'm a full stack developer who went from fixing luxury cars to building developer tools and AI systems.`,
-  textPart1: `My journey started with a car mechatronics apprenticeship at a Ferrari, Maserati, Aston Martin & Bentley specialist in Salzburg. I was the guy who fixed the cars, handled IT support, and learned that complex systems are just puzzles waiting to be solved. That hands-on problem-solving mindset stuck with me.`,
-  textPart2: `I moved into tech support and team leadership roles, eventually founding my own companies. At Sovendus, I led the integration team and built developer-hub.sovendus.com with 20+ platform-specific plugins. The goal was always the same: reduce friction, empower developers, and build tools that actually solve problems.`,
-  textPart3: `These days I'm working on utilizing AI and looking for my next challenge in AI and/or cross-platform development. I still fix my own car, phone, and washing machine - because why pay for skills you have? I believe in building teams that become close friends, writing code that lasts, and always questioning if there's a better way.`,
+  welcomeText: `With ${personalInfo.experienceYears} years of experience, I'm a developer, entrepreneur, and framework builder who went from diagnosing Ferraris to building AI-native platforms - and I still fix my own car.`,
+  textPart1: `It started with a car mechatronics apprenticeship at a Ferrari, Maserati, Aston Martin and Bentley specialist in Salzburg. I was the person who fixed the cars, handled the IT, and learned that every complex system - mechanical or digital - is just a set of interacting components waiting to be understood. That mindset never left. I co-founded my first company straight out of that apprenticeship, fixing phones and laptops, and never really stopped building things.`,
+  textPart2: `I led teams at Samsung Switzerland, founded and sold two IT companies, built trading bots with neural networks, wrote 20+ cross-platform plugins from a single codebase at Sovendus, and spent every spare hour on side projects that kept teaching me the same lesson: define things once and make them work everywhere. That lesson eventually became next-vibe. The widget engine, the trading platform, the email SaaS - they were all practice runs for the same core idea.`,
+  textPart3: `These days I'm building next-vibe and unbottled.ai full time. I've also shifted into a role I didn't expect to enjoy: working with AI as a genuine collaborator. I architect, review, and direct - AI implements at a pace I couldn't match alone. I miss writing every line myself sometimes, but shipping things that would've taken a team of five is a decent trade. I'm open to the right role or collaboration, but the main mission right now is finishing something that matters.`,
 } as const;
 
 // ===== PROFESSIONAL SUMMARY =====
 export const professionalSummary = {
-  title: "Full Stack Developer, AI enthusiast, entrepreneur, and framework builder",
+  title:
+    "Framework builder, AI platform founder, full stack developer, and reluctant manager",
   description:
-    "13+ years building software that solves real problems. Started as a car mechanic, taught myself to code through open source, founded a few companies, and now I build frameworks and developer tools. I'm too cheap to pay for things I can do myself - fixed my own car, phone, washing machine, and did my own bookkeeping. My teams tend to become close friends who actually enjoy working together.",
+    "14+ years building software that solves real problems. Started as a car mechanic, taught myself to code, founded companies, led teams, and now I'm building next-vibe - a SaaS framework where one definition becomes a web app, CLI, MCP server, native app, and AI tool - and unbottled.ai, a free speech AI platform with 50+ models. I work with AI as a genuine collaborator: I architect and review, AI implements. I miss writing every line myself. My teams tend to become close friends.",
   specializations: [
-    "Universal widget engines with SSR client hydration (runs on 20+ platforms)",
-    "AI-native framework development (building next-vibe, a WordPress successor)",
-    "Cross-platform solutions that actually work everywhere",
-    "Developer tools that make people's lives easier",
-    "Team leadership focused on friendship and mutual respect",
-    "Entrepreneurship (founded several companies, most still running)",
-    "DIY problem-solving (if I can learn it, I'll do it myself)",
+    "AI-native SaaS framework development (next-vibe - the spiritual successor to WordPress)",
+    "Free speech AI platforms with user-controlled filtering (unbottled.ai - 50+ models)",
+    "Universal surface architecture: one definition → web UI, CLI, MCP server, native app, AI tool",
+    "Vibe Sense: TradingView-style business intelligence for any domain - timeseries, events, signals",
+    "Human-AI development: architect and code review role, AI as implementation partner",
+    "Cross-platform plugin systems that actually work everywhere from one codebase",
+    "Team leadership where the team becomes close friends and actually enjoys the work",
   ],
   keyAchievements: [
-    "Built a universal widget engine that works better than Google Tag Manager",
-    "Created next-vibe: AI-native CMS where one API definition becomes CLI, web page, AI tool, and cron job",
+    "Built unbottled.ai: free speech AI platform with 50+ models and user-controlled filtering",
+    "Created next-vibe: one definition.ts → CLI, web page, MCP server tool, native app screen, AI tool",
+    "Built Vibe Sense: TradingView-style rich timeseries analytics for any business domain",
+    "Switched 2M+ line codebase to ts-go - revealed architectural debt and drove systematic untangling",
+    "Reduced support tickets by 99% at Sovendus - docs + plugins + testing tool as a self-reinforcing system",
+    "Wrote 20+ cross-platform plugins (Shopify, Magento, Flutter, Swift, Kotlin) from a single codebase",
     "Founded several companies that are still running after I left",
-    "Reduced support tickets by 99% by building tools so people could help themselves",
-    "Wrote 20+ platform-specific plugins from a single codebase",
-    "Led teams that became close friends while shipping great work",
   ],
 } as const;
 
 // ===== OPPORTUNITIES SEEKING =====
 export const opportunitiesSeeking = [
-  "AI and/or cross-platform development roles",
-  "Places where I can actually innovate and solve hard problems",
-  "Leadership roles where I can build teams that become friends",
-  "Complex architectural challenges that make me think",
-  "Companies that care about doing things right, not just fast",
-  "Opportunities to build frameworks and tools that help other developers",
+  "AI and cross-platform roles where I can actually innovate",
+  "Companies building hard things that care about doing them right",
+  "Leadership roles where I can build teams that become close friends",
+  "Architectural challenges at scale - the kind that keep you up at night",
+  "Collaborations on next-vibe, unbottled.ai, or anything AI-native",
+  "Opportunities to build frameworks and tools that make developers' lives better",
 ] as const;
 
 // ===== PERSONALITY & APPROACH =====
@@ -66,13 +69,18 @@ export const personalityApproach = {
     "I solve problems and build things. My teams tend to become close friends who respect each other. I create environments where people can learn, fail, and grow together without anyone being an asshole about it.",
   leadership: {
     style: "Everyone's voice matters - I don't have all the answers",
-    teamDynamics: "Teams work best when they're friends who respect each other and learn together",
-    communication: "I talk about my failures and blind spots openly - mistakes are how we learn",
-    approach: "We make goals and plans together as a team, not top-down mandates",
+    teamDynamics:
+      "Teams work best when they're friends who respect each other and learn together",
+    communication:
+      "I talk about my failures and blind spots openly - mistakes are how we learn",
+    approach:
+      "We make goals and plans together as a team, not top-down mandates",
   },
   learningMindset: {
-    philosophy: "Question everything. What worked yesterday might not work tomorrow",
-    transparency: "I show my thinking process - collaborative problem-solving beats lone genius",
+    philosophy:
+      "Question everything. What worked yesterday might not work tomorrow",
+    transparency:
+      "I show my thinking process - collaborative problem-solving beats lone genius",
     failureHandling:
       "I focus on how I've failed and what I learned - mistakes are just expensive lessons",
     environment:
@@ -131,12 +139,12 @@ export const communicationGuidelines = {
     "Maintain professional enthusiasm throughout the response",
   ],
   keyMessagingPoints: [
-    "Highlight progressive experience and leadership roles",
-    "Emphasize expertise in developer tools, plugin development, and AI integration",
-    "Showcase successful track record of solving complex integration problems",
-    "Mention innovative approaches to problem-solving and process optimization",
-    "Note active pursuit of new opportunities with innovation potential",
-    "Demonstrate deep understanding of full-stack development and AI technologies",
+    "Highlight the thread connecting all projects: define once, run everywhere - from plugins to widgets to next-vibe",
+    "Emphasize the human-AI symbiosis angle: architect and reviewer working with AI as implementation partner",
+    "Vibe Sense: TradingView-style analytics for any business domain - genuinely novel, not just another dashboard",
+    "Showcase the Sovendus virtuous cycle: tools that create more time to build better tools",
+    "Note the ts-go / checker story: performance visibility as an architectural insight, not just a speed win",
+    "Be honest about the transition: missing writing every line, but the output at this scale is the trade-off",
   ],
   responseGuidelines: [
     "BE CONCISE BY DEFAULT: Keep responses brief and to the point (2-4 sentences or bullet points)",

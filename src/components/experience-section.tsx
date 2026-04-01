@@ -2,6 +2,7 @@
 
 import { Badge } from "components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "components/ui/card";
+import { CollapsibleContent } from "components/ui/collapsible";
 import { Title } from "components/ui/title";
 import { Briefcase, ChevronDown, Sparkles, Trophy } from "lucide-react";
 import { jobs } from "me/jobs";
@@ -113,8 +114,8 @@ export function ExperienceSection(): JSX.Element {
                   </CardHeader>
 
                   {/* Expanded Content */}
-                  {isExpanded && (
-                    <CardContent className="pt-0 animate-in slide-in-from-top-2 duration-500">
+                  <CollapsibleContent isOpen={isExpanded}>
+                    <CardContent className="pt-0">
                       <div className="space-y-6">
                         {/* Achievements */}
                         <div>
@@ -162,7 +163,7 @@ export function ExperienceSection(): JSX.Element {
                         )}
                       </div>
                     </CardContent>
-                  )}
+                  </CollapsibleContent>
                 </Card>
               </div>
             );
